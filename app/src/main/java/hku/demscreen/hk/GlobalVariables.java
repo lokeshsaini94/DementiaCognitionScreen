@@ -2,26 +2,23 @@ package hku.demscreen.hk;
 
 import android.app.Application;
 
-/**
- * Created by lokeshsaini94 on 30-07-2016.
- */
 public class GlobalVariables extends Application {
-    public static String userName = "Username";
+    public static String userName = "";
     public static int userAge = 0;
+    public static String userID = "";
+    public static String userSex = "";
+    public static boolean[] modulesSelected = {true, true, true, true, true, true, true, true, true, true};
+    public static int[] m1Score = {0, 0, 0, 0};
 
-    public String getUserName() {
-        return userName;
+    public static void m1PreviousPage() {
+        Module01Activity.viewPager.setCurrentItem(getItem(-1), true);
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public static void m1NextPage() {
+        Module01Activity.viewPager.setCurrentItem(getItem(+1), true);
     }
 
-    public int getUserAge() {
-        return userAge;
-    }
-
-    public void setUserAge(int userAge) {
-        this.userAge = userAge;
+    private static int getItem(int i) {
+        return Module01Activity.viewPager.getCurrentItem() + i;
     }
 }
