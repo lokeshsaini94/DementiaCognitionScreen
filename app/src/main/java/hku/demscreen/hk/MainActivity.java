@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -66,17 +69,29 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 String mUserName = userName.getText().toString();
                 String mUserAge = userAge.getText().toString();
-                String mUserID = userId.getText().toString();
+                Boolean nameEmpty = mUserName.matches("");
+                Boolean ageEmpty = mUserAge.matches("");
+                Boolean sexEmpty = (userSex.getCheckedRadioButtonId() == -1);
 
-                if (mUserName.matches("")) {
+                if (nameEmpty) {
+                    YoYo.with(Techniques.Shake)
+                            .duration(700)
+                            .playOn(findViewById(R.id.name_text_input_layout));
                     userName.setError("Enter the patient's name");
-                } else if (mUserAge.matches("")) {
+                }
+                if (ageEmpty) {
+                    YoYo.with(Techniques.Shake)
+                            .duration(700)
+                            .playOn(findViewById(R.id.age_text_input_layout));
                     userAge.setError("Enter the patient's age");
-//                } else if (mUserID.matches("")) {
-//                    userId.setError("Enter the patient's ID");
-                } else if (userSex.getCheckedRadioButtonId() == -1) {
+                }
+                if (sexEmpty) {
+                    YoYo.with(Techniques.Shake)
+                            .duration(700)
+                            .playOn(findViewById(R.id.sex_radio_group_text));
                     userFemale.setError("Enter the patient's Sex");
-                } else {
+                }
+                if (!nameEmpty && !ageEmpty && !sexEmpty){
                     GlobalVariables.userName = userName.getText().toString();
                     int x = Integer.parseInt(userAge.getText().toString());
                     GlobalVariables.userAge = x;

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -37,15 +38,15 @@ public class ModulesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 View tick = view.findViewById(R.id.card_tick);
-                View card = view.findViewById(R.id.card_container);
+                CardView moduleCardView = (CardView) view.findViewById(R.id.card_container);
                 if (GlobalVariables.modulesSelected[i]) {
                     tick.setVisibility(View.GONE);
-                    card.setBackgroundColor(getResources().getColor(R.color.light_grey));
+                    moduleCardView.setCardBackgroundColor(getResources().getColor(R.color.light_grey));
                     GlobalVariables.modulesSelected[i] = false;
 
                 } else {
                     tick.setVisibility(View.VISIBLE);
-                    card.setBackgroundColor(getResources().getColor(R.color.white));
+                    moduleCardView.setCardBackgroundColor(getResources().getColor(R.color.white));
                     GlobalVariables.modulesSelected[i] = true;
                 }
             }
