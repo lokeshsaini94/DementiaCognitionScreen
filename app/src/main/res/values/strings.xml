@@ -4,7 +4,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_next">Next</string>
 
 
     <string name="picture_naming">Picture Naming</string>
@@ -30,6 +30,8 @@
         <item>@string/episodic_memory</item>
         <item>@string/attention</item>
     </string-array>
+
+    <string name="module_00">Practice Task</string>
 
     <string name="radio_male">Male</string>
     <string name="radio_female">Female</string>

@@ -2,6 +2,7 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -32,7 +33,7 @@
             android:id="@+id/content_main_header"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
+            android:layout_weight="1.5"
             android:background="@color/colorPrimary">
 
             <TextView
@@ -43,7 +44,7 @@
                 android:paddingRight="16dp"
                 android:text="@string/enter_details_of_the_patient"
                 android:textColor="@color/text_light"
-                android:textSize="28sp"
+                android:textSize="@dimen/_16sdp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
@@ -117,9 +118,9 @@
             </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
+                android:id="@+id/sex_radio_group_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/sex_radio_group_text"
                 android:layout_below="@+id/id_text_input_layout"
                 android:layout_marginLeft="16dp"
                 android:paddingBottom="16dp">
@@ -143,8 +144,8 @@
                         android:id="@+id/radioMale"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="8dp"
                         android:layout_weight="1"
+                        android:paddingRight="@dimen/margin_medium"
                         android:text="@string/radio_male" />
 
                     <RadioButton
@@ -152,6 +153,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:paddingRight="@dimen/margin_medium"
                         android:text="@string/radio_female" />
 
                 </RadioGroup>

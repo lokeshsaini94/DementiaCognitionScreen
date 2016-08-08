@@ -21,8 +21,6 @@ import com.daimajia.androidanimations.library.YoYo;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-//    GlobalVariables globalVariables = (GlobalVariables) getApplicationContext();
-
     EditText userName;
     EditText userAge;
     EditText userId;
@@ -44,7 +42,7 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         userMale.setOnClickListener(new View.OnClickListener() {
@@ -91,13 +89,14 @@ public class MainActivity extends AppCompatActivity
                             .playOn(findViewById(R.id.sex_radio_group_text));
                     userFemale.setError("Enter the patient's Sex");
                 }
-                if (!nameEmpty && !ageEmpty && !sexEmpty){
+                if (!nameEmpty && !ageEmpty && !sexEmpty) {
                     GlobalVariables.userName = userName.getText().toString();
                     int x = Integer.parseInt(userAge.getText().toString());
                     GlobalVariables.userAge = x;
                     GlobalVariables.userID = userId.getText().toString();
                     Intent intentModulesActivity = new Intent(MainActivity.this, ModulesActivity.class);
                     MainActivity.this.startActivity(intentModulesActivity);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
             }
         });
@@ -135,13 +134,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_tutorial) {
-            // Handle the camera action
+            // Handle the item action
         } else if (id == R.id.nav_settings) {
-
+            // Handle the item action
         } else if (id == R.id.nav_feedback) {
-
+            // Handle the item action
         } else if (id == R.id.nav_aboutus) {
-
+            // Handle the item action
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

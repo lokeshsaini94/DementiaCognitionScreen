@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="hku.demscreen.hk">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -19,12 +23,24 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ResultsActivity"
+            android:label="Results"
+            android:parentActivityName=".ModulesActivity" />
+        <activity
             android:name=".ModulesActivity"
             android:label="Tasks"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:name=".Module00Activity"
+            android:label="@string/module_00"
+            android:parentActivityName=".ModulesActivity" />
+        <activity
             android:name=".Module01Activity"
-            android:label="Picture Naming"
+            android:label="@string/picture_naming"
+            android:parentActivityName=".ModulesActivity" />
+        <activity
+            android:name=".Module02Activity"
+            android:label="@string/picture_pointing"
             android:parentActivityName=".ModulesActivity" />
     </application>
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_m01"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="hku.demscreen.hk.Module01Activity">
+    tools:context=".Module01Activity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,46 +13,76 @@
         android:orientation="vertical"
         android:weightSum="10">
 
-        <LinearLayout
-            android:id="@+id/activity_modules_header"
+        <RelativeLayout
+            android:id="@+id/activity_module01_header"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
+            android:layout_weight="1.5"
             android:background="@color/colorPrimary"
-            android:orientation="horizontal">
+            android:paddingLeft="@dimen/margin_medium"
+            android:paddingRight="@dimen/margin_medium">
 
             <TextView
-                android:id="@+id/activity_modules_username"
+                android:id="@+id/question_number_m01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:text="What's in the picture?"
+                android:layout_centerVertical="true"
+                android:text="1/4"
                 android:textColor="@color/text_light"
-                android:textSize="24sp"
+                android:textSize="@dimen/_16sdp"
                 android:textStyle="bold" />
 
-        </LinearLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_small">
+
+                <ImageView
+                    android:id="@+id/score_wrong_m01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_wrong" />
+
+                <ImageView
+                    android:id="@+id/score_correct_m01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/score_wrong_m01"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_correct" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/info01"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_info_white" />
+
+            <ImageView
+                android:id="@+id/sound_m01"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/margin_small"
+                android:layout_toLeftOf="@id/info01"
+                android:src="@drawable/ic_hearing_white" />
+
+        </RelativeLayout>
 
         <include
-            layout="@layout/content_m1q"
-            android:id="@+id/content_m1q"
+            layout="@layout/content_m01"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="8" />
+            android:layout_weight="8.5" />
 
     </LinearLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_module_one"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
-        android:background="@color/colorAccent"
-        android:src="@drawable/ic_check_white"
-        app:fabSize="normal"
-        app:layout_anchor="@id/activity_modules_header"
-        app:layout_anchorGravity="bottom|right|end" />
 
 </android.support.design.widget.CoordinatorLayout>
