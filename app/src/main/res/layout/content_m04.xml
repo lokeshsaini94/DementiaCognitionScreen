@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content_m04"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/activity_m04_body"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/m04_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            card_view:cardUseCompatPadding="true">
+
+            <TextView
+                android:id="@+id/m01_question"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:gravity="center"
+                android:text="@string/module_04_question1"
+                android:textSize="@dimen/_18sdp" />
+
+        </android.support.v7.widget.CardView>
+
+        <ImageView
+            android:id="@+id/m04_previous_question"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/m04_card"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_keyboard_arrow_left_black"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/m04_next_question"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/m04_card"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_keyboard_arrow_right_black" />
+
+    </RelativeLayout>
+
+</LinearLayout>

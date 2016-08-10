@@ -50,6 +50,9 @@ public class Module01Activity extends AppCompatActivity {
         m01Image = (ImageView) findViewById(R.id.m01_image);
 
         //Main screen
+
+        setViewModule01();
+
         scoreCorrect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -189,20 +192,24 @@ public class Module01Activity extends AppCompatActivity {
 
     private void m01OnCorrect() {
         if (GlobalVariables.m01QuestionNo == 1) {
+            Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             GlobalVariables.m01Score[0] = 1;
             question01Increment();
         } else if (GlobalVariables.m01QuestionNo == 2) {
+            Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             GlobalVariables.m01Score[1] = 1;
             question01Increment();
         } else if (GlobalVariables.m01QuestionNo == 3) {
+            Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             GlobalVariables.m01Score[2] = 1;
             question01Increment();
         } else if (GlobalVariables.m01QuestionNo == 4) {
+            Toast.makeText(getApplicationContext(), "Next Task", Toast.LENGTH_SHORT).show();
             GlobalVariables.m01Score[3] = 1;
+            nextModule();
         } else {
             Log.d(Tag, "Error: Something went wrong (Module01Activity.scoreCorrect.setOnClickListener)");
         }
-        Toast.makeText(getApplicationContext(), "Correct Answer", Toast.LENGTH_SHORT).show();
         setViewModule01();
     }
 
@@ -241,6 +248,30 @@ public class Module01Activity extends AppCompatActivity {
     private void nextModule() {
         if (GlobalVariables.modulesSelected[1]) {
             Intent intentModulesActivity = new Intent(Module01Activity.this, Module02Activity.class);
+            Module01Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[2]) {
+            Intent intentModulesActivity = new Intent(Module01Activity.this, Module03Activity.class);
+            Module01Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[3]) {
+            Intent intentModulesActivity = new Intent(Module01Activity.this, Module04Activity.class);
+            Module01Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[4]) {
+            Intent intentModulesActivity = new Intent(Module01Activity.this, ResultsActivity.class);
+            Module01Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[5]) {
+            Intent intentModulesActivity = new Intent(Module01Activity.this, ResultsActivity.class);
+            Module01Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[6]) {
+            Intent intentModulesActivity = new Intent(Module01Activity.this, ResultsActivity.class);
+            Module01Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[7]) {
+            Intent intentModulesActivity = new Intent(Module01Activity.this, ResultsActivity.class);
+            Module01Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[8]) {
+            Intent intentModulesActivity = new Intent(Module01Activity.this, ResultsActivity.class);
+            Module01Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[9]) {
+            Intent intentModulesActivity = new Intent(Module01Activity.this, ResultsActivity.class);
             Module01Activity.this.startActivity(intentModulesActivity);
         } else {
             Intent intentModulesActivity = new Intent(Module01Activity.this, ResultsActivity.class);

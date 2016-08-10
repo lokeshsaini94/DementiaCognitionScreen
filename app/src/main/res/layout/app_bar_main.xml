@@ -136,23 +136,21 @@
 
                 <RadioGroup
                     android:id="@+id/radioSex"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/radioMale"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:paddingRight="@dimen/margin_medium"
                         android:text="@string/radio_male" />
 
                     <RadioButton
                         android:id="@+id/radioFemale"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:paddingRight="@dimen/margin_medium"
                         android:text="@string/radio_female" />
 

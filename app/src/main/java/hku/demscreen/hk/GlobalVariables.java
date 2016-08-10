@@ -14,4 +14,8 @@ public class GlobalVariables extends Application {
     public static int[] m01Score = {0, 0, 0, 0};
     public static int m02QuestionNo = 1;
     public static int[] m02Score = {0, 0, 0, 0};
+    public static int m03QuestionNo = 1;
+    public static int[] m03Score = {0, 0, 0, 0, 0};
+    public static int m04QuestionNo = 1;
+    public static int[] m04Score = {0, 0, 0, 0};
 }

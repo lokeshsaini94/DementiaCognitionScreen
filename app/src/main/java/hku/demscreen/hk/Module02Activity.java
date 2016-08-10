@@ -67,6 +67,9 @@ public class Module02Activity extends AppCompatActivity {
         imageView4 = (ImageView) findViewById(R.id.m02_image4);
 
         //Main screen
+
+        setViewModule02();
+
         scoreCorrect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -194,7 +197,7 @@ public class Module02Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (GlobalVariables.m02QuestionNo == 1) {
-                    Log.d(Tag, "Error: previous button tapped on m01q1 (Module01Activity)");
+                    Log.d(Tag, "Error: previous button tapped on m02q1 (Module02Activity)");
                 } else if (GlobalVariables.m02QuestionNo == 2) {
                     question02Decrement();
                 } else if (GlobalVariables.m02QuestionNo == 3) {
@@ -202,7 +205,7 @@ public class Module02Activity extends AppCompatActivity {
                 } else if (GlobalVariables.m02QuestionNo == 4) {
                     question02Decrement();
                 } else {
-                    Log.d(Tag, "Error: Something went wrong (Module01Activity.m01PreviousQuestion.setOnClickListener)");
+                    Log.d(Tag, "Error: Something went wrong (Module02Activity.m02PreviousQuestion.setOnClickListener)");
                 }
                 setViewModule02();
             }
@@ -218,9 +221,9 @@ public class Module02Activity extends AppCompatActivity {
                 } else if (GlobalVariables.m02QuestionNo == 3) {
                     question02Increment();
                 } else if (GlobalVariables.m02QuestionNo == 4) {
-                    Log.d(Tag, "Error: next button tapped on m01q4 (Module01Activity)");
+                    Log.d(Tag, "Error: next button tapped on m02q4 (Module02Activity)");
                 } else {
-                    Log.d(Tag, "Error: Something went wrong (Module01Activity.m01NextQuestion.setOnClickListener)");
+                    Log.d(Tag, "Error: Something went wrong (Module02Activity.m02NextQuestion.setOnClickListener)");
                 }
                 setViewModule02();
             }
@@ -275,7 +278,7 @@ public class Module02Activity extends AppCompatActivity {
             imageView4.setImageResource(R.drawable.m02q4_4);
             questionNumber.setText("4/4");
         } else {
-            Toast.makeText(getApplicationContext(), "Something went wrong (Module01Activity.setView)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Something went wrong (Module02Activity.setView)", Toast.LENGTH_SHORT).show();
             GlobalVariables.m02QuestionNo = 1;
             setViewModule02();
         }
@@ -283,16 +286,20 @@ public class Module02Activity extends AppCompatActivity {
 
     private void m02OnCorrect() {
         if (GlobalVariables.m02QuestionNo == 1) {
+            Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             question02Increment();
         } else if (GlobalVariables.m02QuestionNo == 2) {
+            Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             question02Increment();
         } else if (GlobalVariables.m02QuestionNo == 3) {
+            Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             question02Increment();
         } else if (GlobalVariables.m02QuestionNo == 4) {
+            Toast.makeText(getApplicationContext(), "Next Task", Toast.LENGTH_SHORT).show();
+            nextModule();
         } else {
             Log.d(Tag, "Error: Something went wrong (Module02Activity.m02OnCorrect)");
         }
-        Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
         setViewModule02();
     }
 
@@ -310,6 +317,27 @@ public class Module02Activity extends AppCompatActivity {
 
     private void nextModule() {
         if (GlobalVariables.modulesSelected[2]) {
+            Intent intentModulesActivity = new Intent(Module02Activity.this, Module03Activity.class);
+            Module02Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[3]) {
+            Intent intentModulesActivity = new Intent(Module02Activity.this, Module04Activity.class);
+            Module02Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[4]) {
+            Intent intentModulesActivity = new Intent(Module02Activity.this, ResultsActivity.class);
+            Module02Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[5]) {
+            Intent intentModulesActivity = new Intent(Module02Activity.this, ResultsActivity.class);
+            Module02Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[6]) {
+            Intent intentModulesActivity = new Intent(Module02Activity.this, ResultsActivity.class);
+            Module02Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[7]) {
+            Intent intentModulesActivity = new Intent(Module02Activity.this, ResultsActivity.class);
+            Module02Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[8]) {
+            Intent intentModulesActivity = new Intent(Module02Activity.this, ResultsActivity.class);
+            Module02Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[9]) {
             Intent intentModulesActivity = new Intent(Module02Activity.this, ResultsActivity.class);
             Module02Activity.this.startActivity(intentModulesActivity);
         } else {

@@ -146,6 +146,30 @@ public class Module00Activity extends AppCompatActivity {
         } else if (GlobalVariables.modulesSelected[1]) {
             Intent intentModulesActivity = new Intent(Module00Activity.this, Module02Activity.class);
             Module00Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[2]) {
+            Intent intentModulesActivity = new Intent(Module00Activity.this, Module03Activity.class);
+            Module00Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[3]) {
+            Intent intentModulesActivity = new Intent(Module00Activity.this, Module04Activity.class);
+            Module00Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[4]) {
+            Intent intentModulesActivity = new Intent(Module00Activity.this, ResultsActivity.class);
+            Module00Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[5]) {
+            Intent intentModulesActivity = new Intent(Module00Activity.this, ResultsActivity.class);
+            Module00Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[6]) {
+            Intent intentModulesActivity = new Intent(Module00Activity.this, ResultsActivity.class);
+            Module00Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[7]) {
+            Intent intentModulesActivity = new Intent(Module00Activity.this, ResultsActivity.class);
+            Module00Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[8]) {
+            Intent intentModulesActivity = new Intent(Module00Activity.this, ResultsActivity.class);
+            Module00Activity.this.startActivity(intentModulesActivity);
+        } else if (GlobalVariables.modulesSelected[9]) {
+            Intent intentModulesActivity = new Intent(Module00Activity.this, ResultsActivity.class);
+            Module00Activity.this.startActivity(intentModulesActivity);
         } else {
             Intent intentModulesActivity = new Intent(Module00Activity.this, ResultsActivity.class);
             Module00Activity.this.startActivity(intentModulesActivity);

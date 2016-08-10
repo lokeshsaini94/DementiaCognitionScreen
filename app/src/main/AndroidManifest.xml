@@ -42,6 +42,13 @@
             android:name=".Module02Activity"
             android:label="@string/picture_pointing"
             android:parentActivityName=".ModulesActivity" />
+        <activity
+            android:name=".Module03Activity"
+            android:label="@string/word_learning"
+            android:parentActivityName=".ModulesActivity" />
+        <activity android:name=".Module04Activity"
+            android:label="@string/orientation"
+            android:parentActivityName=".ModulesActivity" />
     </application>
 
 </manifest>

@@ -33,6 +33,17 @@
 
     <string name="module_00">Practice Task</string>
 
+    <string name="module_03_word1">Bicycle</string>
+    <string name="module_03_word2">Mist</string>
+    <string name="module_03_word3">Wardrobe</string>
+    <string name="module_03_word4">Teacher</string>
+    <string name="module_03_word5">Rectangle</string>
+
+    <string name="module_04_question1">What is the year we are in now?</string>
+    <string name="module_04_question2">Can you tell me the month?</string>
+    <string name="module_04_question3">What is the date today?</string>
+    <string name="module_04_question4">Who is the current President?</string>
+
     <string name="radio_male">Male</string>
     <string name="radio_female">Female</string>
 
