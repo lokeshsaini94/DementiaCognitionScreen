@@ -46,6 +46,9 @@ public class ResultsActivity extends AppCompatActivity {
     TextView m08Score3;
     TextView m08Score4;
     TextView m08Score5;
+    TextView m09Score1;
+    TextView m09Score2;
+    TextView m09Score3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,7 @@ public class ResultsActivity extends AppCompatActivity {
         results03 = (CardView) findViewById(R.id.m03_result);
         results04 = (CardView) findViewById(R.id.m04_result);
         results08 = (CardView) findViewById(R.id.m08_result);
+        results09 = (CardView) findViewById(R.id.m09_result);
 
         m01Score1 = (TextView) findViewById(R.id.m01_score1);
         m01Score2 = (TextView) findViewById(R.id.m01_score2);
@@ -84,6 +88,9 @@ public class ResultsActivity extends AppCompatActivity {
         m08Score3 = (TextView) findViewById(R.id.m08_score3);
         m08Score4 = (TextView) findViewById(R.id.m08_score4);
         m08Score5 = (TextView) findViewById(R.id.m08_score5);
+        m09Score1 = (TextView) findViewById(R.id.m09_score1);
+        m09Score2 = (TextView) findViewById(R.id.m09_score2);
+        m09Score3 = (TextView) findViewById(R.id.m09_score3);
 
         if (GlobalVariables.modulesSelected[0]) {
             results01.setVisibility(View.VISIBLE);
@@ -125,6 +132,13 @@ public class ResultsActivity extends AppCompatActivity {
             m08Score3.setText(String.valueOf(GlobalVariables.m08Score[2]));
             m08Score4.setText(String.valueOf(GlobalVariables.m08Score[3]));
             m08Score5.setText(String.valueOf(GlobalVariables.m08Score[4]));
+        }
+
+        if (GlobalVariables.modulesSelected[8]) {
+            results09.setVisibility(View.VISIBLE);
+            m09Score1.setText(String.valueOf(GlobalVariables.m09Score[0]));
+            m09Score2.setText(String.valueOf(GlobalVariables.m09Score[1]));
+            m09Score3.setText(String.valueOf(GlobalVariables.m09Score[2]));
         }
     }
 

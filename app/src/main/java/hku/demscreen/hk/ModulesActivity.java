@@ -76,7 +76,6 @@ public class ModulesActivity extends AppCompatActivity {
             Intent intentModulesActivity = new Intent(ModulesActivity.this, Module00Activity.class);
             ModulesActivity.this.startActivity(intentModulesActivity);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            finish();
             return true;
         }
 

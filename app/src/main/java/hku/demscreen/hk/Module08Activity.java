@@ -126,7 +126,6 @@ public class Module08Activity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_next) {
-            Toast.makeText(getApplicationContext(), "q1= " + GlobalVariables.m08Score[0] + " q2= " + GlobalVariables.m08Score[1] + " q3= " + GlobalVariables.m08Score[2] + " q4= " + GlobalVariables.m08Score[3] + " q5= " + GlobalVariables.m08Score[4], Toast.LENGTH_SHORT).show();
             nextModule();
             return true;
         }
@@ -568,7 +567,6 @@ public class Module08Activity extends AppCompatActivity {
                 GlobalVariables.m08MCQno[4] = 1;
             }
             if (GlobalVariables.m08MCQno[0] == 1 && GlobalVariables.m08MCQno[1] == 1 && GlobalVariables.m08MCQno[2] == 1 && GlobalVariables.m08MCQno[3] == 1 && GlobalVariables.m08MCQno[4] == 1) {
-                Toast.makeText(getApplicationContext(), "q1=" + GlobalVariables.m08Score[0] + " q2=" + GlobalVariables.m08Score[1] + " q3=" + GlobalVariables.m08Score[2] + " q4=" + GlobalVariables.m08Score[3] + " q5=" + GlobalVariables.m08Score[4], Toast.LENGTH_SHORT).show();
                 nextModule();
             }
         }
@@ -593,7 +591,7 @@ public class Module08Activity extends AppCompatActivity {
     // Starts next selected Task
     private void nextModule() {
         if (GlobalVariables.modulesSelected[8]) {
-            Intent intentModulesActivity = new Intent(Module08Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module08Activity.this, Module09Activity.class);
             Module08Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[9]) {
             Intent intentModulesActivity = new Intent(Module08Activity.this, ResultsActivity.class);

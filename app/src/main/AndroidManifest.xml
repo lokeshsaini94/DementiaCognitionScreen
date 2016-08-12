@@ -49,8 +49,13 @@
             android:name=".Module04Activity"
             android:label="@string/orientation"
             android:parentActivityName=".ModulesActivity" />
-        <activity android:name=".Module08Activity"
+        <activity
+            android:name=".Module08Activity"
             android:label="@string/verbal_memory"
+            android:parentActivityName=".ModulesActivity" />
+        <activity
+            android:name=".Module09Activity"
+            android:label="@string/episodic_memory"
             android:parentActivityName=".ModulesActivity" />
     </application>
 

@@ -94,7 +94,6 @@ public class Module03Activity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_next) {
-            Toast.makeText(getApplicationContext(), "q1= " + GlobalVariables.m03Score[0] + " q2= " + GlobalVariables.m03Score[1] + " q3= " + GlobalVariables.m03Score[2] + " q4= " + GlobalVariables.m03Score[3] + " q5= " + GlobalVariables.m03Score[4], Toast.LENGTH_SHORT).show();
             nextModule();
             return true;
         }
@@ -297,9 +296,7 @@ public class Module03Activity extends AppCompatActivity {
     private void onCorrect() {
         if (GlobalVariables.m03QuestionNo == 1) {
             if (GlobalVariables.m03Score[0] == 1 && GlobalVariables.m03Score[1] == 1 && GlobalVariables.m03Score[2] == 1 && GlobalVariables.m03Score[3] == 1 && GlobalVariables.m03Score[4] == 1) {
-                Toast.makeText(getApplicationContext(), "q1= " + GlobalVariables.m03Score[0] + " q2= " + GlobalVariables.m03Score[1] + " q3= " + GlobalVariables.m03Score[2] + " q4= " + GlobalVariables.m03Score[3] + " q5= " + GlobalVariables.m03Score[4], Toast.LENGTH_SHORT).show();
                 nextModule();
-                Toast.makeText(getApplicationContext(), "q1= " + GlobalVariables.m03Score[0] + " q2= " + GlobalVariables.m03Score[1] + " q3= " + GlobalVariables.m03Score[2] + " q4= " + GlobalVariables.m03Score[3] + " q5= " + GlobalVariables.m03Score[4], Toast.LENGTH_SHORT).show();
             } else {
                 questionIncrement();
                 setViewModule();
@@ -308,7 +305,6 @@ public class Module03Activity extends AppCompatActivity {
             }
         } else if (GlobalVariables.m03QuestionNo == 2) {
             nextModule();
-            Toast.makeText(getApplicationContext(), "q1= " + GlobalVariables.m03Score[0] + " q2= " + GlobalVariables.m03Score[1] + " q3= " + GlobalVariables.m03Score[2] + " q4= " + GlobalVariables.m03Score[3] + " q5= " + GlobalVariables.m03Score[4], Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -344,7 +340,7 @@ public class Module03Activity extends AppCompatActivity {
             Intent intentModulesActivity = new Intent(Module03Activity.this, Module08Activity.class);
             Module03Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[8]) {
-            Intent intentModulesActivity = new Intent(Module03Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module03Activity.this, Module09Activity.class);
             Module03Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[9]) {
             Intent intentModulesActivity = new Intent(Module03Activity.this, ResultsActivity.class);

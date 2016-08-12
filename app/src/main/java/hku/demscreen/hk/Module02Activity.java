@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -90,7 +89,6 @@ public class Module02Activity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_next) {
-            Toast.makeText(getApplicationContext(), "q1= " + GlobalVariables.m02Score[0] + " q2= " + GlobalVariables.m02Score[1] + " q3= " + GlobalVariables.m02Score[2] + " q4= " + GlobalVariables.m02Score[3], Toast.LENGTH_SHORT).show();
             nextModule();
             return true;
         }
@@ -160,16 +158,12 @@ public class Module02Activity extends AppCompatActivity {
         previousQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (GlobalVariables.m02QuestionNo == 1) {
-                    Log.d(Tag, "Error: previous button tapped on m02q1 (Module02Activity)");
-                } else if (GlobalVariables.m02QuestionNo == 2) {
+                if (GlobalVariables.m02QuestionNo == 2) {
                     questionDecrement();
                 } else if (GlobalVariables.m02QuestionNo == 3) {
                     questionDecrement();
                 } else if (GlobalVariables.m02QuestionNo == 4) {
                     questionDecrement();
-                } else {
-                    Log.d(Tag, "Error: Something went wrong (Module02Activity.previousQuestion.setOnClickListener)");
                 }
                 setViewModule();
             }
@@ -184,10 +178,6 @@ public class Module02Activity extends AppCompatActivity {
                     questionIncrement();
                 } else if (GlobalVariables.m02QuestionNo == 3) {
                     questionIncrement();
-                } else if (GlobalVariables.m02QuestionNo == 4) {
-                    Log.d(Tag, "Error: next button tapped on m02q4 (Module02Activity)");
-                } else {
-                    Log.d(Tag, "Error: Something went wrong (Module02Activity.nextQuestion.setOnClickListener)");
                 }
                 setViewModule();
             }
@@ -278,10 +268,6 @@ public class Module02Activity extends AppCompatActivity {
             imageView3.setImageResource(R.drawable.m02q4_3);
             imageView4.setImageResource(R.drawable.m02q4_4);
             questionNumber.setText("4/4");
-        } else {
-            Toast.makeText(getApplicationContext(), "Something went wrong (Module02Activity.setView)", Toast.LENGTH_SHORT).show();
-            GlobalVariables.m02QuestionNo = 1;
-            setViewModule();
         }
     }
 
@@ -299,8 +285,6 @@ public class Module02Activity extends AppCompatActivity {
         } else if (GlobalVariables.m02QuestionNo == 4) {
             Toast.makeText(getApplicationContext(), "q1= " + GlobalVariables.m02Score[0] + " q2= " + GlobalVariables.m02Score[1] + " q3= " + GlobalVariables.m02Score[2] + " q4= " + GlobalVariables.m02Score[3], Toast.LENGTH_SHORT).show();
             nextModule();
-        } else {
-            Log.d(Tag, "Error: Something went wrong (Module02Activity.onCorrect)");
         }
         setViewModule();
     }
@@ -340,7 +324,7 @@ public class Module02Activity extends AppCompatActivity {
             Intent intentModulesActivity = new Intent(Module02Activity.this, Module08Activity.class);
             Module02Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[8]) {
-            Intent intentModulesActivity = new Intent(Module02Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module02Activity.this, Module09Activity.class);
             Module02Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[9]) {
             Intent intentModulesActivity = new Intent(Module02Activity.this, ResultsActivity.class);
