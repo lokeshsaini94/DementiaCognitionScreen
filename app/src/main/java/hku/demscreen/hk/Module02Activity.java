@@ -29,9 +29,9 @@ public class Module02Activity extends AppCompatActivity {
     ImageView scoreCorrect;
     ImageView info;
 
-    // Question 02
-    ImageView m02PreviousQuestion;
-    ImageView m02NextQuestion;
+    // Question
+    ImageView previousQuestion;
+    ImageView nextQuestion;
     CardView cardView1;
     CardView cardView2;
     CardView cardView3;
@@ -47,14 +47,14 @@ public class Module02Activity extends AppCompatActivity {
         setContentView(R.layout.activity_module02);
 
         //Main screen
-        info = (ImageView) findViewById(R.id.info02);
+        info = (ImageView) findViewById(R.id.info_m02);
         scoreCorrect = (ImageView) findViewById(R.id.score_correct_m02);
         questionNumber = (TextView) findViewById(R.id.question_number_m02);
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
-        // Question 01
-        m02PreviousQuestion = (ImageView) findViewById(R.id.m02_previous_question);
-        m02NextQuestion = (ImageView) findViewById(R.id.m02_next_question);
+        // Question
+        previousQuestion = (ImageView) findViewById(R.id.m02_previous_question);
+        nextQuestion = (ImageView) findViewById(R.id.m02_next_question);
 
         cardView1 = (CardView) findViewById(R.id.m02_card1);
         cardView2 = (CardView) findViewById(R.id.m02_card2);
@@ -68,45 +68,9 @@ public class Module02Activity extends AppCompatActivity {
 
         //Main screen
 
-        setViewModule02();
+        setViewModule();
 
-        scoreCorrect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                m02OnCorrect();
-            }
-        });
-
-        info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (GlobalVariables.m02QuestionNo == 1) {
-                    new SweetAlertDialog(Module02Activity.this)
-                            .setTitleText("Picture Pointing")
-                            .setContentText("In these 4 pictures, which one is the goose?")
-                            .show();
-                } else if (GlobalVariables.m02QuestionNo == 2) {
-                    new SweetAlertDialog(Module02Activity.this)
-                            .setTitleText("Picture Pointing")
-                            .setContentText("In these 4 pictures, which one is the pomegranate?")
-                            .show();
-                } else if (GlobalVariables.m02QuestionNo == 3) {
-                    new SweetAlertDialog(Module02Activity.this)
-                            .setTitleText("Picture Pointing")
-                            .setContentText("In these 4 pictures, which one is the bird?")
-                            .show();
-                } else if (GlobalVariables.m02QuestionNo == 4) {
-                    new SweetAlertDialog(Module02Activity.this)
-                            .setTitleText("Picture Pointing")
-                            .setContentText("In these 4 pictures, which one is the vegetable?")
-                            .show();
-                } else {
-
-                }
-            }
-        });
-
-        mainQuestion02();
+        mainQuestion();
     }
 
     // Action bar next button
@@ -134,8 +98,8 @@ public class Module02Activity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // Question 01
-    private void mainQuestion02() {
+    // Views on click listeners
+    private void mainQuestion() {
 
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,85 +157,122 @@ public class Module02Activity extends AppCompatActivity {
             }
         });
 
-        m02PreviousQuestion.setOnClickListener(new View.OnClickListener() {
+        previousQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (GlobalVariables.m02QuestionNo == 1) {
                     Log.d(Tag, "Error: previous button tapped on m02q1 (Module02Activity)");
                 } else if (GlobalVariables.m02QuestionNo == 2) {
-                    question02Decrement();
+                    questionDecrement();
                 } else if (GlobalVariables.m02QuestionNo == 3) {
-                    question02Decrement();
+                    questionDecrement();
                 } else if (GlobalVariables.m02QuestionNo == 4) {
-                    question02Decrement();
+                    questionDecrement();
                 } else {
-                    Log.d(Tag, "Error: Something went wrong (Module02Activity.m02PreviousQuestion.setOnClickListener)");
+                    Log.d(Tag, "Error: Something went wrong (Module02Activity.previousQuestion.setOnClickListener)");
                 }
-                setViewModule02();
+                setViewModule();
             }
         });
 
-        m02NextQuestion.setOnClickListener(new View.OnClickListener() {
+        nextQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (GlobalVariables.m02QuestionNo == 1) {
-                    question02Increment();
+                    questionIncrement();
                 } else if (GlobalVariables.m02QuestionNo == 2) {
-                    question02Increment();
+                    questionIncrement();
                 } else if (GlobalVariables.m02QuestionNo == 3) {
-                    question02Increment();
+                    questionIncrement();
                 } else if (GlobalVariables.m02QuestionNo == 4) {
                     Log.d(Tag, "Error: next button tapped on m02q4 (Module02Activity)");
                 } else {
-                    Log.d(Tag, "Error: Something went wrong (Module02Activity.m02NextQuestion.setOnClickListener)");
+                    Log.d(Tag, "Error: Something went wrong (Module02Activity.nextQuestion.setOnClickListener)");
                 }
-                setViewModule02();
+                setViewModule();
+            }
+        });
+
+        scoreCorrect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onCorrect();
+            }
+        });
+
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (GlobalVariables.m02QuestionNo == 1) {
+                    new SweetAlertDialog(Module02Activity.this)
+                            .setTitleText(getString(R.string.picture_pointing))
+                            .setContentText("In these 4 pictures, which one is the goose?")
+                            .show();
+                } else if (GlobalVariables.m02QuestionNo == 2) {
+                    new SweetAlertDialog(Module02Activity.this)
+                            .setTitleText(getString(R.string.picture_pointing))
+                            .setContentText("In these 4 pictures, which one is the pomegranate?")
+                            .show();
+                } else if (GlobalVariables.m02QuestionNo == 3) {
+                    new SweetAlertDialog(Module02Activity.this)
+                            .setTitleText(getString(R.string.picture_pointing))
+                            .setContentText("In these 4 pictures, which one is the bird?")
+                            .show();
+                } else if (GlobalVariables.m02QuestionNo == 4) {
+                    new SweetAlertDialog(Module02Activity.this)
+                            .setTitleText(getString(R.string.picture_pointing))
+                            .setContentText("In these 4 pictures, which one is the vegetable?")
+                            .show();
+                }
             }
         });
     }
 
-    private void question02Increment() {
+    // Increments question number and animates content view
+    private void questionIncrement() {
         GlobalVariables.m02QuestionNo = GlobalVariables.m02QuestionNo + 1;
-        m02AnimateRight();
+        animateRight();
     }
 
-    private void question02Decrement() {
+    // Decrements question number and animates content view
+    private void questionDecrement() {
         GlobalVariables.m02QuestionNo = GlobalVariables.m02QuestionNo - 1;
-        m02AnimateLeft();
+        animateLeft();
     }
 
-    private void setViewModule02() {
+    // Sets views for all questions
+    private void setViewModule() {
         imageView1.setAlpha(1f);
         imageView2.setAlpha(1f);
         imageView3.setAlpha(1f);
         imageView4.setAlpha(1f);
         if (GlobalVariables.m02QuestionNo == 1) {
-            m02PreviousQuestion.setVisibility(View.GONE);
-            m02NextQuestion.setVisibility(View.VISIBLE);
+            previousQuestion.setVisibility(View.GONE);
+            nextQuestion.setVisibility(View.VISIBLE);
             imageView1.setImageResource(R.drawable.m02q1_1);
             imageView2.setImageResource(R.drawable.m02q1_2);
             imageView3.setImageResource(R.drawable.m02q1_3);
             imageView4.setImageResource(R.drawable.m02q1_4);
             questionNumber.setText("1/4");
         } else if (GlobalVariables.m02QuestionNo == 2) {
-            m02PreviousQuestion.setVisibility(View.VISIBLE);
-            m02NextQuestion.setVisibility(View.VISIBLE);
+            previousQuestion.setVisibility(View.VISIBLE);
+            nextQuestion.setVisibility(View.VISIBLE);
             imageView1.setImageResource(R.drawable.m02q2_1);
             imageView2.setImageResource(R.drawable.m02q2_2);
             imageView3.setImageResource(R.drawable.m02q2_3);
             imageView4.setImageResource(R.drawable.m02q2_4);
             questionNumber.setText("2/4");
         } else if (GlobalVariables.m02QuestionNo == 3) {
-            m02PreviousQuestion.setVisibility(View.VISIBLE);
-            m02NextQuestion.setVisibility(View.VISIBLE);
+            previousQuestion.setVisibility(View.VISIBLE);
+            nextQuestion.setVisibility(View.VISIBLE);
             imageView1.setImageResource(R.drawable.m02q3_1);
             imageView2.setImageResource(R.drawable.m02q3_2);
             imageView3.setImageResource(R.drawable.m02q3_3);
             imageView4.setImageResource(R.drawable.m02q3_4);
             questionNumber.setText("3/4");
         } else if (GlobalVariables.m02QuestionNo == 4) {
-            m02PreviousQuestion.setVisibility(View.VISIBLE);
-            m02NextQuestion.setVisibility(View.GONE);
+            previousQuestion.setVisibility(View.VISIBLE);
+            nextQuestion.setVisibility(View.GONE);
             imageView1.setImageResource(R.drawable.m02q4_1);
             imageView2.setImageResource(R.drawable.m02q4_2);
             imageView3.setImageResource(R.drawable.m02q4_3);
@@ -280,41 +281,45 @@ public class Module02Activity extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(), "Something went wrong (Module02Activity.setView)", Toast.LENGTH_SHORT).show();
             GlobalVariables.m02QuestionNo = 1;
-            setViewModule02();
+            setViewModule();
         }
     }
 
-    private void m02OnCorrect() {
+    // On correct button
+    private void onCorrect() {
         if (GlobalVariables.m02QuestionNo == 1) {
             Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
-            question02Increment();
+            questionIncrement();
         } else if (GlobalVariables.m02QuestionNo == 2) {
             Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
-            question02Increment();
+            questionIncrement();
         } else if (GlobalVariables.m02QuestionNo == 3) {
             Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
-            question02Increment();
+            questionIncrement();
         } else if (GlobalVariables.m02QuestionNo == 4) {
-            Toast.makeText(getApplicationContext(), "Next Task", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "q1= " + GlobalVariables.m02Score[0] + " q2= " + GlobalVariables.m02Score[1] + " q3= " + GlobalVariables.m02Score[2] + " q4= " + GlobalVariables.m02Score[3], Toast.LENGTH_SHORT).show();
             nextModule();
         } else {
-            Log.d(Tag, "Error: Something went wrong (Module02Activity.m02OnCorrect)");
+            Log.d(Tag, "Error: Something went wrong (Module02Activity.onCorrect)");
         }
-        setViewModule02();
+        setViewModule();
     }
 
-    private void m02AnimateLeft() {
+    // Content left animation
+    private void animateLeft() {
         YoYo.with(Techniques.SlideInLeft)
                 .duration(500)
                 .playOn(findViewById(R.id.content_m02));
     }
 
-    private void m02AnimateRight() {
+    // Content right animation
+    private void animateRight() {
         YoYo.with(Techniques.SlideInRight)
                 .duration(500)
                 .playOn(findViewById(R.id.content_m02));
     }
 
+    // Starts next selected Task
     private void nextModule() {
         if (GlobalVariables.modulesSelected[2]) {
             Intent intentModulesActivity = new Intent(Module02Activity.this, Module03Activity.class);
@@ -332,7 +337,7 @@ public class Module02Activity extends AppCompatActivity {
             Intent intentModulesActivity = new Intent(Module02Activity.this, ResultsActivity.class);
             Module02Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[7]) {
-            Intent intentModulesActivity = new Intent(Module02Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module02Activity.this, Module08Activity.class);
             Module02Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[8]) {
             Intent intentModulesActivity = new Intent(Module02Activity.this, ResultsActivity.class);

@@ -59,7 +59,7 @@
             </RelativeLayout>
 
             <ImageView
-                android:id="@+id/info01"
+                android:id="@+id/info_m01"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_alignParentRight="true"
@@ -72,7 +72,7 @@
                 android:layout_height="36dp"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/margin_small"
-                android:layout_toLeftOf="@id/info01"
+                android:layout_toLeftOf="@id/info_m01"
                 android:src="@drawable/ic_hearing_white" />
 
         </RelativeLayout>

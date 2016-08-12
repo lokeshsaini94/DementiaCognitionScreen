@@ -19,12 +19,13 @@ public class Module00Activity extends AppCompatActivity {
     // Main screen
     ImageView info;
     Vibrator vibrator;
+    ImageView scoreCorrect;
 
-    // Question 00
-    ImageView m00Circle01;
-    ImageView m00Circle02;
-    ImageView m00Circle03;
-    ImageView m00Circle04;
+    // Question
+    ImageView circle01;
+    ImageView circle02;
+    ImageView circle03;
+    ImageView circle04;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,26 +33,17 @@ public class Module00Activity extends AppCompatActivity {
         setContentView(R.layout.activity_module00);
 
         //Main screen
-        info = (ImageView) findViewById(R.id.info00);
+        info = (ImageView) findViewById(R.id.info_m00);
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        scoreCorrect = (ImageView) findViewById(R.id.score_correct_m00);
 
-        // Question 00
-        m00Circle01 = (ImageView) findViewById(R.id.m00_circle1);
-        m00Circle02 = (ImageView) findViewById(R.id.m00_circle2);
-        m00Circle03 = (ImageView) findViewById(R.id.m00_circle3);
-        m00Circle04 = (ImageView) findViewById(R.id.m00_circle4);
+        // Question
+        circle01 = (ImageView) findViewById(R.id.m00_circle1);
+        circle02 = (ImageView) findViewById(R.id.m00_circle2);
+        circle03 = (ImageView) findViewById(R.id.m00_circle3);
+        circle04 = (ImageView) findViewById(R.id.m00_circle4);
 
-        info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new SweetAlertDialog(Module00Activity.this)
-                        .setTitleText("Practice Task")
-                        .setContentText("Tap on the circles!")
-                        .show();
-            }
-        });
-
-        mainQuestion00();
+        mainQuestion();
     }
 
     // Action bar next button
@@ -78,67 +70,85 @@ public class Module00Activity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // Question 00
-    private void mainQuestion00() {
-        final ImageView m00_circle1_tick = (ImageView) findViewById(R.id.m00_circle1_tick);
-        final ImageView m00_circle2_tick = (ImageView) findViewById(R.id.m00_circle2_tick);
-        final ImageView m00_circle3_tick = (ImageView) findViewById(R.id.m00_circle3_tick);
-        final ImageView m00_circle4_tick = (ImageView) findViewById(R.id.m00_circle4_tick);
+    // Views on click listeners
+    private void mainQuestion() {
+        final ImageView circle1_tick = (ImageView) findViewById(R.id.m00_circle1_tick);
+        final ImageView circle2_tick = (ImageView) findViewById(R.id.m00_circle2_tick);
+        final ImageView circle3_tick = (ImageView) findViewById(R.id.m00_circle3_tick);
+        final ImageView circle4_tick = (ImageView) findViewById(R.id.m00_circle4_tick);
         final boolean[] ticked = {false, false, false, false};
-        m00Circle01.setOnClickListener(new View.OnClickListener() {
+        circle01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 vibrator.vibrate(100);
                 if (ticked[0]) {
-                    m00_circle1_tick.setVisibility(View.GONE);
+                    circle1_tick.setVisibility(View.GONE);
                     ticked[0] = false;
                 } else {
-                    m00_circle1_tick.setVisibility(View.VISIBLE);
+                    circle1_tick.setVisibility(View.VISIBLE);
                     ticked[0] = true;
                 }
             }
         });
-        m00Circle02.setOnClickListener(new View.OnClickListener() {
+        circle02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 vibrator.vibrate(100);
                 if (ticked[1]) {
-                    m00_circle2_tick.setVisibility(View.GONE);
+                    circle2_tick.setVisibility(View.GONE);
                     ticked[1] = false;
                 } else {
-                    m00_circle2_tick.setVisibility(View.VISIBLE);
+                    circle2_tick.setVisibility(View.VISIBLE);
                     ticked[1] = true;
                 }
             }
         });
-        m00Circle03.setOnClickListener(new View.OnClickListener() {
+        circle03.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 vibrator.vibrate(100);
                 if (ticked[2]) {
-                    m00_circle3_tick.setVisibility(View.GONE);
+                    circle3_tick.setVisibility(View.GONE);
                     ticked[2] = false;
                 } else {
-                    m00_circle3_tick.setVisibility(View.VISIBLE);
+                    circle3_tick.setVisibility(View.VISIBLE);
                     ticked[2] = true;
                 }
             }
         });
-        m00Circle04.setOnClickListener(new View.OnClickListener() {
+        circle04.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 vibrator.vibrate(100);
                 if (ticked[3]) {
-                    m00_circle4_tick.setVisibility(View.GONE);
+                    circle4_tick.setVisibility(View.GONE);
                     ticked[3] = false;
                 } else {
-                    m00_circle4_tick.setVisibility(View.VISIBLE);
+                    circle4_tick.setVisibility(View.VISIBLE);
                     ticked[3] = true;
                 }
             }
         });
+
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new SweetAlertDialog(Module00Activity.this)
+                        .setTitleText("Practice Task")
+                        .setContentText("Tap on the circles!")
+                        .show();
+            }
+        });
+
+        scoreCorrect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextModule();
+            }
+        });
     }
 
+    // Starts next selected Task
     private void nextModule() {
         if (GlobalVariables.modulesSelected[0]) {
             Intent intentModulesActivity = new Intent(Module00Activity.this, Module01Activity.class);
@@ -162,7 +172,7 @@ public class Module00Activity extends AppCompatActivity {
             Intent intentModulesActivity = new Intent(Module00Activity.this, ResultsActivity.class);
             Module00Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[7]) {
-            Intent intentModulesActivity = new Intent(Module00Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module00Activity.this, Module08Activity.class);
             Module00Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[8]) {
             Intent intentModulesActivity = new Intent(Module00Activity.this, ResultsActivity.class);

@@ -1,0 +1,298 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content_m08"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/activity_m08_body"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+
+        <LinearLayout
+            android:id="@+id/m08_5item_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:weightSum="5">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/m08_card1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                card_view:cardUseCompatPadding="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/module_03_word1"
+                    android:textSize="@dimen/_14sdp" />
+
+                <ImageView
+                    android:id="@+id/m08_card1_tick"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_check_white"
+                    android:tint="@color/colorAccent"
+                    android:visibility="gone" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/m08_card2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                card_view:cardUseCompatPadding="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/module_03_word2"
+                    android:textSize="@dimen/_14sdp" />
+
+                <ImageView
+                    android:id="@+id/m08_card2_tick"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_check_white"
+                    android:tint="@color/colorAccent"
+                    android:visibility="gone" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/m08_card3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                card_view:cardUseCompatPadding="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/module_03_word3"
+                    android:textSize="@dimen/_14sdp" />
+
+                <ImageView
+                    android:id="@+id/m08_card3_tick"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_check_white"
+                    android:tint="@color/colorAccent"
+                    android:visibility="gone" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/m08_card4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                card_view:cardUseCompatPadding="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/module_03_word4"
+                    android:textSize="@dimen/_14sdp" />
+
+                <ImageView
+                    android:id="@+id/m08_card4_tick"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_check_white"
+                    android:tint="@color/colorAccent"
+                    android:visibility="gone" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/m08_card5"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                card_view:cardUseCompatPadding="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/module_03_word5"
+                    android:textSize="@dimen/_14sdp" />
+
+                <ImageView
+                    android:id="@+id/m08_card5_tick"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_check_white"
+                    android:tint="@color/colorAccent"
+                    android:visibility="gone" />
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/m08_4item_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:weightSum="4">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/m08_q_card1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                card_view:cardUseCompatPadding="true">
+
+                <TextView
+                    android:id="@+id/m08_q_text1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/module_08_mcq1_word1"
+                    android:textSize="@dimen/_14sdp" />
+
+                <ImageView
+                    android:id="@+id/m08_q_card1_tick"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_check_white"
+                    android:tint="@color/colorAccent"
+                    android:visibility="gone" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/m08_q_card2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                card_view:cardUseCompatPadding="true">
+
+                <TextView
+                    android:id="@+id/m08_q_text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/module_08_mcq1_word2"
+                    android:textSize="@dimen/_14sdp" />
+
+                <ImageView
+                    android:id="@+id/m08_q_card2_tick"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_check_white"
+                    android:tint="@color/colorAccent"
+                    android:visibility="gone" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/m08_q_card3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                card_view:cardUseCompatPadding="true">
+
+                <TextView
+                    android:id="@+id/m08_q_text3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/module_08_mcq1_word3"
+                    android:textSize="@dimen/_14sdp" />
+
+                <ImageView
+                    android:id="@+id/m08_q_card3_tick"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_check_white"
+                    android:tint="@color/colorAccent"
+                    android:visibility="gone" />
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/m08_q_card4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                card_view:cardUseCompatPadding="true">
+
+                <TextView
+                    android:id="@+id/m08_q_text4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/module_08_mcq1_word4"
+                    android:textSize="@dimen/_14sdp" />
+
+                <ImageView
+                    android:id="@+id/m08_q_card4_tick"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginRight="4dp"
+                    android:src="@drawable/ic_check_white"
+                    android:tint="@color/colorAccent"
+                    android:visibility="gone" />
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/m08_previous_question"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_keyboard_arrow_left_black"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</LinearLayout>

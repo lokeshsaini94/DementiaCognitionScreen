@@ -44,6 +44,31 @@
     <string name="module_04_question3">What is the date today?</string>
     <string name="module_04_question4">Who is the current President?</string>
 
+    <string name="module_08_mcq1_word1">Bus</string>
+    <string name="module_08_mcq1_word2">Motorbike</string>
+    <string name="module_08_mcq1_word3">Bicycle</string>
+    <string name="module_08_mcq1_word4">Cart</string>
+
+    <string name="module_08_mcq2_word1">Fog</string>
+    <string name="module_08_mcq2_word2">Storm</string>
+    <string name="module_08_mcq2_word3">Drizzle</string>
+    <string name="module_08_mcq2_word4">Mist</string>
+
+    <string name="module_08_mcq3_word1">Wardrobe</string>
+    <string name="module_08_mcq3_word2">Setee/sofa</string>
+    <string name="module_08_mcq3_word3">Cupboard</string>
+    <string name="module_08_mcq3_word4">Table</string>
+
+    <string name="module_08_mcq4_word1">Doctor</string>
+    <string name="module_08_mcq4_word2">Teacher</string>
+    <string name="module_08_mcq4_word3">Cook</string>
+    <string name="module_08_mcq4_word4">Nurse</string>
+
+    <string name="module_08_mcq5_word1">Circle</string>
+    <string name="module_08_mcq5_word2">Rectangle</string>
+    <string name="module_08_mcq5_word3">Triangle</string>
+    <string name="module_08_mcq5_word4">Square</string>
+
     <string name="radio_male">Male</string>
     <string name="radio_female">Female</string>
 

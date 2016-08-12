@@ -28,9 +28,9 @@ public class Module03Activity extends AppCompatActivity {
     ImageView scoreCorrect;
     ImageView info;
 
-    // Question 02
-    ImageView m03PreviousQuestion;
-    ImageView m03NextQuestion;
+    // Question
+    ImageView previousQuestion;
+    ImageView nextQuestion;
     CardView cardView1;
     CardView cardView2;
     CardView cardView3;
@@ -48,14 +48,14 @@ public class Module03Activity extends AppCompatActivity {
         setContentView(R.layout.activity_module03);
 
         //Main screen
-        info = (ImageView) findViewById(R.id.info03);
+        info = (ImageView) findViewById(R.id.info_m03);
         scoreCorrect = (ImageView) findViewById(R.id.score_correct_m03);
         questionNumber = (TextView) findViewById(R.id.question_number_m03);
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
-        // Question 01
-        m03PreviousQuestion = (ImageView) findViewById(R.id.m03_previous_question);
-        m03NextQuestion = (ImageView) findViewById(R.id.m03_next_question);
+        // Question
+        previousQuestion = (ImageView) findViewById(R.id.m03_previous_question);
+        nextQuestion = (ImageView) findViewById(R.id.m03_next_question);
 
         cardView1 = (CardView) findViewById(R.id.m03_card1);
         cardView2 = (CardView) findViewById(R.id.m03_card2);
@@ -68,30 +68,13 @@ public class Module03Activity extends AppCompatActivity {
         cardTick4 = (ImageView) findViewById(R.id.m03_card4_tick);
         cardTick5 = (ImageView) findViewById(R.id.m03_card5_tick);
 
-        resetItems();
-
         //Main screen
 
-        setViewModule03();
+        resetItems();
 
-        scoreCorrect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                m03OnCorrect();
-            }
-        });
+        setViewModule();
 
-        info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new SweetAlertDialog(Module03Activity.this)
-                        .setTitleText("Word Learning")
-                        .setContentText("Remember these 5 words and repeat them.")
-                        .show();
-            }
-        });
-
-        mainQuestion03();
+        mainQuestion();
     }
 
     // Action bar next button
@@ -119,8 +102,8 @@ public class Module03Activity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // Question 01
-    private void mainQuestion03() {
+    // Views on click listeners
+    private void mainQuestion() {
 
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,11 +112,11 @@ public class Module03Activity extends AppCompatActivity {
                 if (GlobalVariables.m03Score[0] == 0) {
                     GlobalVariables.m03Score[0] = 1;
                     cardTick1.setVisibility(View.VISIBLE);
-                    cardView1.setCardBackgroundColor(getResources().getColor(R.color.white));
+                    cardView1.setCardBackgroundColor(GlobalVariables.whiteColorValue);
                 } else {
                     GlobalVariables.m03Score[0] = 0;
                     cardTick1.setVisibility(View.GONE);
-                    cardView1.setCardBackgroundColor(getResources().getColor(R.color.light_grey));
+                    cardView1.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
                 }
                 if (GlobalVariables.m03QuestionNo == 1) {
                     hideNextIfScore5();
@@ -148,11 +131,11 @@ public class Module03Activity extends AppCompatActivity {
                 if (GlobalVariables.m03Score[1] == 0) {
                     GlobalVariables.m03Score[1] = 1;
                     cardTick2.setVisibility(View.VISIBLE);
-                    cardView2.setCardBackgroundColor(getResources().getColor(R.color.white));
+                    cardView2.setCardBackgroundColor(GlobalVariables.whiteColorValue);
                 } else {
                     GlobalVariables.m03Score[1] = 0;
                     cardTick2.setVisibility(View.GONE);
-                    cardView2.setCardBackgroundColor(getResources().getColor(R.color.light_grey));
+                    cardView2.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
                 }
                 if (GlobalVariables.m03QuestionNo == 1) {
                     hideNextIfScore5();
@@ -167,11 +150,11 @@ public class Module03Activity extends AppCompatActivity {
                 if (GlobalVariables.m03Score[2] == 0) {
                     GlobalVariables.m03Score[2] = 1;
                     cardTick3.setVisibility(View.VISIBLE);
-                    cardView3.setCardBackgroundColor(getResources().getColor(R.color.white));
+                    cardView3.setCardBackgroundColor(GlobalVariables.whiteColorValue);
                 } else {
                     GlobalVariables.m03Score[2] = 0;
                     cardTick3.setVisibility(View.GONE);
-                    cardView3.setCardBackgroundColor(getResources().getColor(R.color.light_grey));
+                    cardView3.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
                 }
                 if (GlobalVariables.m03QuestionNo == 1) {
                     hideNextIfScore5();
@@ -186,11 +169,11 @@ public class Module03Activity extends AppCompatActivity {
                 if (GlobalVariables.m03Score[3] == 0) {
                     GlobalVariables.m03Score[3] = 1;
                     cardTick4.setVisibility(View.VISIBLE);
-                    cardView4.setCardBackgroundColor(getResources().getColor(R.color.white));
+                    cardView4.setCardBackgroundColor(GlobalVariables.whiteColorValue);
                 } else {
                     GlobalVariables.m03Score[3] = 0;
                     cardTick4.setVisibility(View.GONE);
-                    cardView4.setCardBackgroundColor(getResources().getColor(R.color.light_grey));
+                    cardView4.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
                 }
                 if (GlobalVariables.m03QuestionNo == 1) {
                     hideNextIfScore5();
@@ -205,11 +188,11 @@ public class Module03Activity extends AppCompatActivity {
                 if (GlobalVariables.m03Score[4] == 0) {
                     GlobalVariables.m03Score[4] = 1;
                     cardTick5.setVisibility(View.VISIBLE);
-                    cardView5.setCardBackgroundColor(getResources().getColor(R.color.white));
+                    cardView5.setCardBackgroundColor(GlobalVariables.whiteColorValue);
                 } else {
                     GlobalVariables.m03Score[4] = 0;
                     cardTick5.setVisibility(View.GONE);
-                    cardView5.setCardBackgroundColor(getResources().getColor(R.color.light_grey));
+                    cardView5.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
                 }
                 if (GlobalVariables.m03QuestionNo == 1) {
                     hideNextIfScore5();
@@ -217,33 +200,52 @@ public class Module03Activity extends AppCompatActivity {
             }
         });
 
-        m03PreviousQuestion.setOnClickListener(new View.OnClickListener() {
+        previousQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                question03Decrement();
-                setViewModule03();
+                questionDecrement();
+                setViewModule();
             }
         });
 
-        m03NextQuestion.setOnClickListener(new View.OnClickListener() {
+        nextQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                question03Increment();
-                setViewModule03();
+                questionIncrement();
+                setViewModule();
+            }
+        });
+
+        scoreCorrect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onCorrect();
+            }
+        });
+
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new SweetAlertDialog(Module03Activity.this)
+                        .setTitleText(getString(R.string.word_learning))
+                        .setContentText("Remember these 5 words and repeat them.")
+                        .show();
             }
         });
     }
 
+    // Hides next question button if all answers are correct
     private void hideNextIfScore5() {
         if (GlobalVariables.m03Score[0] == 1 && GlobalVariables.m03Score[1] == 1 && GlobalVariables.m03Score[2] == 1 && GlobalVariables.m03Score[3] == 1 && GlobalVariables.m03Score[4] == 1) {
-            m03NextQuestion.setVisibility(View.GONE);
+            nextQuestion.setVisibility(View.GONE);
             questionNumber.setText("1/1");
         } else {
-            m03NextQuestion.setVisibility(View.VISIBLE);
+            nextQuestion.setVisibility(View.VISIBLE);
             questionNumber.setText("1/2");
         }
     }
 
+    // Resets card views and scores
     private void resetItems() {
         GlobalVariables.m03Score[0] = 0;
         GlobalVariables.m03Score[1] = 0;
@@ -251,72 +253,80 @@ public class Module03Activity extends AppCompatActivity {
         GlobalVariables.m03Score[3] = 0;
         GlobalVariables.m03Score[4] = 0;
         cardTick1.setVisibility(View.GONE);
-        cardView1.setCardBackgroundColor(getResources().getColor(R.color.light_grey));
+        cardView1.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
         cardTick2.setVisibility(View.GONE);
-        cardView2.setCardBackgroundColor(getResources().getColor(R.color.light_grey));
+        cardView2.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
         cardTick3.setVisibility(View.GONE);
-        cardView3.setCardBackgroundColor(getResources().getColor(R.color.light_grey));
+        cardView3.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
         cardTick4.setVisibility(View.GONE);
-        cardView4.setCardBackgroundColor(getResources().getColor(R.color.light_grey));
+        cardView4.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
         cardTick5.setVisibility(View.GONE);
-        cardView5.setCardBackgroundColor(getResources().getColor(R.color.light_grey));
+        cardView5.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
     }
 
-    private void question03Increment() {
-        m03PreviousQuestion.setVisibility(View.VISIBLE);
-        m03NextQuestion.setVisibility(View.GONE);
+    // Increments question number and animates content view
+    private void questionIncrement() {
+        previousQuestion.setVisibility(View.VISIBLE);
+        nextQuestion.setVisibility(View.GONE);
         GlobalVariables.m03QuestionNo = 2;
         resetItems();
-        m03AnimateRight();
+        animateRight();
     }
 
-    private void question03Decrement() {
-        m03PreviousQuestion.setVisibility(View.GONE);
-        m03NextQuestion.setVisibility(View.VISIBLE);
+    // Decrements question number and animates content view
+    private void questionDecrement() {
+        previousQuestion.setVisibility(View.GONE);
+        nextQuestion.setVisibility(View.VISIBLE);
         GlobalVariables.m03QuestionNo = 1;
         resetItems();
-        m03AnimateLeft();
+        animateLeft();
     }
 
-    private void setViewModule03() {
-        if (GlobalVariables.m02QuestionNo == 1) {
+    // Sets views for all questions
+    private void setViewModule() {
+        if (GlobalVariables.m03QuestionNo == 1) {
             questionNumber.setText("1/2");
-            question03Decrement();
-        } else if (GlobalVariables.m02QuestionNo == 2) {
+            questionDecrement();
+        } else if (GlobalVariables.m03QuestionNo == 2) {
             questionNumber.setText("2/2");
-            question03Increment();
-        } else {
+            questionIncrement();
         }
     }
 
-    private void m03OnCorrect() {
+    // On correct button
+    private void onCorrect() {
         if (GlobalVariables.m03QuestionNo == 1) {
             if (GlobalVariables.m03Score[0] == 1 && GlobalVariables.m03Score[1] == 1 && GlobalVariables.m03Score[2] == 1 && GlobalVariables.m03Score[3] == 1 && GlobalVariables.m03Score[4] == 1) {
+                Toast.makeText(getApplicationContext(), "q1= " + GlobalVariables.m03Score[0] + " q2= " + GlobalVariables.m03Score[1] + " q3= " + GlobalVariables.m03Score[2] + " q4= " + GlobalVariables.m03Score[3] + " q5= " + GlobalVariables.m03Score[4], Toast.LENGTH_SHORT).show();
                 nextModule();
-                Toast.makeText(getApplicationContext(), "Next Task", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "q1= " + GlobalVariables.m03Score[0] + " q2= " + GlobalVariables.m03Score[1] + " q3= " + GlobalVariables.m03Score[2] + " q4= " + GlobalVariables.m03Score[3] + " q5= " + GlobalVariables.m03Score[4], Toast.LENGTH_SHORT).show();
             } else {
-                question03Increment();
-                setViewModule03();
+                questionIncrement();
+                setViewModule();
+                GlobalVariables.m03QuestionNo = 2;
                 Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             }
         } else if (GlobalVariables.m03QuestionNo == 2) {
             nextModule();
-            Toast.makeText(getApplicationContext(), "Next Task", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "q1= " + GlobalVariables.m03Score[0] + " q2= " + GlobalVariables.m03Score[1] + " q3= " + GlobalVariables.m03Score[2] + " q4= " + GlobalVariables.m03Score[3] + " q5= " + GlobalVariables.m03Score[4], Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void m03AnimateLeft() {
+    // Content left animation
+    private void animateLeft() {
         YoYo.with(Techniques.SlideInLeft)
                 .duration(500)
                 .playOn(findViewById(R.id.content_m03));
     }
 
-    private void m03AnimateRight() {
+    // Content right animation
+    private void animateRight() {
         YoYo.with(Techniques.SlideInRight)
                 .duration(500)
                 .playOn(findViewById(R.id.content_m03));
     }
 
+    // Starts next selected Task
     private void nextModule() {
         if (GlobalVariables.modulesSelected[3]) {
             Intent intentModulesActivity = new Intent(Module03Activity.this, Module04Activity.class);
@@ -331,7 +341,7 @@ public class Module03Activity extends AppCompatActivity {
             Intent intentModulesActivity = new Intent(Module03Activity.this, ResultsActivity.class);
             Module03Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[7]) {
-            Intent intentModulesActivity = new Intent(Module03Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module03Activity.this, Module08Activity.class);
             Module03Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[8]) {
             Intent intentModulesActivity = new Intent(Module03Activity.this, ResultsActivity.class);

@@ -43,12 +43,12 @@ public class ModulesActivity extends AppCompatActivity {
                 CardView moduleCardView = (CardView) view.findViewById(R.id.card_container);
                 if (GlobalVariables.modulesSelected[i]) {
                     tick.setVisibility(View.GONE);
-                    moduleCardView.setCardBackgroundColor(getResources().getColor(R.color.light_grey));
+                    moduleCardView.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
                     GlobalVariables.modulesSelected[i] = false;
 
                 } else {
                     tick.setVisibility(View.VISIBLE);
-                    moduleCardView.setCardBackgroundColor(getResources().getColor(R.color.white));
+                    moduleCardView.setCardBackgroundColor(GlobalVariables.whiteColorValue);
                     GlobalVariables.modulesSelected[i] = true;
                 }
             }
@@ -76,6 +76,7 @@ public class ModulesActivity extends AppCompatActivity {
             Intent intentModulesActivity = new Intent(ModulesActivity.this, Module00Activity.class);
             ModulesActivity.this.startActivity(intentModulesActivity);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            finish();
             return true;
         }
 
