@@ -4,6 +4,7 @@
     package="hku.demscreen.hk">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -48,6 +49,10 @@
         <activity
             android:name=".Module04Activity"
             android:label="@string/orientation"
+            android:parentActivityName=".ModulesActivity" />
+        <activity
+            android:name=".Module05Activity"
+            android:label="@string/figure_copy"
             android:parentActivityName=".ModulesActivity" />
         <activity
             android:name=".Module08Activity"

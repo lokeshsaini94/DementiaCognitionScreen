@@ -182,15 +182,12 @@ public class Module01Activity extends AppCompatActivity {
     // On correct button
     private void onCorrect() {
         if (GlobalVariables.m01QuestionNo == 1) {
-            Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             GlobalVariables.m01Score[0] = 1;
             questionIncrement();
         } else if (GlobalVariables.m01QuestionNo == 2) {
-            Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             GlobalVariables.m01Score[1] = 1;
             questionIncrement();
         } else if (GlobalVariables.m01QuestionNo == 3) {
-            Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             GlobalVariables.m01Score[2] = 1;
             questionIncrement();
         } else if (GlobalVariables.m01QuestionNo == 4) {
@@ -215,7 +212,6 @@ public class Module01Activity extends AppCompatActivity {
             GlobalVariables.m01Score[3] = 0;
             nextModule();
         }
-        Toast.makeText(getApplicationContext(), "Wrong Answer", Toast.LENGTH_SHORT).show();
         setViewModule();
     }
 
@@ -245,7 +241,7 @@ public class Module01Activity extends AppCompatActivity {
             Intent intentModulesActivity = new Intent(Module01Activity.this, Module04Activity.class);
             Module01Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[4]) {
-            Intent intentModulesActivity = new Intent(Module01Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module01Activity.this, Module05Activity.class);
             Module01Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[5]) {
             Intent intentModulesActivity = new Intent(Module01Activity.this, ResultsActivity.class);

@@ -6,6 +6,7 @@
 
     <string name="action_next">Next</string>
 
+    <string name="module_00">Practice Task</string>
 
     <string name="picture_naming">Picture Naming</string>
     <string name="picture_pointing">Picture Pointing</string>
@@ -30,8 +31,6 @@
         <item>@string/episodic_memory</item>
         <item>@string/attention</item>
     </string-array>
-
-    <string name="module_00">Practice Task</string>
 
     <string name="module_03_word1">Bicycle</string>
     <string name="module_03_word2">Mist</string>
