@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -22,6 +21,8 @@ public class Module08Activity extends AppCompatActivity {
 
     String Tag = "Module08Activity";
     Vibrator vibrator;
+
+    String fileName = "03 - Task 08 Question 1";
 
     // Main screen
     TextView questionNumber;
@@ -126,6 +127,8 @@ public class Module08Activity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_next) {
+            View rootView = getWindow().getDecorView().getRootView();
+            GlobalVariables.saveScreenshot(rootView, fileName);
             nextModule();
             return true;
         }
@@ -380,6 +383,8 @@ public class Module08Activity extends AppCompatActivity {
                     GlobalVariables.m08MCQno[3] = GlobalVariables.m08Score[3];
                     GlobalVariables.m08MCQno[4] = GlobalVariables.m08Score[4];
                 }
+                View rootView = getWindow().getDecorView().getRootView();
+                GlobalVariables.saveScreenshot(rootView, fileName);
                 onCorrect();
             }
         });
@@ -415,6 +420,7 @@ public class Module08Activity extends AppCompatActivity {
             mcqLayout.setVisibility(View.GONE);
             previousQuestion.setVisibility(View.GONE);
             questionNumber.setText("1/1");
+            fileName = "03 - Task 08 Question 1";
         } else if (GlobalVariables.m08QuestionNo == 2) {
             mainLayout.setVisibility(View.GONE);
             mcqLayout.setVisibility(View.VISIBLE);
@@ -427,30 +433,35 @@ public class Module08Activity extends AppCompatActivity {
                 textViewMCQ2.setText(R.string.module_08_mcq1_word2);
                 textViewMCQ3.setText(R.string.module_08_mcq1_word3);
                 textViewMCQ4.setText(R.string.module_08_mcq1_word4);
+                fileName = "03 - Task 08 Question 2.1";
             } else if (GlobalVariables.m08MCQno[1] == 0) {
                 GlobalVariables.m08CurrentMCQNo = 2;
                 textViewMCQ1.setText(R.string.module_08_mcq2_word1);
                 textViewMCQ2.setText(R.string.module_08_mcq2_word2);
                 textViewMCQ3.setText(R.string.module_08_mcq2_word3);
                 textViewMCQ4.setText(R.string.module_08_mcq2_word4);
+                fileName = "03 - Task 08 Question 2.2";
             } else if (GlobalVariables.m08MCQno[2] == 0) {
                 GlobalVariables.m08CurrentMCQNo = 3;
                 textViewMCQ1.setText(R.string.module_08_mcq3_word1);
                 textViewMCQ2.setText(R.string.module_08_mcq3_word2);
                 textViewMCQ3.setText(R.string.module_08_mcq3_word3);
                 textViewMCQ4.setText(R.string.module_08_mcq3_word4);
+                fileName = "03 - Task 08 Question 2.3";
             } else if (GlobalVariables.m08MCQno[3] == 0) {
                 GlobalVariables.m08CurrentMCQNo = 4;
                 textViewMCQ1.setText(R.string.module_08_mcq4_word1);
                 textViewMCQ2.setText(R.string.module_08_mcq4_word2);
                 textViewMCQ3.setText(R.string.module_08_mcq4_word3);
                 textViewMCQ4.setText(R.string.module_08_mcq4_word4);
+                fileName = "03 - Task 08 Question 2.4";
             } else if (GlobalVariables.m08MCQno[4] == 0) {
                 GlobalVariables.m08CurrentMCQNo = 5;
                 textViewMCQ1.setText(R.string.module_08_mcq5_word1);
                 textViewMCQ2.setText(R.string.module_08_mcq5_word2);
                 textViewMCQ3.setText(R.string.module_08_mcq5_word3);
                 textViewMCQ4.setText(R.string.module_08_mcq5_word4);
+                fileName = "03 - Task 08 Question 2.5";
             }
         }
     }
@@ -550,10 +561,8 @@ public class Module08Activity extends AppCompatActivity {
     private void onCorrect() {
         if (GlobalVariables.m08QuestionNo == 1) {
             if (GlobalVariables.m08Score[0] == 1 && GlobalVariables.m08Score[1] == 1 && GlobalVariables.m08Score[2] == 1 && GlobalVariables.m08Score[3] == 1 && GlobalVariables.m08Score[4] == 1) {
-                Toast.makeText(getApplicationContext(), "q1=" + GlobalVariables.m08Score[0] + " q2=" + GlobalVariables.m08Score[1] + " q3=" + GlobalVariables.m08Score[2] + " q4=" + GlobalVariables.m08Score[3] + " q5=" + GlobalVariables.m08Score[4], Toast.LENGTH_SHORT).show();
                 nextModule();
             }
-            Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
         } else if (GlobalVariables.m08QuestionNo == 2) {
             if (GlobalVariables.m08MCQno[0] == 0) {
                 GlobalVariables.m08MCQno[0] = 1;

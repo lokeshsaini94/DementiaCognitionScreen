@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -22,6 +21,8 @@ public class Module03Activity extends AppCompatActivity {
 
     String Tag = "Module03Activity";
     Vibrator vibrator;
+
+    String fileName = "03 - Task 03 Question 1";
 
     // Main screen
     TextView questionNumber;
@@ -94,6 +95,8 @@ public class Module03Activity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_next) {
+            View rootView = getWindow().getDecorView().getRootView();
+            GlobalVariables.saveScreenshot(rootView, fileName);
             nextModule();
             return true;
         }
@@ -218,6 +221,8 @@ public class Module03Activity extends AppCompatActivity {
         scoreCorrect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                View rootView = getWindow().getDecorView().getRootView();
+                GlobalVariables.saveScreenshot(rootView, fileName);
                 onCorrect();
             }
         });
@@ -285,9 +290,11 @@ public class Module03Activity extends AppCompatActivity {
     private void setViewModule() {
         if (GlobalVariables.m03QuestionNo == 1) {
             questionNumber.setText("1/2");
+            fileName = "03 - Task 03 Question 1";
             questionDecrement();
         } else if (GlobalVariables.m03QuestionNo == 2) {
             questionNumber.setText("2/2");
+            fileName = "03 - Task 03 Question 2";
             questionIncrement();
         }
     }
@@ -301,7 +308,6 @@ public class Module03Activity extends AppCompatActivity {
                 questionIncrement();
                 setViewModule();
                 GlobalVariables.m03QuestionNo = 2;
-                Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             }
         } else if (GlobalVariables.m03QuestionNo == 2) {
             nextModule();

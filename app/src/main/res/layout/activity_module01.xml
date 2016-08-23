@@ -66,15 +66,6 @@
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_info_white" />
 
-            <ImageView
-                android:id="@+id/sound_m01"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/margin_small"
-                android:layout_toLeftOf="@id/info_m01"
-                android:src="@drawable/ic_hearing_white" />
-
         </RelativeLayout>
 
         <include

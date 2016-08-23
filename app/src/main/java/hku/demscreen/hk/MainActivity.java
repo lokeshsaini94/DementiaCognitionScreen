@@ -1,9 +1,11 @@
 package hku.demscreen.hk;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,8 +17,11 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.ayz4sci.androidfactory.permissionhelper.PermissionHelper;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+
+import pl.tajchert.nammu.PermissionCallback;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -109,6 +114,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        requestPermission();
     }
 
     @Override
@@ -146,5 +153,27 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void requestPermission() {
+        final PermissionHelper permissionHelper = PermissionHelper.getInstance(this);
+        permissionHelper.verifyPermission(
+                new String[]{"Export data to the phone memory", "Record patient's answers"},
+                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO},
+                new PermissionCallback() {
+                    @Override
+                    public void permissionGranted() {
+//                        Toast.makeText(getApplicationContext(), "Great!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void permissionRefused() {
+                        requestPermission();
+                    }
+                }
+        );
+        permissionHelper.customiseUI(R.color.color_primary, ContextCompat.getDrawable(getApplicationContext(), R.mipmap.ic_launcher));
+        permissionHelper.getNotAllowButton().setVisibility(View.INVISIBLE);
+        permissionHelper.getBackButton().setVisibility(View.INVISIBLE);
     }
 }

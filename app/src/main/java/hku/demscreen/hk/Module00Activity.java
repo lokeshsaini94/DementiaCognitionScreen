@@ -16,6 +16,8 @@ public class Module00Activity extends AppCompatActivity {
 
     String Tag = "Module00Activity";
 
+    String fileName = "02 - Practice Task";
+
     // Main screen
     ImageView info;
     Vibrator vibrator;
@@ -63,6 +65,8 @@ public class Module00Activity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_next) {
+            View rootView = getWindow().getDecorView().getRootView();
+            GlobalVariables.saveScreenshot(rootView, fileName);
             nextModule();
             return true;
         }
@@ -143,6 +147,8 @@ public class Module00Activity extends AppCompatActivity {
         scoreCorrect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                View rootView = getWindow().getDecorView().getRootView();
+                GlobalVariables.saveScreenshot(rootView, fileName);
                 nextModule();
             }
         });

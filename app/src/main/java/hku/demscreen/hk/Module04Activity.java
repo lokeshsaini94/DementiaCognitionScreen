@@ -1,17 +1,20 @@
 package hku.demscreen.hk;
 
 import android.content.Intent;
+import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+
+import java.io.IOException;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -24,7 +27,8 @@ public class Module04Activity extends AppCompatActivity {
     ImageView scoreCorrect;
     ImageView scoreWrong;
     ImageView info;
-    ImageView sound;
+    private MediaRecorder myAudioRecorder;
+    private String outputFile = null;
 
     // Question
     ImageView previousQuestion;
@@ -38,7 +42,6 @@ public class Module04Activity extends AppCompatActivity {
 
         //Main screen
         info = (ImageView) findViewById(R.id.info_m04);
-        sound = (ImageView) findViewById(R.id.sound_m04);
         scoreCorrect = (ImageView) findViewById(R.id.score_correct_m04);
         scoreWrong = (ImageView) findViewById(R.id.score_wrong_m04);
         questionNumber = (TextView) findViewById(R.id.question_number_m04);
@@ -53,6 +56,8 @@ public class Module04Activity extends AppCompatActivity {
         setViewModule();
 
         mainQuestion();
+
+        startAudioRecorder();
     }
 
     // Action bar next button
@@ -132,13 +137,6 @@ public class Module04Activity extends AppCompatActivity {
                         .show();
             }
         });
-
-        sound.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Recording will start/stop", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     // Increments question number and animates content view
@@ -181,20 +179,16 @@ public class Module04Activity extends AppCompatActivity {
     // On correct button
     private void onCorrect() {
         if (GlobalVariables.m04QuestionNo == 1) {
-            Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             GlobalVariables.m04Score[0] = 1;
             questionIncrement();
         } else if (GlobalVariables.m04QuestionNo == 2) {
-            Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             GlobalVariables.m04Score[1] = 1;
             questionIncrement();
         } else if (GlobalVariables.m04QuestionNo == 3) {
-            Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             GlobalVariables.m04Score[2] = 1;
             questionIncrement();
         } else if (GlobalVariables.m04QuestionNo == 4) {
             GlobalVariables.m04Score[3] = 1;
-            Toast.makeText(getApplicationContext(), "q1= " + GlobalVariables.m04Score[0] + " q2= " + GlobalVariables.m04Score[1] + " q3= " + GlobalVariables.m04Score[2] + " q4= " + GlobalVariables.m04Score[3], Toast.LENGTH_SHORT).show();
             nextModule();
         }
         setViewModule();
@@ -215,7 +209,6 @@ public class Module04Activity extends AppCompatActivity {
             GlobalVariables.m04Score[3] = 0;
             nextModule();
         }
-        Toast.makeText(getApplicationContext(), "Wrong Answer", Toast.LENGTH_SHORT).show();
         setViewModule();
     }
 
@@ -233,8 +226,39 @@ public class Module04Activity extends AppCompatActivity {
                 .playOn(findViewById(R.id.content_m04));
     }
 
+    // Start recording Audio
+    private void startAudioRecorder() {
+        outputFile = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Dementia Cognition Screen/" + GlobalVariables.userName + GlobalVariables.userAge + GlobalVariables.userID + "/Recording Task 04.mp3";
+        myAudioRecorder=new MediaRecorder();
+        myAudioRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        myAudioRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        myAudioRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
+        myAudioRecorder.setOutputFile(outputFile);
+
+        try {
+            myAudioRecorder.prepare();
+            myAudioRecorder.start();
+        }
+
+        catch (IllegalStateException e) {
+            e.printStackTrace();
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Stop recording Audio
+    private void stopAudioRecorder() {
+        myAudioRecorder.stop();
+        myAudioRecorder.release();
+        myAudioRecorder  = null;
+    }
+
     // Starts next selected Task
     private void nextModule() {
+        stopAudioRecorder();
         if (GlobalVariables.modulesSelected[4]) {
             Intent intentModulesActivity = new Intent(Module04Activity.this, Module05Activity.class);
             Module04Activity.this.startActivity(intentModulesActivity);

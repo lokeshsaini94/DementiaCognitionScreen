@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -22,6 +21,8 @@ public class Module05Activity extends AppCompatActivity {
 
     String Tag = "Module05Activity";
     Vibrator vibrator;
+
+    String fileName = "03 - Task 05 Question 1";
 
     // Main screen
     TextView questionNumber;
@@ -85,6 +86,8 @@ public class Module05Activity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_next) {
+            View rootView = getWindow().getDecorView().getRootView();
+            GlobalVariables.saveScreenshot(rootView, fileName);
             nextModule();
             return true;
         }
@@ -123,6 +126,8 @@ public class Module05Activity extends AppCompatActivity {
                 } else if (GlobalVariables.m05QuestionNo == 2) {
                     GlobalVariables.m05Score[1] = 0;
                 }
+                View rootView = getWindow().getDecorView().getRootView();
+                GlobalVariables.saveScreenshot(rootView, fileName);
                 onCorrect();
             }
         });
@@ -135,6 +140,8 @@ public class Module05Activity extends AppCompatActivity {
                 } else if (GlobalVariables.m05QuestionNo == 2) {
                     GlobalVariables.m05Score[1] = 1;
                 }
+                View rootView = getWindow().getDecorView().getRootView();
+                GlobalVariables.saveScreenshot(rootView, fileName);
                 onCorrect();
             }
         });
@@ -146,6 +153,8 @@ public class Module05Activity extends AppCompatActivity {
                 } else if (GlobalVariables.m05QuestionNo == 2) {
                     GlobalVariables.m05Score[1] = 2;
                 }
+                View rootView = getWindow().getDecorView().getRootView();
+                GlobalVariables.saveScreenshot(rootView, fileName);
                 onCorrect();
             }
         });
@@ -157,6 +166,8 @@ public class Module05Activity extends AppCompatActivity {
                 } else if (GlobalVariables.m05QuestionNo == 2) {
                     GlobalVariables.m05Score[1] = 3;
                 }
+                View rootView = getWindow().getDecorView().getRootView();
+                GlobalVariables.saveScreenshot(rootView, fileName);
                 onCorrect();
             }
         });
@@ -168,6 +179,8 @@ public class Module05Activity extends AppCompatActivity {
                 } else if (GlobalVariables.m05QuestionNo == 2) {
                     GlobalVariables.m05Score[1] = 4;
                 }
+                View rootView = getWindow().getDecorView().getRootView();
+                GlobalVariables.saveScreenshot(rootView, fileName);
                 onCorrect();
             }
         });
@@ -204,6 +217,7 @@ public class Module05Activity extends AppCompatActivity {
             canvas1.setVisibility(View.VISIBLE);
             canvas2.setVisibility(View.GONE);
             figure.setVisibility(View.VISIBLE);
+            fileName = "03 - Task 05 Question 1";
         } else if (GlobalVariables.m05QuestionNo == 2) {
             previousQuestion.setVisibility(View.VISIBLE);
             nextQuestion.setVisibility(View.GONE);
@@ -211,6 +225,7 @@ public class Module05Activity extends AppCompatActivity {
             canvas1.setVisibility(View.GONE);
             canvas2.setVisibility(View.VISIBLE);
             invisibleImage();
+            fileName = "03 - Task 05 Question 2";
         }
     }
 
@@ -228,10 +243,8 @@ public class Module05Activity extends AppCompatActivity {
     // On correct button
     private void onCorrect() {
         if (GlobalVariables.m05QuestionNo == 1) {
-            Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             questionIncrement();
         } else if (GlobalVariables.m05QuestionNo == 2) {
-            Toast.makeText(getApplicationContext(), "q1= " + GlobalVariables.m05Score[0] + " q2= " + GlobalVariables.m05Score[1], Toast.LENGTH_SHORT).show();
             nextModule();
         }
         setViewModule();

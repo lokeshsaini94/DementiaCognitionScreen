@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -22,6 +21,8 @@ public class Module02Activity extends AppCompatActivity {
 
     String Tag = "Module02Activity";
     Vibrator vibrator;
+
+    String fileName = "03 - Task 02 Question 1";
 
     // Main screen
     TextView questionNumber;
@@ -89,6 +90,8 @@ public class Module02Activity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_next) {
+            View rootView = getWindow().getDecorView().getRootView();
+            GlobalVariables.saveScreenshot(rootView, fileName);
             nextModule();
             return true;
         }
@@ -186,6 +189,8 @@ public class Module02Activity extends AppCompatActivity {
         scoreCorrect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                View rootView = getWindow().getDecorView().getRootView();
+                GlobalVariables.saveScreenshot(rootView, fileName);
                 onCorrect();
             }
         });
@@ -244,6 +249,7 @@ public class Module02Activity extends AppCompatActivity {
             imageView3.setImageResource(R.drawable.m02q1_3);
             imageView4.setImageResource(R.drawable.m02q1_4);
             questionNumber.setText("1/4");
+            fileName = "03 - Task 02 Question 1";
         } else if (GlobalVariables.m02QuestionNo == 2) {
             previousQuestion.setVisibility(View.VISIBLE);
             nextQuestion.setVisibility(View.VISIBLE);
@@ -252,6 +258,7 @@ public class Module02Activity extends AppCompatActivity {
             imageView3.setImageResource(R.drawable.m02q2_3);
             imageView4.setImageResource(R.drawable.m02q2_4);
             questionNumber.setText("2/4");
+            fileName = "03 - Task 02 Question 2";
         } else if (GlobalVariables.m02QuestionNo == 3) {
             previousQuestion.setVisibility(View.VISIBLE);
             nextQuestion.setVisibility(View.VISIBLE);
@@ -260,6 +267,7 @@ public class Module02Activity extends AppCompatActivity {
             imageView3.setImageResource(R.drawable.m02q3_3);
             imageView4.setImageResource(R.drawable.m02q3_4);
             questionNumber.setText("3/4");
+            fileName = "03 - Task 02 Question 3";
         } else if (GlobalVariables.m02QuestionNo == 4) {
             previousQuestion.setVisibility(View.VISIBLE);
             nextQuestion.setVisibility(View.GONE);
@@ -268,22 +276,19 @@ public class Module02Activity extends AppCompatActivity {
             imageView3.setImageResource(R.drawable.m02q4_3);
             imageView4.setImageResource(R.drawable.m02q4_4);
             questionNumber.setText("4/4");
+            fileName = "03 - Task 02 Question 4";
         }
     }
 
     // On correct button
     private void onCorrect() {
         if (GlobalVariables.m02QuestionNo == 1) {
-            Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             questionIncrement();
         } else if (GlobalVariables.m02QuestionNo == 2) {
-            Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             questionIncrement();
         } else if (GlobalVariables.m02QuestionNo == 3) {
-            Toast.makeText(getApplicationContext(), "Next Question", Toast.LENGTH_SHORT).show();
             questionIncrement();
         } else if (GlobalVariables.m02QuestionNo == 4) {
-            Toast.makeText(getApplicationContext(), "q1= " + GlobalVariables.m02Score[0] + " q2= " + GlobalVariables.m02Score[1] + " q3= " + GlobalVariables.m02Score[2] + " q4= " + GlobalVariables.m02Score[3], Toast.LENGTH_SHORT).show();
             nextModule();
         }
         setViewModule();

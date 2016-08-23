@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 public class ModulesActivity extends AppCompatActivity {
 
+    String fileName = "01 - Tasks Selection";
+
     TextView userName;
     GridView gridView;
     String[] moduleNames;
@@ -73,6 +75,8 @@ public class ModulesActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_next) {
+            View rootView = getWindow().getDecorView().getRootView();
+            GlobalVariables.saveScreenshot(rootView, fileName);
             Intent intentModulesActivity = new Intent(ModulesActivity.this, Module00Activity.class);
             ModulesActivity.this.startActivity(intentModulesActivity);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
