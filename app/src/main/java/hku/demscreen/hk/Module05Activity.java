@@ -3,6 +3,7 @@ package hku.demscreen.hk;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -36,6 +37,7 @@ public class Module05Activity extends AppCompatActivity {
     SimpleDrawingView canvas2;
     ImageView previousQuestion;
     ImageView nextQuestion;
+    View figure;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,7 @@ public class Module05Activity extends AppCompatActivity {
         canvas2 = (SimpleDrawingView) findViewById(R.id.m05_canvas2);
         previousQuestion = (ImageView) findViewById(R.id.m05_previous_question);
         nextQuestion = (ImageView) findViewById(R.id.m05_next_question);
+        figure = findViewById(R.id.m05_card1);
 
         //Main screen
 
@@ -200,13 +203,26 @@ public class Module05Activity extends AppCompatActivity {
             questionNumber.setText("1/2");
             canvas1.setVisibility(View.VISIBLE);
             canvas2.setVisibility(View.GONE);
+            figure.setVisibility(View.VISIBLE);
         } else if (GlobalVariables.m05QuestionNo == 2) {
             previousQuestion.setVisibility(View.VISIBLE);
             nextQuestion.setVisibility(View.GONE);
             questionNumber.setText("2/2");
             canvas1.setVisibility(View.GONE);
             canvas2.setVisibility(View.VISIBLE);
+            invisibleImage();
         }
+    }
+
+    // Set invisible to image after 30 seconds
+    private void invisibleImage () {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                figure.setVisibility(View.INVISIBLE);
+            }
+        }, 30000);
     }
 
     // On correct button
@@ -250,7 +266,7 @@ public class Module05Activity extends AppCompatActivity {
             Intent intentModulesActivity = new Intent(Module05Activity.this, Module09Activity.class);
             Module05Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[9]) {
-            Intent intentModulesActivity = new Intent(Module05Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module05Activity.this, Module10Activity.class);
             Module05Activity.this.startActivity(intentModulesActivity);
         } else {
             Intent intentModulesActivity = new Intent(Module05Activity.this, ResultsActivity.class);

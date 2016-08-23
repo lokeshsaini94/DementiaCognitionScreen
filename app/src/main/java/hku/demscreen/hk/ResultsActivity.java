@@ -51,6 +51,9 @@ public class ResultsActivity extends AppCompatActivity {
     TextView m09Score1;
     TextView m09Score2;
     TextView m09Score3;
+    TextView m10Score;
+
+    int m10FinalScore = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,7 @@ public class ResultsActivity extends AppCompatActivity {
         results05 = (CardView) findViewById(R.id.m05_result);
         results08 = (CardView) findViewById(R.id.m08_result);
         results09 = (CardView) findViewById(R.id.m09_result);
+        results10 = (CardView) findViewById(R.id.m10_result);
 
         m01Score1 = (TextView) findViewById(R.id.m01_score1);
         m01Score2 = (TextView) findViewById(R.id.m01_score2);
@@ -96,6 +100,7 @@ public class ResultsActivity extends AppCompatActivity {
         m09Score1 = (TextView) findViewById(R.id.m09_score1);
         m09Score2 = (TextView) findViewById(R.id.m09_score2);
         m09Score3 = (TextView) findViewById(R.id.m09_score3);
+        m10Score = (TextView) findViewById(R.id.m10_score);
 
         if (GlobalVariables.modulesSelected[0]) {
             results01.setVisibility(View.VISIBLE);
@@ -150,6 +155,17 @@ public class ResultsActivity extends AppCompatActivity {
             m09Score1.setText(String.valueOf(GlobalVariables.m09Score[0]));
             m09Score2.setText(String.valueOf(GlobalVariables.m09Score[1]));
             m09Score3.setText(String.valueOf(GlobalVariables.m09Score[2]));
+        }
+
+        if (GlobalVariables.modulesSelected[9]) {
+            results10.setVisibility(View.VISIBLE);
+            for (int i : GlobalVariables.m10Score) {
+                m10FinalScore += i;
+            }
+            if (GlobalVariables.m10WrongScore > 0) {
+                m10FinalScore -= GlobalVariables.m10WrongScore;
+            }
+            m10Score.setText(String.valueOf(m10FinalScore));
         }
     }
 

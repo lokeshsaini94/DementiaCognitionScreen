@@ -594,7 +594,7 @@ public class Module08Activity extends AppCompatActivity {
             Intent intentModulesActivity = new Intent(Module08Activity.this, Module09Activity.class);
             Module08Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[9]) {
-            Intent intentModulesActivity = new Intent(Module08Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module08Activity.this, Module10Activity.class);
             Module08Activity.this.startActivity(intentModulesActivity);
         } else {
             Intent intentModulesActivity = new Intent(Module08Activity.this, ResultsActivity.class);

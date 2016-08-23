@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+// Custom view for drawing on a canvas
 public class SimpleDrawingView extends View {
     // setup initial color
     private final int paintColor = Color.BLACK;

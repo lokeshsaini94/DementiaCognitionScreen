@@ -187,7 +187,7 @@ public class Module09Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new SweetAlertDialog(Module09Activity.this)
-                        .setTitleText(getString(R.string.picture_pointing))
+                        .setTitleText(getString(R.string.episodic_memory))
                         .setContentText("In these 4 pictures, which one do you remember from before?")
                         .show();
 
@@ -271,7 +271,7 @@ public class Module09Activity extends AppCompatActivity {
     // Starts next selected Task
     private void nextModule() {
         if (GlobalVariables.modulesSelected[9]) {
-            Intent intentModulesActivity = new Intent(Module09Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module09Activity.this, Module10Activity.class);
             Module09Activity.this.startActivity(intentModulesActivity);
         } else {
             Intent intentModulesActivity = new Intent(Module09Activity.this, ResultsActivity.class);

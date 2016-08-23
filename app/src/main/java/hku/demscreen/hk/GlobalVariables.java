@@ -10,7 +10,7 @@ public class GlobalVariables extends Application {
     public static int userAge = 0;
     public static String userID = "";
     public static String userSex = "";
-    public static boolean[] modulesSelected = {true, true, true, true, true, false, false, true, true, false};
+    public static boolean[] modulesSelected = {true, true, true, true, true, false, false, true, true, true};
     public static int m01QuestionNo = 1;
     public static int[] m01Score = {0, 0, 0, 0};
     public static int m02QuestionNo = 1;
@@ -25,9 +25,16 @@ public class GlobalVariables extends Application {
     public static int[] m08Score = {0, 0, 0, 0, 0};
     public static int m09QuestionNo = 1;
     public static int[] m09Score = {0, 0, 0};
+    public static int m10QuestionNo = 1;
+    public static int[] m10Score = {0, 0, 0};
 
 
     public static int m08CurrentMCQNo = 1;
     public static int[] m08MCQno = {0, 0, 0, 0, 0};
     public static int[] m08MCQcardChecked = {0, 0, 0, 0};
+    public static int m10TeachQuestionNo = 0;
+    public static int m10PracticeQuestionNo = 1;
+    public static int m10TaskNo = 1;
+    public static int m10WrongScore = 0;
+    public static boolean m10YesDone = false;
 }

@@ -62,6 +62,10 @@
             android:name=".Module09Activity"
             android:label="@string/episodic_memory"
             android:parentActivityName=".ModulesActivity" />
+        <activity
+            android:name=".Module10Activity"
+            android:label="@string/attention"
+            android:parentActivityName=".ModulesActivity" />
     </application>
 
 </manifest>
