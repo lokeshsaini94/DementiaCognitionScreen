@@ -181,8 +181,7 @@ public class Module10Activity extends AppCompatActivity {
     private void questionIncrement() {
         if (GlobalVariables.m10TaskNo == 1) {
             if (GlobalVariables.m10TeachQuestionNo != 0) {
-                if (GlobalVariables.m10TeachQuestionNo == 3)
-                {
+                if (GlobalVariables.m10TeachQuestionNo == 3) {
                     GlobalVariables.m10TaskNo = 2;
                 } else {
                     GlobalVariables.m10TeachQuestionNo = GlobalVariables.m10TeachQuestionNo + 1;

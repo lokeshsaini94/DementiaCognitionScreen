@@ -43,50 +43,50 @@
                     android:id="@+id/score_0_m05"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:adjustViewBounds="true"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/margin_small"
                     android:layout_marginRight="@dimen/margin_small"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/ic_0_white" />
 
                 <ImageView
                     android:id="@+id/score_1_m05"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:adjustViewBounds="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/margin_small"
                     android:layout_toRightOf="@id/score_0_m05"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/ic_1_white" />
 
                 <ImageView
                     android:id="@+id/score_2_m05"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:adjustViewBounds="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/margin_small"
                     android:layout_toRightOf="@id/score_1_m05"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/ic_2_white" />
 
                 <ImageView
                     android:id="@+id/score_3_m05"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:adjustViewBounds="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/margin_small"
                     android:layout_toRightOf="@id/score_2_m05"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/ic_3_white" />
 
                 <ImageView
                     android:id="@+id/score_4_m05"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:adjustViewBounds="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/margin_small"
                     android:layout_toRightOf="@id/score_3_m05"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/ic_4_white" />
 
             </RelativeLayout>

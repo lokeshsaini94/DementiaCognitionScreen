@@ -13,6 +13,8 @@ import java.io.FileOutputStream;
 public class GlobalVariables extends Application {
     public static int lghtGrayColorValue = Color.parseColor("#f5f5f5");
     public static int whiteColorValue = Color.parseColor("#ffffff");
+    public static String testTimeStart = "";
+    public static String testTimeEnd = "";
     public static String userName = "";
     public static int userAge = 0;
     public static String userID = "";
@@ -36,6 +38,7 @@ public class GlobalVariables extends Application {
     public static int[] m10Score = {0, 0, 0};
 
 
+    public static String[] m05TimeTaken = {"", ""};
     public static int m08CurrentMCQNo = 1;
     public static int[] m08MCQno = {0, 0, 0, 0, 0};
     public static int[] m08MCQcardChecked = {0, 0, 0, 0};
@@ -46,7 +49,7 @@ public class GlobalVariables extends Application {
     public static boolean m10YesDone = false;
 
     // Save screenshot of RootView and filename passed
-    public static void saveScreenshot (View rootView, String fileName) {
+    public static void saveScreenshot(View rootView, String fileName) {
         rootView.invalidate();  //I try to redraw the view without success
         rootView.requestLayout();
         rootView.setDrawingCacheEnabled(true);
@@ -62,8 +65,7 @@ public class GlobalVariables extends Application {
             FileOutputStream ostream = new FileOutputStream(file);
             ostream.write(baos.toByteArray());
             ostream.close();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

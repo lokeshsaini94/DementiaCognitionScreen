@@ -14,6 +14,10 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class ModulesActivity extends AppCompatActivity {
 
     String fileName = "01 - Tasks Selection";
@@ -77,6 +81,8 @@ public class ModulesActivity extends AppCompatActivity {
         if (id == R.id.action_next) {
             View rootView = getWindow().getDecorView().getRootView();
             GlobalVariables.saveScreenshot(rootView, fileName);
+            DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
+            GlobalVariables.testTimeStart = df.format(Calendar.getInstance().getTime());
             Intent intentModulesActivity = new Intent(ModulesActivity.this, Module00Activity.class);
             ModulesActivity.this.startActivity(intentModulesActivity);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

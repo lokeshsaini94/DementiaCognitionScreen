@@ -27,13 +27,12 @@ public class Module01Activity extends AppCompatActivity {
     ImageView scoreCorrect;
     ImageView scoreWrong;
     ImageView info;
-    private MediaRecorder myAudioRecorder;
-    private String outputFile = null;
-
     // Question
     ImageView previousQuestion;
     ImageView nextQuestion;
     ImageView image;
+    private MediaRecorder myAudioRecorder;
+    private String outputFile = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -229,8 +228,8 @@ public class Module01Activity extends AppCompatActivity {
 
     // Start recording Audio
     private void startAudioRecorder() {
-        outputFile = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Dementia Cognition Screen/" + GlobalVariables.userName + GlobalVariables.userAge + GlobalVariables.userID + "/Recording Task 01.mp3";
-        myAudioRecorder=new MediaRecorder();
+        outputFile = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Dementia Cognition Screen/" + GlobalVariables.userName + GlobalVariables.userAge + GlobalVariables.userID + "/03 - Task 01 Recording.mp3";
+        myAudioRecorder = new MediaRecorder();
         myAudioRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         myAudioRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         myAudioRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
@@ -239,13 +238,9 @@ public class Module01Activity extends AppCompatActivity {
         try {
             myAudioRecorder.prepare();
             myAudioRecorder.start();
-        }
-
-        catch (IllegalStateException e) {
+        } catch (IllegalStateException e) {
             e.printStackTrace();
-        }
-
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -254,7 +249,7 @@ public class Module01Activity extends AppCompatActivity {
     private void stopAudioRecorder() {
         myAudioRecorder.stop();
         myAudioRecorder.release();
-        myAudioRecorder  = null;
+        myAudioRecorder = null;
     }
 
     // Starts next selected Task

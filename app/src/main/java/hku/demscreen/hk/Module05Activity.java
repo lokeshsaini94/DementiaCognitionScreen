@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -19,11 +20,13 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Module05Activity extends AppCompatActivity {
 
+    public String timeTaken;
     String Tag = "Module05Activity";
     Vibrator vibrator;
-
-    String fileName = "03 - Task 05 Question 1";
-
+    long timeInMilliseconds = 0L;
+    long timeSwapBuff = 0L;
+    long updatedTime = 0L;
+    String fileName = "07 - Task 05 Question 1";
     // Main screen
     TextView questionNumber;
     ImageView score0;
@@ -32,13 +35,29 @@ public class Module05Activity extends AppCompatActivity {
     ImageView score3;
     ImageView score4;
     ImageView info;
-
     // Question
     SimpleDrawingView canvas1;
     SimpleDrawingView canvas2;
     ImageView previousQuestion;
     ImageView nextQuestion;
     View figure;
+    private long startTime = 0L;
+    private Handler customHandler = new Handler();
+    // Updates Timer continuously
+    public Runnable updateTimerThread = new Runnable() {
+        public void run() {
+            timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
+            updatedTime = timeSwapBuff + timeInMilliseconds;
+            int secs = (int) (timeInMilliseconds / 1000);
+            int mins = secs / 60;
+            secs = secs % 60;
+            mins = mins % 60;
+            //int milliseconds = (int) (updatedTime % 1000);
+            //+ ":" + String.format("%03d", milliseconds)
+            timeTaken = String.format("%02d", mins) + ":" + String.format("%02d", secs);
+            customHandler.postDelayed(this, 1000);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +107,13 @@ public class Module05Activity extends AppCompatActivity {
         if (id == R.id.action_next) {
             View rootView = getWindow().getDecorView().getRootView();
             GlobalVariables.saveScreenshot(rootView, fileName);
+            if (GlobalVariables.m05QuestionNo == 1) {
+                StopTimer();
+                GlobalVariables.m05TimeTaken[0] = "" + timeTaken;
+            } else if (GlobalVariables.m05QuestionNo == 2) {
+                StopTimer();
+                GlobalVariables.m05TimeTaken[1] = "" + timeTaken;
+            }
             nextModule();
             return true;
         }
@@ -217,7 +243,9 @@ public class Module05Activity extends AppCompatActivity {
             canvas1.setVisibility(View.VISIBLE);
             canvas2.setVisibility(View.GONE);
             figure.setVisibility(View.VISIBLE);
-            fileName = "03 - Task 05 Question 1";
+            fileName = "07 - Task 05 Question 1";
+            StopTimer();
+            StartTimer();
         } else if (GlobalVariables.m05QuestionNo == 2) {
             previousQuestion.setVisibility(View.VISIBLE);
             nextQuestion.setVisibility(View.GONE);
@@ -225,12 +253,14 @@ public class Module05Activity extends AppCompatActivity {
             canvas1.setVisibility(View.GONE);
             canvas2.setVisibility(View.VISIBLE);
             invisibleImage();
-            fileName = "03 - Task 05 Question 2";
+            fileName = "07 - Task 05 Question 2";
+            StopTimer();
+            StartTimer();
         }
     }
 
     // Set invisible to image after 30 seconds
-    private void invisibleImage () {
+    private void invisibleImage() {
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -243,8 +273,12 @@ public class Module05Activity extends AppCompatActivity {
     // On correct button
     private void onCorrect() {
         if (GlobalVariables.m05QuestionNo == 1) {
+            StopTimer();
+            GlobalVariables.m05TimeTaken[0] = "" + timeTaken;
             questionIncrement();
         } else if (GlobalVariables.m05QuestionNo == 2) {
+            StopTimer();
+            GlobalVariables.m05TimeTaken[1] = "" + timeTaken;
             nextModule();
         }
         setViewModule();
@@ -262,6 +296,18 @@ public class Module05Activity extends AppCompatActivity {
         YoYo.with(Techniques.SlideInRight)
                 .duration(500)
                 .playOn(findViewById(R.id.content_m05));
+    }
+
+    // Starts Timer
+    public void StartTimer() {
+        startTime = SystemClock.uptimeMillis();
+        customHandler.postDelayed(updateTimerThread, 0);
+    }
+
+    // Stops Timer
+    public void StopTimer() {
+        timeSwapBuff += timeInMilliseconds;
+        customHandler.removeCallbacks(updateTimerThread);
     }
 
     // Starts next selected Task
