@@ -35,15 +35,7 @@ local.properties
 .project
 
 # Android Studio
-<<<<<<< HEAD
-/.idea/misc.xml
-/.idea/
 /.idea
-.idea/
-.idea
-=======
-.idea/
->>>>>>> parent of 9f67a70... Updated gitignore
 .gradle
 /*/local.properties
 /*/out
@@ -54,5 +46,4 @@ local.properties
 *.ipr
 *~
 *.swp
-.idea/misc.xml
 .idea/misc.xml
