@@ -35,7 +35,7 @@ local.properties
 .project
 
 # Android Studio
-.idea/misc.xml
+/.idea/misc.xml
 /.idea/
 /.idea
 .idea/
@@ -50,3 +50,4 @@ local.properties
 *.ipr
 *~
 *.swp
+.idea/misc.xml
