@@ -39,7 +39,7 @@ public class ModulesActivity extends AppCompatActivity {
 
         moduleNames = getResources().getStringArray(R.array.module_names);
 
-        ListAdapter adapter = new MyAdapter(this, moduleNames);
+        ListAdapter adapter = new MyGridViewAdapter(this, moduleNames);
         gridView.setAdapter(adapter);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

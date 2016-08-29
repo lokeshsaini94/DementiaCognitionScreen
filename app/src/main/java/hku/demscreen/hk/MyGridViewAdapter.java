@@ -10,9 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-class MyAdapter extends ArrayAdapter<String> {
+class MyGridViewAdapter extends ArrayAdapter<String> {
 
-    MyAdapter(Context context, String[] names) {
+    MyGridViewAdapter(Context context, String[] names) {
         super(context, R.layout.cards_layout, names);
     }
 
