@@ -105,7 +105,7 @@ public class Module01Activity extends AppCompatActivity {
             public void onClick(View view) {
                 new SweetAlertDialog(Module01Activity.this)
                         .setTitleText(getString(R.string.picture_naming))
-                        .setContentText("What's in the picture?")
+                        .setContentText(getString(R.string.java_task1_question))
                         .show();
             }
         });
@@ -268,7 +268,7 @@ public class Module01Activity extends AppCompatActivity {
             Intent intentModulesActivity = new Intent(Module01Activity.this, Module05Activity.class);
             Module01Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[5]) {
-            Intent intentModulesActivity = new Intent(Module01Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module01Activity.this, Module06Activity.class);
             Module01Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[6]) {
             Intent intentModulesActivity = new Intent(Module01Activity.this, ResultsActivity.class);

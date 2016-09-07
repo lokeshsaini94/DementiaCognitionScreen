@@ -132,7 +132,7 @@ public class Module04Activity extends AppCompatActivity {
             public void onClick(View view) {
                 new SweetAlertDialog(Module04Activity.this)
                         .setTitleText(getString(R.string.orientation))
-                        .setContentText("Answer the following questions.")
+                        .setContentText(getString(R.string.java_task4_question))
                         .show();
             }
         });
@@ -258,7 +258,7 @@ public class Module04Activity extends AppCompatActivity {
             Intent intentModulesActivity = new Intent(Module04Activity.this, Module05Activity.class);
             Module04Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[5]) {
-            Intent intentModulesActivity = new Intent(Module04Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module04Activity.this, Module06Activity.class);
             Module04Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[6]) {
             Intent intentModulesActivity = new Intent(Module04Activity.this, ResultsActivity.class);

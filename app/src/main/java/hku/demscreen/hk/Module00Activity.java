@@ -138,8 +138,8 @@ public class Module00Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new SweetAlertDialog(Module00Activity.this)
-                        .setTitleText("Practice Task")
-                        .setContentText("Tap on the circles!")
+                        .setTitleText(getString(R.string.practice_task))
+                        .setContentText(getString(R.string.java_task0_question))
                         .show();
             }
         });
@@ -172,7 +172,7 @@ public class Module00Activity extends AppCompatActivity {
             Intent intentModulesActivity = new Intent(Module00Activity.this, Module05Activity.class);
             Module00Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[5]) {
-            Intent intentModulesActivity = new Intent(Module00Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module00Activity.this, Module06Activity.class);
             Module00Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[6]) {
             Intent intentModulesActivity = new Intent(Module00Activity.this, ResultsActivity.class);

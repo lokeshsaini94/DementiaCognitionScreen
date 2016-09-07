@@ -394,7 +394,7 @@ public class Module08Activity extends AppCompatActivity {
             public void onClick(View view) {
                 new SweetAlertDialog(Module08Activity.this)
                         .setTitleText(getString(R.string.verbal_memory))
-                        .setContentText("Which of the words do you remember?")
+                        .setContentText(getString(R.string.java_task8_question))
                         .show();
             }
         });

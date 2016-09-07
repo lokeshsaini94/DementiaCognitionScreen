@@ -193,7 +193,7 @@ public class Module09Activity extends AppCompatActivity {
             public void onClick(View view) {
                 new SweetAlertDialog(Module09Activity.this)
                         .setTitleText(getString(R.string.episodic_memory))
-                        .setContentText("In these 4 pictures, which one do you remember from before?")
+                        .setContentText(getString(R.string.java_task9_question))
                         .show();
 
             }

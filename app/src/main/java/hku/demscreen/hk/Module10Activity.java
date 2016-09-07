@@ -153,17 +153,17 @@ public class Module10Activity extends AppCompatActivity {
                 if (GlobalVariables.m10TaskNo == 1) {
                     new SweetAlertDialog(Module10Activity.this)
                             .setTitleText(getString(R.string.attention))
-                            .setContentText("Tap on blue button for correct and yellow button for wrong")
+                            .setContentText(getString(R.string.java_task10_question1))
                             .show();
                 } else if (GlobalVariables.m10TaskNo == 2) {
                     new SweetAlertDialog(Module10Activity.this)
-                            .setTitleText(getString(R.string.attention) + " - Practice")
-                            .setContentText("Is this word one of the target words?")
+                            .setTitleText(getString(R.string.attention))
+                            .setContentText(getString(R.string.java_task10_question2))
                             .show();
                 } else if (GlobalVariables.m10TaskNo == 3) {
                     new SweetAlertDialog(Module10Activity.this)
                             .setTitleText(getString(R.string.attention))
-                            .setContentText("Is this word one of the target words?")
+                            .setContentText(getString(R.string.java_task10_question2))
                             .show();
                 }
             }

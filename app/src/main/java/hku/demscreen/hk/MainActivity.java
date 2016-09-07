@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 userFemale.setError(null);
-                GlobalVariables.userSex = "Male";
+                GlobalVariables.userSex = getString(R.string.male);
             }
         });
 
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 userFemale.setError(null);
-                GlobalVariables.userSex = "Female";
+                GlobalVariables.userSex = getString(R.string.female);
             }
         });
 
@@ -80,19 +80,19 @@ public class MainActivity extends AppCompatActivity
                     YoYo.with(Techniques.Shake)
                             .duration(700)
                             .playOn(findViewById(R.id.name_text_input_layout));
-                    userName.setError("Enter the patient's name");
+                    userName.setError(getString(R.string.java_input_name));
                 }
                 if (ageEmpty) {
                     YoYo.with(Techniques.Shake)
                             .duration(700)
                             .playOn(findViewById(R.id.age_text_input_layout));
-                    userAge.setError("Enter the patient's age");
+                    userAge.setError(getString(R.string.java_input_age));
                 }
                 if (sexEmpty) {
                     YoYo.with(Techniques.Shake)
                             .duration(700)
                             .playOn(findViewById(R.id.sex_radio_group_text));
-                    userFemale.setError("Enter the patient's Sex");
+                    userFemale.setError(getString(R.string.java_input_sex));
                 }
                 if (!nameEmpty && !ageEmpty && !sexEmpty) {
                     GlobalVariables.userName = userName.getText().toString();
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity
     private void requestPermission() {
         final PermissionHelper permissionHelper = PermissionHelper.getInstance(this);
         permissionHelper.verifyPermission(
-                new String[]{"Export data to the phone memory", "Record patient's answers"},
+                new String[]{getString(R.string.java_permission_write_storage), getString(R.string.java_permission_record_audio)},
                 new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO},
                 new PermissionCallback() {
                     @Override

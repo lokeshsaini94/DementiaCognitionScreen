@@ -232,7 +232,7 @@ public class Module03Activity extends AppCompatActivity {
             public void onClick(View view) {
                 new SweetAlertDialog(Module03Activity.this)
                         .setTitleText(getString(R.string.word_learning))
-                        .setContentText("Remember these 5 words and repeat them.")
+                        .setContentText(getString(R.string.java_task3_question))
                         .show();
             }
         });
@@ -337,7 +337,7 @@ public class Module03Activity extends AppCompatActivity {
             Intent intentModulesActivity = new Intent(Module03Activity.this, Module05Activity.class);
             Module03Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[5]) {
-            Intent intentModulesActivity = new Intent(Module03Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module03Activity.this, Module06Activity.class);
             Module03Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[6]) {
             Intent intentModulesActivity = new Intent(Module03Activity.this, ResultsActivity.class);

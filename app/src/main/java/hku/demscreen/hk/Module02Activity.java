@@ -201,22 +201,22 @@ public class Module02Activity extends AppCompatActivity {
                 if (GlobalVariables.m02QuestionNo == 1) {
                     new SweetAlertDialog(Module02Activity.this)
                             .setTitleText(getString(R.string.picture_pointing))
-                            .setContentText("In these 4 pictures, which one is the goose?")
+                            .setContentText(getString(R.string.java_task2_question1))
                             .show();
                 } else if (GlobalVariables.m02QuestionNo == 2) {
                     new SweetAlertDialog(Module02Activity.this)
                             .setTitleText(getString(R.string.picture_pointing))
-                            .setContentText("In these 4 pictures, which one is the pomegranate?")
+                            .setContentText(getString(R.string.java_task2_question2))
                             .show();
                 } else if (GlobalVariables.m02QuestionNo == 3) {
                     new SweetAlertDialog(Module02Activity.this)
                             .setTitleText(getString(R.string.picture_pointing))
-                            .setContentText("In these 4 pictures, which one is the bird?")
+                            .setContentText(getString(R.string.java_task2_question3))
                             .show();
                 } else if (GlobalVariables.m02QuestionNo == 4) {
                     new SweetAlertDialog(Module02Activity.this)
                             .setTitleText(getString(R.string.picture_pointing))
-                            .setContentText("In these 4 pictures, which one is the vegetable?")
+                            .setContentText(getString(R.string.java_task2_question4))
                             .show();
                 }
             }
@@ -320,7 +320,7 @@ public class Module02Activity extends AppCompatActivity {
             Intent intentModulesActivity = new Intent(Module02Activity.this, Module05Activity.class);
             Module02Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[5]) {
-            Intent intentModulesActivity = new Intent(Module02Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module02Activity.this, Module06Activity.class);
             Module02Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[6]) {
             Intent intentModulesActivity = new Intent(Module02Activity.this, ResultsActivity.class);

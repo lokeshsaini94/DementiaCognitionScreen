@@ -55,6 +55,7 @@ public class ResultsActivity extends AppCompatActivity {
     TextView m04Score4;
     TextView m05Score1;
     TextView m05Score2;
+    TextView m06Score1;
     TextView m08Score1;
     TextView m08Score2;
     TextView m08Score3;
@@ -98,6 +99,7 @@ public class ResultsActivity extends AppCompatActivity {
         results03 = (CardView) findViewById(R.id.m03_result);
         results04 = (CardView) findViewById(R.id.m04_result);
         results05 = (CardView) findViewById(R.id.m05_result);
+        results06 = (CardView) findViewById(R.id.m06_result);
         results08 = (CardView) findViewById(R.id.m08_result);
         results09 = (CardView) findViewById(R.id.m09_result);
         results10 = (CardView) findViewById(R.id.m10_result);
@@ -121,6 +123,7 @@ public class ResultsActivity extends AppCompatActivity {
         m04Score4 = (TextView) findViewById(R.id.m04_score4);
         m05Score1 = (TextView) findViewById(R.id.m05_score1);
         m05Score2 = (TextView) findViewById(R.id.m05_score2);
+        m06Score1 = (TextView) findViewById(R.id.m06_score1);
         m08Score1 = (TextView) findViewById(R.id.m08_score1);
         m08Score2 = (TextView) findViewById(R.id.m08_score2);
         m08Score3 = (TextView) findViewById(R.id.m08_score3);
@@ -204,6 +207,19 @@ public class ResultsActivity extends AppCompatActivity {
             data = "Task 05 " + getString(R.string.figure_copy) + (System.getProperty("line.separator"));
             data += "Question 1: " + Task5ToResult(GlobalVariables.m05Score[0]) + " - Time: " + GlobalVariables.m05TimeTaken[0] + (System.getProperty("line.separator"));
             data += "Question 2: " + Task5ToResult2(GlobalVariables.m05Score[1]) + " - Time: " + GlobalVariables.m05TimeTaken[1] + (System.getProperty("line.separator"));
+            data += "" + (System.getProperty("line.separator"));
+            SaveTextData(file, data);
+        }
+
+        if (GlobalVariables.modulesSelected[5]) {
+            results06.setVisibility(View.VISIBLE);
+            m06Score1.setText(String.valueOf((GlobalVariables.m06Score[0] + GlobalVariables.m06Score[1]) - GlobalVariables.m06Score[2]));
+
+            data = "Task 06 " + getString(R.string.trails) + (System.getProperty("line.separator"));
+            data += "Question 1: " + GlobalVariables.m06Score[0] + (System.getProperty("line.separator"));
+            data += "Question 2: " + GlobalVariables.m06Score[1] + (System.getProperty("line.separator"));
+            data += "Question 3: " + GlobalVariables.m06Score[2] + (System.getProperty("line.separator"));
+            data += "Task Result: " + ((GlobalVariables.m06Score[0] + GlobalVariables.m06Score[1]) - GlobalVariables.m06Score[2]) + (System.getProperty("line.separator"));
             data += "" + (System.getProperty("line.separator"));
             SaveTextData(file, data);
         }

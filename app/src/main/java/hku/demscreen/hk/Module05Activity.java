@@ -216,7 +216,7 @@ public class Module05Activity extends AppCompatActivity {
             public void onClick(View view) {
                 new SweetAlertDialog(Module05Activity.this)
                         .setTitleText(getString(R.string.figure_copy))
-                        .setContentText("Copy the Figure in the canvas below.")
+                        .setContentText(getString(R.string.java_task5_question))
                         .show();
             }
         });
@@ -313,7 +313,7 @@ public class Module05Activity extends AppCompatActivity {
     // Starts next selected Task
     private void nextModule() {
         if (GlobalVariables.modulesSelected[5]) {
-            Intent intentModulesActivity = new Intent(Module05Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module05Activity.this, Module06Activity.class);
             Module05Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[6]) {
             Intent intentModulesActivity = new Intent(Module05Activity.this, ResultsActivity.class);

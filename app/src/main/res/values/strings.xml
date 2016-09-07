@@ -6,8 +6,24 @@
 
     <string name="action_next">Next</string>
 
-    <string name="module_00">Practice Task</string>
+    <string name="java_permission_write_storage">Export data to the phone memory</string>
+    <string name="java_permission_record_audio">Record patient\'s answers</string>
 
+    <string name="name">Name</string>
+    <string name="age">Age</string>
+    <string name="enter_details_of_the_patient">Enter details of the patient</string>
+    <string name="username">Username</string>
+    <string name="id">ID</string>
+    <string name="sex">Sex</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+
+    <string name="java_input_name">Enter the patient\'s name</string>
+    <string name="java_input_age">Enter the patient\'s age</string>
+    <string name="java_input_sex">Enter the patient\'s Sex</string>
+
+    <string name="module_00">Practice Task</string>
+    <string name="practice_task">Practice Task</string>
     <string name="picture_naming">Picture Naming</string>
     <string name="picture_pointing">Picture Pointing</string>
     <string name="word_learning">Word Learning</string>
@@ -41,7 +57,7 @@
     <string name="module_04_question1">What is the year we are in now?</string>
     <string name="module_04_question2">Can you tell me the month?</string>
     <string name="module_04_question3">What is the date today?</string>
-    <string name="module_04_question4">Who is the current President?</string>
+    <string name="module_04_question4">Who is the current Chief Executive?</string>
 
     <string name="module_08_mcq1_word1">Bus</string>
     <string name="module_08_mcq1_word2">Motorbike</string>
@@ -68,16 +84,22 @@
     <string name="module_08_mcq5_word3">Triangle</string>
     <string name="module_08_mcq5_word4">Square</string>
 
-    <string name="radio_male">Male</string>
-    <string name="radio_female">Female</string>
-
-    <string name="title">Settings</string>
-
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="name">Name</string>
-    <string name="age">Age</string>
-    <string name="enter_details_of_the_patient">Enter details of the patient</string>
-    <string name="username">Username</string>
-    <string name="id">ID</string>
-    <string name="sex">Sex:</string>
+    <string name="java_task0_question">Tap on the circles!</string>
+    <string name="java_task1_question">What\'s in the picture?</string>
+    <string name="java_task2_question1">In these 4 pictures, which one is a duck?</string>
+    <string name="java_task2_question2">In these 4 pictures, which one is grapes?</string>
+    <string name="java_task2_question3">In these 4 pictures, which one is a bird?</string>
+    <string name="java_task2_question4">In these 4 pictures, which one is a vegetable?</string>
+    <string name="java_task3_question">Remember these 5 words and repeat them.</string>
+    <string name="java_task4_question">Answer the following questions.</string>
+    <string name="java_task5_question">Copy the Figure in the canvas below.</string>
+    <string name="java_task6_question1">Connect the circles going from small to large.</string>
+    <string name="java_task6_question2">Connect the squares going from large to small.</string>
+    <string name="java_task6_question3_1">Alternate between the shapes.\n</string>
+    <string name="java_task6_question3_2">From the largest square to the smallest circle, then to the next largest square to the next smallest circle.\n</string>
+    <string name="java_task6_question3_3">Continue through all the shapes.\n</string>
+    <string name="java_task8_question">Which of the words do you remember?</string>
+    <string name="java_task9_question">In these 4 pictures, which one do you remember from before?</string>
+    <string name="java_task10_question1">Tap on blue button for correct and yellow button for wrong</string>
+    <string name="java_task10_question2">Is this word one of the target words?</string>
 </resources>

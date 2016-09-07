@@ -56,6 +56,10 @@
             android:label="@string/figure_copy"
             android:parentActivityName=".ModulesActivity" />
         <activity
+            android:name=".Module06Activity"
+            android:label="@string/trails"
+            android:parentActivityName=".ModulesActivity" />
+        <activity
             android:name=".Module08Activity"
             android:label="@string/verbal_memory"
             android:parentActivityName=".ModulesActivity" />
