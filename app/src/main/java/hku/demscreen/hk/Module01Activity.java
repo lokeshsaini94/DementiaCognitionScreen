@@ -271,7 +271,7 @@ public class Module01Activity extends AppCompatActivity {
             Intent intentModulesActivity = new Intent(Module01Activity.this, Module06Activity.class);
             Module01Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[6]) {
-            Intent intentModulesActivity = new Intent(Module01Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module01Activity.this, Module07Activity.class);
             Module01Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[7]) {
             Intent intentModulesActivity = new Intent(Module01Activity.this, Module08Activity.class);

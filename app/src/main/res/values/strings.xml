@@ -98,6 +98,7 @@
     <string name="java_task6_question3_1">Alternate between the shapes.\n</string>
     <string name="java_task6_question3_2">From the largest square to the smallest circle, then to the next largest square to the next smallest circle.\n</string>
     <string name="java_task6_question3_3">Continue through all the shapes.\n</string>
+    <string name="java_task7_question">Guess where the dot may go next.</string>
     <string name="java_task8_question">Which of the words do you remember?</string>
     <string name="java_task9_question">In these 4 pictures, which one do you remember from before?</string>
     <string name="java_task10_question1">Tap on blue button for correct and yellow button for wrong</string>

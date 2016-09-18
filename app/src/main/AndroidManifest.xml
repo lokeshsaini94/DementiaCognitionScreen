@@ -60,6 +60,10 @@
             android:label="@string/trails"
             android:parentActivityName=".ModulesActivity" />
         <activity
+            android:name=".Module07Activity"
+            android:label="@string/rule_finding"
+            android:parentActivityName=".ModulesActivity" />
+        <activity
             android:name=".Module08Activity"
             android:label="@string/verbal_memory"
             android:parentActivityName=".ModulesActivity" />

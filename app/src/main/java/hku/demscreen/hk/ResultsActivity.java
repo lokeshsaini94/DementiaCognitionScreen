@@ -56,6 +56,10 @@ public class ResultsActivity extends AppCompatActivity {
     TextView m05Score1;
     TextView m05Score2;
     TextView m06Score1;
+    TextView m07Score1;
+    TextView m07Score2;
+    TextView m07Score3;
+    TextView m07Score4;
     TextView m08Score1;
     TextView m08Score2;
     TextView m08Score3;
@@ -100,6 +104,7 @@ public class ResultsActivity extends AppCompatActivity {
         results04 = (CardView) findViewById(R.id.m04_result);
         results05 = (CardView) findViewById(R.id.m05_result);
         results06 = (CardView) findViewById(R.id.m06_result);
+        results07 = (CardView) findViewById(R.id.m07_result);
         results08 = (CardView) findViewById(R.id.m08_result);
         results09 = (CardView) findViewById(R.id.m09_result);
         results10 = (CardView) findViewById(R.id.m10_result);
@@ -124,6 +129,10 @@ public class ResultsActivity extends AppCompatActivity {
         m05Score1 = (TextView) findViewById(R.id.m05_score1);
         m05Score2 = (TextView) findViewById(R.id.m05_score2);
         m06Score1 = (TextView) findViewById(R.id.m06_score1);
+        m07Score1 = (TextView) findViewById(R.id.m07_score1);
+        m07Score2 = (TextView) findViewById(R.id.m07_score2);
+        m07Score3 = (TextView) findViewById(R.id.m07_score3);
+        m07Score4 = (TextView) findViewById(R.id.m07_score4);
         m08Score1 = (TextView) findViewById(R.id.m08_score1);
         m08Score2 = (TextView) findViewById(R.id.m08_score2);
         m08Score3 = (TextView) findViewById(R.id.m08_score3);
@@ -179,6 +188,7 @@ public class ResultsActivity extends AppCompatActivity {
             data += "Question 2: " + intToResult(GlobalVariables.m03Score[1]) + (System.getProperty("line.separator"));
             data += "Question 3: " + intToResult(GlobalVariables.m03Score[2]) + (System.getProperty("line.separator"));
             data += "Question 4: " + intToResult(GlobalVariables.m03Score[3]) + (System.getProperty("line.separator"));
+            data += "Question 5: " + intToResult(GlobalVariables.m03Score[4]) + (System.getProperty("line.separator"));
             data += "" + (System.getProperty("line.separator"));
             SaveTextData(file, data);
         }
@@ -224,6 +234,22 @@ public class ResultsActivity extends AppCompatActivity {
             SaveTextData(file, data);
         }
 
+        if (GlobalVariables.modulesSelected[6]) {
+            results07.setVisibility(View.VISIBLE);
+            m07Score1.setText(String.valueOf(GlobalVariables.m07Score[0]));
+            m07Score2.setText(String.valueOf(GlobalVariables.m07Score[1]));
+            m07Score3.setText(String.valueOf(GlobalVariables.m07Score[2]));
+            m07Score4.setText(String.valueOf(GlobalVariables.m07Score[3]));
+
+            data = "Task 07 " + getString(R.string.rule_finding) + (System.getProperty("line.separator"));
+            data += "Question 1: " + intToResult(GlobalVariables.m07Score[0]) + (System.getProperty("line.separator"));
+            data += "Question 2: " + intToResult(GlobalVariables.m07Score[1]) + (System.getProperty("line.separator"));
+            data += "Question 3: " + intToResult(GlobalVariables.m07Score[2]) + (System.getProperty("line.separator"));
+            data += "Question 4: " + intToResult(GlobalVariables.m07Score[3]) + (System.getProperty("line.separator"));
+            data += "" + (System.getProperty("line.separator"));
+            SaveTextData(file, data);
+        }
+
         if (GlobalVariables.modulesSelected[7]) {
             results08.setVisibility(View.VISIBLE);
             m08Score1.setText(String.valueOf(GlobalVariables.m08Score[0]));
@@ -237,6 +263,7 @@ public class ResultsActivity extends AppCompatActivity {
             data += "Question 2: " + intToResult(GlobalVariables.m08Score[1]) + (System.getProperty("line.separator"));
             data += "Question 3: " + intToResult(GlobalVariables.m08Score[2]) + (System.getProperty("line.separator"));
             data += "Question 4: " + intToResult(GlobalVariables.m08Score[3]) + (System.getProperty("line.separator"));
+            data += "Question 5: " + intToResult(GlobalVariables.m08Score[4]) + (System.getProperty("line.separator"));
             data += "" + (System.getProperty("line.separator"));
             SaveTextData(file, data);
         }

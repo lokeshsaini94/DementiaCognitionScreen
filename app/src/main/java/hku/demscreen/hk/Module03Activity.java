@@ -340,7 +340,7 @@ public class Module03Activity extends AppCompatActivity {
             Intent intentModulesActivity = new Intent(Module03Activity.this, Module06Activity.class);
             Module03Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[6]) {
-            Intent intentModulesActivity = new Intent(Module03Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module03Activity.this, Module07Activity.class);
             Module03Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[7]) {
             Intent intentModulesActivity = new Intent(Module03Activity.this, Module08Activity.class);

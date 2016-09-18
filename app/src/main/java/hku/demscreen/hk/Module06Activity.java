@@ -405,7 +405,7 @@ public class Module06Activity extends AppCompatActivity {
     // Starts next selected Task
     private void nextModule() {
         if (GlobalVariables.modulesSelected[6]) {
-            Intent intentModulesActivity = new Intent(Module06Activity.this, ResultsActivity.class);
+            Intent intentModulesActivity = new Intent(Module06Activity.this, Module07Activity.class);
             Module06Activity.this.startActivity(intentModulesActivity);
         } else if (GlobalVariables.modulesSelected[7]) {
             Intent intentModulesActivity = new Intent(Module06Activity.this, Module08Activity.class);
