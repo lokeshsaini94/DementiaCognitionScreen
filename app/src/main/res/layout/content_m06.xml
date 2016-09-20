@@ -40,7 +40,7 @@
                 card_view:cardUseCompatPadding="true">
 
                 <RelativeLayout
-                    android:id="@+id/m06_canvas1"
+                    android:id="@+id/m06_canvas1_view_holder"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:visibility="gone">
@@ -52,12 +52,13 @@
                         android:src="@drawable/ic_trails1_2" />
 
                     <hku.demscreen.hk.SimpleDrawingView
+                        android:id="@+id/m06_canvas1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/m06_canvas2"
+                    android:id="@+id/m06_canvas2_view_holder"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:visibility="gone">
@@ -69,12 +70,13 @@
                         android:src="@drawable/ic_trails1_3" />
 
                     <hku.demscreen.hk.SimpleDrawingView
+                        android:id="@+id/m06_canvas2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/m06_canvas3"
+                    android:id="@+id/m06_canvas3_view_holder"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:visibility="gone">
@@ -86,12 +88,13 @@
                         android:src="@drawable/ic_trails2_2" />
 
                     <hku.demscreen.hk.SimpleDrawingView
+                        android:id="@+id/m06_canvas3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/m06_canvas4"
+                    android:id="@+id/m06_canvas4_view_holder"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:visibility="gone">
@@ -103,12 +106,13 @@
                         android:src="@drawable/ic_trails2_3" />
 
                     <hku.demscreen.hk.SimpleDrawingView
+                        android:id="@+id/m06_canvas4"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/m06_canvas5"
+                    android:id="@+id/m06_canvas5_view_holder"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:visibility="gone">
@@ -120,12 +124,13 @@
                         android:src="@drawable/ic_trails3_2" />
 
                     <hku.demscreen.hk.SimpleDrawingView
+                        android:id="@+id/m06_canvas5"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/m06_canvas6"
+                    android:id="@+id/m06_canvas6_view_holder"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:visibility="gone">
@@ -137,6 +142,7 @@
                         android:src="@drawable/ic_trails3_3" />
 
                     <hku.demscreen.hk.SimpleDrawingView
+                        android:id="@+id/m06_canvas6"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />
                 </RelativeLayout>

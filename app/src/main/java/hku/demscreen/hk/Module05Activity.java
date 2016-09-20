@@ -35,6 +35,7 @@ public class Module05Activity extends AppCompatActivity {
     ImageView score3;
     ImageView score4;
     ImageView info;
+    ImageView reset;
     // Question
     SimpleDrawingView canvas1;
     SimpleDrawingView canvas2;
@@ -49,9 +50,15 @@ public class Module05Activity extends AppCompatActivity {
             timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
             updatedTime = timeSwapBuff + timeInMilliseconds;
             int secs = (int) (timeInMilliseconds / 1000);
+            if (GlobalVariables.m05QuestionNo == 2) {
+                secs = secs - 30;
+            }
             int mins = secs / 60;
             secs = secs % 60;
             mins = mins % 60;
+            if (secs < 0) {
+                secs = 0;
+            }
             //int milliseconds = (int) (updatedTime % 1000);
             //+ ":" + String.format("%03d", milliseconds)
             timeTaken = String.format("%02d", mins) + ":" + String.format("%02d", secs);
@@ -66,6 +73,7 @@ public class Module05Activity extends AppCompatActivity {
 
         //Main screen
         info = (ImageView) findViewById(R.id.info_m05);
+        reset = (ImageView) findViewById(R.id.reset_m05);
         score0 = (ImageView) findViewById(R.id.score_0_m05);
         score1 = (ImageView) findViewById(R.id.score_1_m05);
         score2 = (ImageView) findViewById(R.id.score_2_m05);
@@ -82,6 +90,8 @@ public class Module05Activity extends AppCompatActivity {
         figure = findViewById(R.id.m05_card1);
 
         //Main screen
+
+        canvas2.setWillNotDraw(true);
 
         setViewModule();
 
@@ -220,6 +230,17 @@ public class Module05Activity extends AppCompatActivity {
                         .show();
             }
         });
+
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (GlobalVariables.m05QuestionNo == 1) {
+                    canvas1.clearCanvas();
+                } else if (GlobalVariables.m05QuestionNo == 2) {
+                    canvas2.clearCanvas();
+                }
+            }
+        });
     }
 
     // Increments question number and animates content view
@@ -266,6 +287,8 @@ public class Module05Activity extends AppCompatActivity {
             @Override
             public void run() {
                 figure.setVisibility(View.INVISIBLE);
+                canvas2.setWillNotDraw(false);
+                canvas2.clearCanvas();
             }
         }, 30000);
     }

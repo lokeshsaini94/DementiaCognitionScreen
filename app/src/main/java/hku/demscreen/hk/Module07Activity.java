@@ -22,8 +22,6 @@ public class Module07Activity extends AppCompatActivity {
     String Tag = "Module07Activity";
     Vibrator vibrator;
 
-    String fileName = "09 - Task 07 Question 1";
-
     // Main screen
     TextView questionNumber;
     ImageView scoreCorrect;

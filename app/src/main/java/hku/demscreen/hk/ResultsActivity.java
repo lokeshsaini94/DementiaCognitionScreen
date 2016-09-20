@@ -80,14 +80,14 @@ public class ResultsActivity extends AppCompatActivity {
 
         DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
         GlobalVariables.testTimeEnd = df.format(Calendar.getInstance().getTime());
-        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Dementia Cognition Screen/" + GlobalVariables.userName + GlobalVariables.userAge + GlobalVariables.userID + "/";
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Dementia Cognition Screen/" + GlobalVariables.userID + "_" + GlobalVariables.userInitials + "/";
         file = new File(path + "00 - Results" + ".txt");
         file.getParentFile().mkdirs(); //if the folder doesn't exists it's created
 
         data = "Patient's Name: " + GlobalVariables.userName + (System.getProperty("line.separator"));
-        data += "Patient's Age: " + GlobalVariables.userAge + (System.getProperty("line.separator"));
-        data += "Patient's Sex: " + GlobalVariables.userSex + (System.getProperty("line.separator"));
         data += "Patient's ID: " + GlobalVariables.userID + (System.getProperty("line.separator"));
+        data += "Patient's DOB: " + GlobalVariables.userAge + (System.getProperty("line.separator"));
+        data += "Patient's Sex: " + GlobalVariables.userSex + (System.getProperty("line.separator"));
         data += "Test Start Time: " + GlobalVariables.testTimeStart + (System.getProperty("line.separator"));
         data += "Test End Time: " + GlobalVariables.testTimeEnd + (System.getProperty("line.separator"));
         data += "" + (System.getProperty("line.separator"));
@@ -226,9 +226,9 @@ public class ResultsActivity extends AppCompatActivity {
             m06Score1.setText(String.valueOf((GlobalVariables.m06Score[0] + GlobalVariables.m06Score[1]) - GlobalVariables.m06Score[2]));
 
             data = "Task 06 " + getString(R.string.trails) + (System.getProperty("line.separator"));
-            data += "Question 1: " + GlobalVariables.m06Score[0] + (System.getProperty("line.separator"));
-            data += "Question 2: " + GlobalVariables.m06Score[1] + (System.getProperty("line.separator"));
-            data += "Question 3: " + GlobalVariables.m06Score[2] + (System.getProperty("line.separator"));
+            data += "Question 1: " + GlobalVariables.m06Score[0] + " - Time: " + GlobalVariables.m06TimeTaken[0] + (System.getProperty("line.separator"));
+            data += "Question 2: " + GlobalVariables.m06Score[1] + " - Time: " + GlobalVariables.m06TimeTaken[1] + (System.getProperty("line.separator"));
+            data += "Question 3: " + GlobalVariables.m06Score[2] + " - Time: " + GlobalVariables.m06TimeTaken[2] + (System.getProperty("line.separator"));
             data += "Task Result: " + ((GlobalVariables.m06Score[0] + GlobalVariables.m06Score[1]) - GlobalVariables.m06Score[2]) + (System.getProperty("line.separator"));
             data += "" + (System.getProperty("line.separator"));
             SaveTextData(file, data);

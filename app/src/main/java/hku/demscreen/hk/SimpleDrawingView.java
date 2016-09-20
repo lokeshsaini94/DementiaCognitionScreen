@@ -60,4 +60,10 @@ public class SimpleDrawingView extends View {
         postInvalidate();
         return true;
     }
+
+    // this is the method which will be invoked from main activity class for clearing whatever //is in the view/canvas
+    public void clearCanvas() {
+        path = new Path();
+        postInvalidate();
+    }
 }

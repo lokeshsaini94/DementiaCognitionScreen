@@ -2,6 +2,8 @@ package hku.demscreen.hk;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.Menu;
@@ -18,12 +20,17 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Module06Activity extends AppCompatActivity {
 
+    public String timeTaken;
     String Tag = "Module06Activity";
+    long timeInMilliseconds = 0L;
+    long timeSwapBuff = 0L;
+    long updatedTime = 0L;
     String fileName = "08 - Task 06 Question 1";
 
     // Main screen
     TextView questionNumber;
     ImageView info;
+    ImageView reset;
     ImageView scoreCorrect;
     SeekBar score;
     TextView scoreText;
@@ -34,12 +41,37 @@ public class Module06Activity extends AppCompatActivity {
     CardView cardView1;
     CardView cardView2;
     ImageView trailsDemo;
-    View canvas1;
-    View canvas2;
-    View canvas3;
-    View canvas4;
-    View canvas5;
-    View canvas6;
+    View canvas1ViewHolder;
+    View canvas2ViewHolder;
+    View canvas3ViewHolder;
+    View canvas4ViewHolder;
+    View canvas5ViewHolder;
+    View canvas6ViewHolder;
+
+    SimpleDrawingView canvas1;
+    SimpleDrawingView canvas2;
+    SimpleDrawingView canvas3;
+    SimpleDrawingView canvas4;
+    SimpleDrawingView canvas5;
+    SimpleDrawingView canvas6;
+
+    private long startTime = 0L;
+    private Handler customHandler = new Handler();
+    // Updates Timer continuously
+    public Runnable updateTimerThread = new Runnable() {
+        public void run() {
+            timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
+            updatedTime = timeSwapBuff + timeInMilliseconds;
+            int secs = (int) (timeInMilliseconds / 1000);
+            int mins = secs / 60;
+            secs = secs % 60;
+            mins = mins % 60;
+            //int milliseconds = (int) (updatedTime % 1000);
+            //+ ":" + String.format("%03d", milliseconds)
+            timeTaken = String.format("%02d", mins) + ":" + String.format("%02d", secs);
+            customHandler.postDelayed(this, 1000);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +80,7 @@ public class Module06Activity extends AppCompatActivity {
 
         //Main screen
         info = (ImageView) findViewById(R.id.info_m06);
+        reset = (ImageView) findViewById(R.id.reset_m06);
         scoreCorrect = (ImageView) findViewById(R.id.score_correct_m06);
         score = (SeekBar) findViewById(R.id.m06_seekbar);
         scoreText = (TextView) findViewById(R.id.score_m06);
@@ -57,12 +90,19 @@ public class Module06Activity extends AppCompatActivity {
         cardView1 = (CardView) findViewById(R.id.m06_card1);
         cardView2 = (CardView) findViewById(R.id.m06_card2);
         trailsDemo = (ImageView) findViewById(R.id.m06_figure);
-        canvas1 = findViewById(R.id.m06_canvas1);
-        canvas2 = findViewById(R.id.m06_canvas2);
-        canvas3 = findViewById(R.id.m06_canvas3);
-        canvas4 = findViewById(R.id.m06_canvas4);
-        canvas5 = findViewById(R.id.m06_canvas5);
-        canvas6 = findViewById(R.id.m06_canvas6);
+        canvas1ViewHolder = findViewById(R.id.m06_canvas1_view_holder);
+        canvas2ViewHolder = findViewById(R.id.m06_canvas2_view_holder);
+        canvas3ViewHolder = findViewById(R.id.m06_canvas3_view_holder);
+        canvas4ViewHolder = findViewById(R.id.m06_canvas4_view_holder);
+        canvas5ViewHolder = findViewById(R.id.m06_canvas5_view_holder);
+        canvas6ViewHolder = findViewById(R.id.m06_canvas6_view_holder);
+        canvas1 = (SimpleDrawingView) findViewById(R.id.m06_canvas1);
+        canvas2 = (SimpleDrawingView) findViewById(R.id.m06_canvas2);
+        canvas3 = (SimpleDrawingView) findViewById(R.id.m06_canvas3);
+        canvas4 = (SimpleDrawingView) findViewById(R.id.m06_canvas4);
+        canvas5 = (SimpleDrawingView) findViewById(R.id.m06_canvas5);
+        canvas6 = (SimpleDrawingView) findViewById(R.id.m06_canvas6);
+
         previousQuestion = (ImageView) findViewById(R.id.m06_previous_question);
         nextQuestion = (ImageView) findViewById(R.id.m06_next_question);
 
@@ -92,6 +132,7 @@ public class Module06Activity extends AppCompatActivity {
         if (id == R.id.action_next) {
             View rootView = getWindow().getDecorView().getRootView();
             GlobalVariables.saveScreenshot(rootView, fileName);
+            UpdateTimerValue();
             nextModule();
             return true;
         }
@@ -133,6 +174,7 @@ public class Module06Activity extends AppCompatActivity {
             public void onClick(View view) {
                 View rootView = getWindow().getDecorView().getRootView();
                 GlobalVariables.saveScreenshot(rootView, fileName);
+                UpdateTimerValue();
                 onCorrect();
             }
         });
@@ -159,6 +201,25 @@ public class Module06Activity extends AppCompatActivity {
                                     "\n" +
                                     getString(R.string.java_task6_question3_3))
                             .show();
+                }
+            }
+        });
+
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (GlobalVariables.m06QuestionNo == 2) {
+                    canvas1.clearCanvas();
+                } else if (GlobalVariables.m06QuestionNo == 3) {
+                    canvas2.clearCanvas();
+                } else if (GlobalVariables.m06QuestionNo == 5) {
+                    canvas3.clearCanvas();
+                } else if (GlobalVariables.m06QuestionNo == 6) {
+                    canvas4.clearCanvas();
+                } else if (GlobalVariables.m06QuestionNo == 8) {
+                    canvas5.clearCanvas();
+                } else if (GlobalVariables.m06QuestionNo == 9) {
+                    canvas6.clearCanvas();
                 }
             }
         });
@@ -234,6 +295,7 @@ public class Module06Activity extends AppCompatActivity {
             trailsDemo.setImageResource(R.drawable.ic_trails1_1);
             score.setVisibility(View.GONE);
             scoreText.setVisibility(View.GONE);
+            reset.setVisibility(View.GONE);
             questionNumber.setText("1/1");
             fileName = "08 - Task 06 Question 1 A Rule";
         } else if (GlobalVariables.m06QuestionNo == 2) {
@@ -241,14 +303,15 @@ public class Module06Activity extends AppCompatActivity {
             nextQuestion.setVisibility(View.VISIBLE);
             cardView1.setVisibility(View.GONE);
             cardView2.setVisibility(View.VISIBLE);
-            canvas1.setVisibility(View.VISIBLE);
-            canvas2.setVisibility(View.GONE);
-            canvas3.setVisibility(View.GONE);
-            canvas4.setVisibility(View.GONE);
-            canvas5.setVisibility(View.GONE);
-            canvas6.setVisibility(View.GONE);
+            canvas1ViewHolder.setVisibility(View.VISIBLE);
+            canvas2ViewHolder.setVisibility(View.GONE);
+            canvas3ViewHolder.setVisibility(View.GONE);
+            canvas4ViewHolder.setVisibility(View.GONE);
+            canvas5ViewHolder.setVisibility(View.GONE);
+            canvas6ViewHolder.setVisibility(View.GONE);
             score.setVisibility(View.GONE);
             scoreText.setVisibility(View.GONE);
+            reset.setVisibility(View.VISIBLE);
             questionNumber.setText("1/1");
             fileName = "08 - Task 06 Question 1 B User";
         } else if (GlobalVariables.m06QuestionNo == 3) {
@@ -256,12 +319,12 @@ public class Module06Activity extends AppCompatActivity {
             nextQuestion.setVisibility(View.VISIBLE);
             cardView1.setVisibility(View.GONE);
             cardView2.setVisibility(View.VISIBLE);
-            canvas1.setVisibility(View.GONE);
-            canvas2.setVisibility(View.VISIBLE);
-            canvas3.setVisibility(View.GONE);
-            canvas4.setVisibility(View.GONE);
-            canvas5.setVisibility(View.GONE);
-            canvas6.setVisibility(View.GONE);
+            canvas1ViewHolder.setVisibility(View.GONE);
+            canvas2ViewHolder.setVisibility(View.VISIBLE);
+            canvas3ViewHolder.setVisibility(View.GONE);
+            canvas4ViewHolder.setVisibility(View.GONE);
+            canvas5ViewHolder.setVisibility(View.GONE);
+            canvas6ViewHolder.setVisibility(View.GONE);
             score.setVisibility(View.VISIBLE);
             scoreText.setVisibility(View.VISIBLE);
             if (!questionDoneOnce[0]) {
@@ -269,8 +332,11 @@ public class Module06Activity extends AppCompatActivity {
                 scoreText.setText("" + 0);
                 questionDoneOnce[0] = true;
             }
+            reset.setVisibility(View.VISIBLE);
             questionNumber.setText("1/1");
             fileName = "08 - Task 06 Question 1 C Patient";
+            StopTimer();
+            StartTimer();
         } else if (GlobalVariables.m06QuestionNo == 4) {
             previousQuestion.setVisibility(View.VISIBLE);
             nextQuestion.setVisibility(View.VISIBLE);
@@ -279,6 +345,7 @@ public class Module06Activity extends AppCompatActivity {
             trailsDemo.setImageResource(R.drawable.ic_trails2_1);
             score.setVisibility(View.GONE);
             scoreText.setVisibility(View.GONE);
+            reset.setVisibility(View.GONE);
             questionNumber.setText("2/2");
             fileName = "08 - Task 06 Question 2 A Rule";
         } else if (GlobalVariables.m06QuestionNo == 5) {
@@ -286,14 +353,15 @@ public class Module06Activity extends AppCompatActivity {
             nextQuestion.setVisibility(View.VISIBLE);
             cardView1.setVisibility(View.GONE);
             cardView2.setVisibility(View.VISIBLE);
-            canvas1.setVisibility(View.GONE);
-            canvas2.setVisibility(View.GONE);
-            canvas3.setVisibility(View.VISIBLE);
-            canvas4.setVisibility(View.GONE);
-            canvas5.setVisibility(View.GONE);
-            canvas6.setVisibility(View.GONE);
+            canvas1ViewHolder.setVisibility(View.GONE);
+            canvas2ViewHolder.setVisibility(View.GONE);
+            canvas3ViewHolder.setVisibility(View.VISIBLE);
+            canvas4ViewHolder.setVisibility(View.GONE);
+            canvas5ViewHolder.setVisibility(View.GONE);
+            canvas6ViewHolder.setVisibility(View.GONE);
             score.setVisibility(View.GONE);
             scoreText.setVisibility(View.GONE);
+            reset.setVisibility(View.VISIBLE);
             questionNumber.setText("2/2");
             fileName = "08 - Task 06 Question 2 B User";
         } else if (GlobalVariables.m06QuestionNo == 6) {
@@ -301,12 +369,12 @@ public class Module06Activity extends AppCompatActivity {
             nextQuestion.setVisibility(View.VISIBLE);
             cardView1.setVisibility(View.GONE);
             cardView2.setVisibility(View.VISIBLE);
-            canvas1.setVisibility(View.GONE);
-            canvas2.setVisibility(View.GONE);
-            canvas3.setVisibility(View.GONE);
-            canvas4.setVisibility(View.VISIBLE);
-            canvas5.setVisibility(View.GONE);
-            canvas6.setVisibility(View.GONE);
+            canvas1ViewHolder.setVisibility(View.GONE);
+            canvas2ViewHolder.setVisibility(View.GONE);
+            canvas3ViewHolder.setVisibility(View.GONE);
+            canvas4ViewHolder.setVisibility(View.VISIBLE);
+            canvas5ViewHolder.setVisibility(View.GONE);
+            canvas6ViewHolder.setVisibility(View.GONE);
             score.setVisibility(View.VISIBLE);
             scoreText.setVisibility(View.VISIBLE);
             if (!questionDoneOnce[1]) {
@@ -314,8 +382,11 @@ public class Module06Activity extends AppCompatActivity {
                 scoreText.setText("" + 0);
                 questionDoneOnce[1] = true;
             }
+            reset.setVisibility(View.VISIBLE);
             questionNumber.setText("2/2");
             fileName = "08 - Task 06 Question 2 C Patient";
+            StopTimer();
+            StartTimer();
         } else if (GlobalVariables.m06QuestionNo == 7) {
             previousQuestion.setVisibility(View.VISIBLE);
             nextQuestion.setVisibility(View.VISIBLE);
@@ -324,6 +395,7 @@ public class Module06Activity extends AppCompatActivity {
             trailsDemo.setImageResource(R.drawable.ic_trails3_1);
             score.setVisibility(View.GONE);
             scoreText.setVisibility(View.GONE);
+            reset.setVisibility(View.GONE);
             questionNumber.setText("3/3");
             fileName = "08 - Task 06 Question 3 A Rule";
         } else if (GlobalVariables.m06QuestionNo == 8) {
@@ -331,14 +403,15 @@ public class Module06Activity extends AppCompatActivity {
             nextQuestion.setVisibility(View.VISIBLE);
             cardView1.setVisibility(View.GONE);
             cardView2.setVisibility(View.VISIBLE);
-            canvas1.setVisibility(View.GONE);
-            canvas2.setVisibility(View.GONE);
-            canvas3.setVisibility(View.GONE);
-            canvas4.setVisibility(View.GONE);
-            canvas5.setVisibility(View.VISIBLE);
-            canvas6.setVisibility(View.GONE);
+            canvas1ViewHolder.setVisibility(View.GONE);
+            canvas2ViewHolder.setVisibility(View.GONE);
+            canvas3ViewHolder.setVisibility(View.GONE);
+            canvas4ViewHolder.setVisibility(View.GONE);
+            canvas5ViewHolder.setVisibility(View.VISIBLE);
+            canvas6ViewHolder.setVisibility(View.GONE);
             score.setVisibility(View.GONE);
             scoreText.setVisibility(View.GONE);
+            reset.setVisibility(View.VISIBLE);
             questionNumber.setText("3/3");
             fileName = "08 - Task 06 Question 3 B User";
         } else if (GlobalVariables.m06QuestionNo == 9) {
@@ -346,12 +419,12 @@ public class Module06Activity extends AppCompatActivity {
             nextQuestion.setVisibility(View.GONE);
             cardView1.setVisibility(View.GONE);
             cardView2.setVisibility(View.VISIBLE);
-            canvas1.setVisibility(View.GONE);
-            canvas2.setVisibility(View.GONE);
-            canvas3.setVisibility(View.GONE);
-            canvas4.setVisibility(View.GONE);
-            canvas5.setVisibility(View.GONE);
-            canvas6.setVisibility(View.VISIBLE);
+            canvas1ViewHolder.setVisibility(View.GONE);
+            canvas2ViewHolder.setVisibility(View.GONE);
+            canvas3ViewHolder.setVisibility(View.GONE);
+            canvas4ViewHolder.setVisibility(View.GONE);
+            canvas5ViewHolder.setVisibility(View.GONE);
+            canvas6ViewHolder.setVisibility(View.VISIBLE);
             score.setVisibility(View.VISIBLE);
             scoreText.setVisibility(View.VISIBLE);
             if (!questionDoneOnce[2]) {
@@ -359,8 +432,11 @@ public class Module06Activity extends AppCompatActivity {
                 scoreText.setText("" + 0);
                 questionDoneOnce[2] = true;
             }
+            reset.setVisibility(View.VISIBLE);
             questionNumber.setText("3/3");
             fileName = "08 - Task 06 Question 3 C Patient";
+            StopTimer();
+            StartTimer();
         }
     }
 
@@ -400,6 +476,32 @@ public class Module06Activity extends AppCompatActivity {
         YoYo.with(Techniques.SlideInRight)
                 .duration(500)
                 .playOn(findViewById(R.id.content_m06));
+    }
+
+    // Starts Timer
+    public void StartTimer() {
+        startTime = SystemClock.uptimeMillis();
+        customHandler.postDelayed(updateTimerThread, 0);
+    }
+
+    // Stops Timer
+    public void StopTimer() {
+        timeSwapBuff += timeInMilliseconds;
+        customHandler.removeCallbacks(updateTimerThread);
+    }
+
+    // Updates Timer value for each patient's question.
+    public void UpdateTimerValue() {
+        if (GlobalVariables.m06QuestionNo == 3) {
+            StopTimer();
+            GlobalVariables.m06TimeTaken[0] = "" + timeTaken;
+        } else if (GlobalVariables.m06QuestionNo == 6) {
+            StopTimer();
+            GlobalVariables.m06TimeTaken[1] = "" + timeTaken;
+        } else if (GlobalVariables.m06QuestionNo == 9) {
+            StopTimer();
+            GlobalVariables.m06TimeTaken[2] = "" + timeTaken;
+        }
     }
 
     // Starts next selected Task

@@ -1,6 +1,8 @@
 package hku.demscreen.hk;
 
 import android.Manifest;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,9 +15,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.ayz4sci.androidfactory.permissionhelper.PermissionHelper;
 import com.daimajia.androidanimations.library.Techniques;
@@ -26,12 +30,25 @@ import pl.tajchert.nammu.PermissionCallback;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    static final int DIALOG_ID = 0;
+    int mYear, mMonth, mDay;
     EditText userName;
-    EditText userAge;
     EditText userId;
+    TextView userAge;
     RadioButton userMale;
     RadioButton userFemale;
     RadioGroup userSex;
+
+    // Gets and sets date
+    private DatePickerDialog.OnDateSetListener dPickerListner = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+            mYear = i;
+            mMonth = i1 + 1;
+            mDay = i2;
+            userAge.setText(mDay + "/" + mMonth + "/" + mYear);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +56,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         userName = (EditText) findViewById(R.id.user_name);
-        userAge = (EditText) findViewById(R.id.user_age);
+        userAge = (TextView) findViewById(R.id.user_age);
         userId = (EditText) findViewById(R.id.user_id);
         userMale = (RadioButton) findViewById(R.id.radioMale);
         userFemale = (RadioButton) findViewById(R.id.radioFemale);
@@ -49,6 +66,13 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        userAge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog(DIALOG_ID);
+            }
+        });
 
         userMale.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,8 +96,10 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 String mUserName = userName.getText().toString();
                 String mUserAge = userAge.getText().toString();
+                String mUserId = userId.getText().toString();
                 Boolean nameEmpty = mUserName.matches("");
-                Boolean ageEmpty = mUserAge.matches("");
+                Boolean ageEmpty = mUserAge.matches("DD/MM/YYYY");
+                Boolean idEmpty = mUserId.matches("");
                 Boolean sexEmpty = (userSex.getCheckedRadioButtonId() == -1);
 
                 if (nameEmpty) {
@@ -85,8 +111,14 @@ public class MainActivity extends AppCompatActivity
                 if (ageEmpty) {
                     YoYo.with(Techniques.Shake)
                             .duration(700)
-                            .playOn(findViewById(R.id.age_text_input_layout));
+                            .playOn(findViewById(R.id.age_group_text));
                     userAge.setError(getString(R.string.java_input_age));
+                }
+                if (idEmpty) {
+                    YoYo.with(Techniques.Shake)
+                            .duration(700)
+                            .playOn(findViewById(R.id.id_text_input_layout));
+                    userId.setError(getString(R.string.java_input_id));
                 }
                 if (sexEmpty) {
                     YoYo.with(Techniques.Shake)
@@ -94,11 +126,11 @@ public class MainActivity extends AppCompatActivity
                             .playOn(findViewById(R.id.sex_radio_group_text));
                     userFemale.setError(getString(R.string.java_input_sex));
                 }
-                if (!nameEmpty && !ageEmpty && !sexEmpty) {
+                if (!nameEmpty && !ageEmpty && !sexEmpty && !idEmpty) {
                     GlobalVariables.userName = userName.getText().toString();
-                    int x = Integer.parseInt(userAge.getText().toString());
-                    GlobalVariables.userAge = x;
+                    GlobalVariables.userInitials = getInitials(GlobalVariables.userName);
                     GlobalVariables.userID = userId.getText().toString();
+                    GlobalVariables.userAge = mDay + "/" + mMonth + "/" + mYear;
                     Intent intentModulesActivity = new Intent(MainActivity.this, ModulesActivity.class);
                     MainActivity.this.startActivity(intentModulesActivity);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -116,6 +148,16 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         requestPermission();
+    }
+
+    // Created DatePicker Dialog
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        if (id == DIALOG_ID) {
+            return new DatePickerDialog(this, dPickerListner, mYear, mMonth, mDay);
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -175,5 +217,14 @@ public class MainActivity extends AppCompatActivity
         permissionHelper.customiseUI(R.color.color_primary, ContextCompat.getDrawable(getApplicationContext(), R.mipmap.ic_launcher));
         permissionHelper.getNotAllowButton().setVisibility(View.INVISIBLE);
         permissionHelper.getBackButton().setVisibility(View.INVISIBLE);
+    }
+
+    public String getInitials(String text) {
+        String initials = "";
+        text = text.replaceAll("[.,]", ""); // Replace dots, etc (optional)
+        for (String s : text.split(" ")) {
+            initials += s.charAt(0);
+        }
+        return initials;
     }
 }

@@ -16,7 +16,8 @@ public class GlobalVariables extends Application {
     public static String testTimeStart = "";
     public static String testTimeEnd = "";
     public static String userName = "";
-    public static int userAge = 0;
+    public static String userInitials = "";
+    public static String userAge = "DD/MM/YYYY";
     public static String userID = "";
     public static String userSex = "";
     public static boolean[] modulesSelected = {true, true, true, true, true, true, true, true, true, true};
@@ -43,6 +44,7 @@ public class GlobalVariables extends Application {
 
 
     public static String[] m05TimeTaken = {"", ""};
+    public static String[] m06TimeTaken = {"", "", ""};
     public static int m07MovesCount = 0;
     public static int m07CurrentFigure = 1;
     public static int m07PreviousFigure = 2;
@@ -64,7 +66,7 @@ public class GlobalVariables extends Application {
         Bitmap bitmap = rootView.getDrawingCache();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 80, baos);
-        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Dementia Cognition Screen/" + GlobalVariables.userName + GlobalVariables.userAge + GlobalVariables.userID + "/";
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Dementia Cognition Screen/" + GlobalVariables.userID + "_" + GlobalVariables.userInitials + "/";
         File file = new File(path + fileName + ".jpeg");
         file.getParentFile().mkdirs(); //if the folder doesn't exists it's created
 

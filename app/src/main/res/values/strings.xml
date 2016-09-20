@@ -10,7 +10,7 @@
     <string name="java_permission_record_audio">Record patient\'s answers</string>
 
     <string name="name">Name</string>
-    <string name="age">Age</string>
+    <string name="age">DOB</string>
     <string name="enter_details_of_the_patient">Enter details of the patient</string>
     <string name="username">Username</string>
     <string name="id">ID</string>
@@ -20,6 +20,7 @@
 
     <string name="java_input_name">Enter the patient\'s name</string>
     <string name="java_input_age">Enter the patient\'s age</string>
+    <string name="java_input_id">Enter the patient\'s id</string>
     <string name="java_input_sex">Enter the patient\'s Sex</string>
 
     <string name="module_00">Practice Task</string>

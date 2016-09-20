@@ -43,7 +43,7 @@
 
                 <SeekBar
                     android:id="@+id/m06_seekbar"
-                    android:layout_width="@dimen/_100sdp"
+                    android:layout_width="@dimen/_80sdp"
                     android:layout_height="wrap_content"
                     android:max="6"
                     android:progress="0"
@@ -53,7 +53,6 @@
                     android:id="@+id/score_m06"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_small"
                     android:layout_marginRight="@dimen/margin_small"
                     android:text="0"
                     android:textColor="@color/text_light"
@@ -77,6 +76,14 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_info_white" />
+
+            <ImageView
+                android:id="@+id/reset_m06"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/info_m06"
+                android:src="@drawable/ic_replay_white" />
 
         </RelativeLayout>
 
