@@ -86,12 +86,12 @@
     <string name="module_08_mcq5_word4">Square</string>
 
     <string name="java_task0_question">Tap on the circles!</string>
-    <string name="java_task1_question">What\'s in the picture?</string>
-    <string name="java_task2_question1">In these 4 pictures, which one is a duck?</string>
-    <string name="java_task2_question2">In these 4 pictures, which one is grapes?</string>
-    <string name="java_task2_question3">In these 4 pictures, which one is a bird?</string>
-    <string name="java_task2_question4">In these 4 pictures, which one is a vegetable?</string>
-    <string name="java_task3_question">Remember these 5 words and repeat them.</string>
+    <string name="java_task1_question">We will start with a series of pictures shown on this screen.\nYour task is to tell me what each one is.</string>
+    <string name="java_task2_question1">Tap the duck</string>
+    <string name="java_task2_question2">Tap the grapes</string>
+    <string name="java_task2_question3">Tap the bird</string>
+    <string name="java_task2_question4">Tap the vegetable</string>
+    <string name="java_task3_question">I will read you some words. Please try to remember them.</string>
     <string name="java_task4_question">Answer the following questions.</string>
     <string name="java_task5_question">Copy the Figure in the canvas below.</string>
     <string name="java_task6_question1">Connect the circles going from small to large.</string>
@@ -100,8 +100,8 @@
     <string name="java_task6_question3_2">From the largest square to the smallest circle, then to the next largest square to the next smallest circle.\n</string>
     <string name="java_task6_question3_3">Continue through all the shapes.\n</string>
     <string name="java_task7_question">Guess where the dot may go next.</string>
-    <string name="java_task8_question">Which of the words do you remember?</string>
-    <string name="java_task9_question">In these 4 pictures, which one do you remember from before?</string>
+    <string name="java_task8_question">Tell me the words you had to remember</string>
+    <string name="java_task9_question">Which picture did you see before?</string>
     <string name="java_task10_question1">Tap on blue button for correct and yellow button for wrong</string>
     <string name="java_task10_question2">Is this word one of the target words?</string>
 </resources>

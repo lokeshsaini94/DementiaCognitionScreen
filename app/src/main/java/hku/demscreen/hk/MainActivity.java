@@ -3,7 +3,10 @@ package hku.demscreen.hk;
 import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -11,8 +14,10 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
@@ -20,17 +25,24 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ayz4sci.androidfactory.permissionhelper.PermissionHelper;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+
+import java.util.Locale;
 
 import pl.tajchert.nammu.PermissionCallback;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    static final int DIALOG_ID = 0;
+    static final int DATE_PICKER_DIALOG_ID = 0;
+    static final int LANGUAGE_DIALOG_ID = 1;
+    final CharSequence[] language_radio = {"English", "Chinese"};
+    Locale myLocale;
+
     int mYear, mMonth, mDay;
     EditText userName;
     EditText userId;
@@ -70,7 +82,7 @@ public class MainActivity extends AppCompatActivity
         userAge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog(DIALOG_ID);
+                showDialog(DATE_PICKER_DIALOG_ID);
             }
         });
 
@@ -150,11 +162,31 @@ public class MainActivity extends AppCompatActivity
         requestPermission();
     }
 
-    // Created DatePicker Dialog
+    // Created Dialog for DatePicker and Language selector
     @Override
     protected Dialog onCreateDialog(int id) {
-        if (id == DIALOG_ID) {
+        if (id == DATE_PICKER_DIALOG_ID) {
             return new DatePickerDialog(this, dPickerListner, mYear, mMonth, mDay);
+        } else if (id == LANGUAGE_DIALOG_ID) {
+            AlertDialog.Builder builder2 = new AlertDialog.Builder(MainActivity.this)
+                    .setTitle("Select the Language")
+                    .setSingleChoiceItems(language_radio, -1, new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            if (language_radio[which] == "English") {
+                                setLocale("en");
+                            } else if (language_radio[which] == "Chinese") {
+                                setLocale("zh");
+                            }
+                            Toast.makeText(getApplicationContext(),language_radio[which] + " language selected.", Toast.LENGTH_SHORT).show();
+                            //dismissing the dialog when the user makes a selection.
+                            dialog.dismiss();
+                        }
+                    });
+            AlertDialog alertdialog2 = builder2.create();
+            return alertdialog2;
         } else {
             return null;
         }
@@ -182,10 +214,8 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_tutorial) {
-            // Handle the item action
-        } else if (id == R.id.nav_settings) {
-            // Handle the item action
+        if (id == R.id.nav_language) {
+            showDialog(LANGUAGE_DIALOG_ID);
         } else if (id == R.id.nav_feedback) {
             // Handle the item action
         } else if (id == R.id.nav_aboutus) {
@@ -197,12 +227,27 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    // Sets Locale (Language for the app)
+    public void setLocale(String lang) {
+        myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+//        Intent refresh = new Intent(this, MainActivity.class);
+//        startActivity(refresh);
+//        finish();
+    }
+
+    //Requests required Permissions
     private void requestPermission() {
         final PermissionHelper permissionHelper = PermissionHelper.getInstance(this);
         permissionHelper.verifyPermission(
                 new String[]{getString(R.string.java_permission_write_storage), getString(R.string.java_permission_record_audio)},
                 new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO},
                 new PermissionCallback() {
+
                     @Override
                     public void permissionGranted() {
 //                        Toast.makeText(getApplicationContext(), "Great!", Toast.LENGTH_SHORT).show();
@@ -219,6 +264,7 @@ public class MainActivity extends AppCompatActivity
         permissionHelper.getBackButton().setVisibility(View.INVISIBLE);
     }
 
+    // Returns Initials of the name
     public String getInitials(String text) {
         String initials = "";
         text = text.replaceAll("[.,]", ""); // Replace dots, etc (optional)

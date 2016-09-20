@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Arrays;
 
@@ -103,6 +102,7 @@ public class Module07Activity extends AppCompatActivity {
         figure1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 trueIfCorrectGuessFigure1();
                 onTwoConsecutiveCorrects();
                 mainFunctions();
@@ -112,6 +112,7 @@ public class Module07Activity extends AppCompatActivity {
         figure2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 trueIfCorrectGuessFigure2();
                 onTwoConsecutiveCorrects();
                 mainFunctions();
@@ -121,6 +122,7 @@ public class Module07Activity extends AppCompatActivity {
         figure3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 trueIfCorrectGuessFigure3();
                 onTwoConsecutiveCorrects();
                 mainFunctions();
@@ -130,6 +132,7 @@ public class Module07Activity extends AppCompatActivity {
         figure4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 trueIfCorrectGuessFigure4();
                 onTwoConsecutiveCorrects();
                 mainFunctions();
@@ -197,6 +200,7 @@ public class Module07Activity extends AppCompatActivity {
             GlobalVariables.m07MovesCount = 40;
             GlobalVariables.m07Score[3] = 1;
         }
+        setViewModule();
     }
 
     // Initiates next move
@@ -260,7 +264,6 @@ public class Module07Activity extends AppCompatActivity {
 
     // Sets views for all questions
     private void setViewModule() {
-        Toast.makeText(getApplicationContext(), "" + GlobalVariables.m07MovesCount, Toast.LENGTH_SHORT).show();
         if (GlobalVariables.m07QuestionNo == 0) {
             scoreCorrect.setVisibility(View.VISIBLE);
             figure1.setClickable(false);

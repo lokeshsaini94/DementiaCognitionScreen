@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dementia Cognition Screen</string>
+    <string name="module_03_word1">單車</string>
+    <string name="module_03_word2">薄霧</string>
+    <string name="module_03_word3">衣櫃</string>
+    <string name="module_03_word4">教師</string>
+    <string name="module_03_word5">長方形</string>
+    <string name="module_04_question1">而家係邊一年？</string>
+    <string name="module_04_question2">而家係咩月份？</string>
+    <string name="module_04_question3">今日係幾多號？</string>
+    <string name="module_04_question4">而家嘅特首係邊個？</string>
+    <string name="module_08_mcq1_word1">巴士</string>
+    <string name="module_08_mcq1_word2">電單車</string>
+    <string name="module_08_mcq1_word3">單車</string>
+    <string name="module_08_mcq1_word4">手推車</string>
+    <string name="module_08_mcq2_word1">濃霧</string>
+    <string name="module_08_mcq2_word2">風暴</string>
+    <string name="module_08_mcq2_word3">微雨</string>
+    <string name="module_08_mcq2_word4">薄霧</string>
+    <string name="module_08_mcq3_word1">衣櫃</string>
+    <string name="module_08_mcq3_word2">沙發</string>
+    <string name="module_08_mcq3_word3">櫥櫃</string>
+    <string name="module_08_mcq3_word4">餐桌</string>
+    <string name="module_08_mcq4_word1">醫生</string>
+    <string name="module_08_mcq4_word2">教師</string>
+    <string name="module_08_mcq4_word3">廚師</string>
+    <string name="module_08_mcq4_word4">護士</string>
+    <string name="module_08_mcq5_word1">圓形</string>
+    <string name="module_08_mcq5_word2">長方形</string>
+    <string name="module_08_mcq5_word3">三角形</string>
+    <string name="module_08_mcq5_word4">正方形</string>
+    <string name="java_task2_question1">呢四幅圖入面，可唔可以指俾我睇邊一隻係鴨？</string>
+    <string name="java_task2_question2">呢四幅圖入面，可唔可以指俾我睇邊一個係葡萄/提子？</string>
+    <string name="java_task2_question3">呢四幅圖入面，可唔可以指俾我睇邊一隻係雀？</string>
+    <string name="java_task2_question4">呢四幅圖入面，可唔可以指俾我睇邊一個係菜？</string>
+    <string name="java_task1_question">我會俾一啲圖畫你睇。\\n你話俾我知佢哋係啲咩嚟。</string>
+    <string name="java_task3_question">我而家會讀一啲詞語俾你聽。請嘗試記住佢哋。</string>
+    <string name="java_task6_question1">你可唔可以將啲圓形由細到大連起嚟，好似咁？</string>
+    <string name="java_task6_question2">你可唔可以將啲正方形由大到細連起嚟，好似咁？</string>
+    <string name="java_task6_question3_1">輪流梅花間竹咁連起啲圓形同正方形。</string>
+    <string name="java_task6_question3_2">由最大嘅正方形到最細嘅圓形，然後由第二大嘅正方形到第二細嘅圓形。</string>
+    <string name="java_task6_question3_3">繼續完成哂所有圖形。</string>
+    <string name="java_task7_question">預測紅色圓點下一步會走去邊</string>
+    <string name="java_task8_question">記唔記得我之前讀過一啲字俾你聽？可唔可以話俾我聽你要記住邊啲字？</string>
+    <string name="java_task9_question">你之前見過邊一幅圖？</string>
+</resources>
