@@ -62,9 +62,9 @@ public class Module07Activity extends AppCompatActivity {
 
         GlobalVariables.m07MovesCount = 0;
         Arrays.fill(GlobalVariables.m07TappedFigure, false);
-        mainFunctions();
 
         mainQuestion();
+        setViewModule();
 
         figure1.setClickable(false);
         figure2.setClickable(false);
@@ -159,45 +159,45 @@ public class Module07Activity extends AppCompatActivity {
 
     // Sets current move's boolean answer to true for figure 1
     private void trueIfCorrectGuessFigure1() {
-        if (GlobalVariables.m07MovesCount == 4 || GlobalVariables.m07MovesCount == 6 || GlobalVariables.m07MovesCount == 8 || GlobalVariables.m07MovesCount == 10 || GlobalVariables.m07MovesCount == 12 || GlobalVariables.m07MovesCount == 14 || GlobalVariables.m07MovesCount == 16 || GlobalVariables.m07MovesCount == 18 || GlobalVariables.m07MovesCount == 20 || GlobalVariables.m07MovesCount == 24 || GlobalVariables.m07MovesCount == 28 || GlobalVariables.m07MovesCount == 30 || GlobalVariables.m07MovesCount == 34 || GlobalVariables.m07MovesCount == 38) {
-            GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount] = true;
+        if (GlobalVariables.m07MovesCount == 4 || GlobalVariables.m07MovesCount == 6 || GlobalVariables.m07MovesCount == 8 || GlobalVariables.m07MovesCount == 10 || GlobalVariables.m07MovesCount == 12 || GlobalVariables.m07MovesCount == 14 || GlobalVariables.m07MovesCount == 16 || GlobalVariables.m07MovesCount == 20 || GlobalVariables.m07MovesCount == 23 || GlobalVariables.m07MovesCount == 27 || GlobalVariables.m07MovesCount == 31) {
+            GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
         }
     }
 
     // Sets current move's boolean answer to true for figure 2
     private void trueIfCorrectGuessFigure2() {
-        if (GlobalVariables.m07MovesCount == 5 || GlobalVariables.m07MovesCount == 7 || GlobalVariables.m07MovesCount == 9 || GlobalVariables.m07MovesCount == 21 || GlobalVariables.m07MovesCount == 25 || GlobalVariables.m07MovesCount == 29 || GlobalVariables.m07MovesCount == 33 || GlobalVariables.m07MovesCount == 37) {
-            GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount] = true;
+        if (GlobalVariables.m07MovesCount == 5 || GlobalVariables.m07MovesCount == 7 || GlobalVariables.m07MovesCount == 9 || GlobalVariables.m07MovesCount == 17 || GlobalVariables.m07MovesCount == 21 || GlobalVariables.m07MovesCount == 26 || GlobalVariables.m07MovesCount == 30) {
+            GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
         }
     }
 
     // Sets current move's boolean answer to true for figure 3
     private void trueIfCorrectGuessFigure3() {
-        if (GlobalVariables.m07MovesCount == 11 || GlobalVariables.m07MovesCount == 13 || GlobalVariables.m07MovesCount == 15 || GlobalVariables.m07MovesCount == 17 || GlobalVariables.m07MovesCount == 19 || GlobalVariables.m07MovesCount == 23 || GlobalVariables.m07MovesCount == 27 || GlobalVariables.m07MovesCount == 31 || GlobalVariables.m07MovesCount == 35 || GlobalVariables.m07MovesCount == 39) {
-            GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount] = true;
+        if (GlobalVariables.m07MovesCount == 11 || GlobalVariables.m07MovesCount == 13 || GlobalVariables.m07MovesCount == 15 || GlobalVariables.m07MovesCount == 19 || GlobalVariables.m07MovesCount == 24 || GlobalVariables.m07MovesCount == 28) {
+            GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
         }
     }
 
     // Sets current move's boolean answer to true for figure 4
     private void trueIfCorrectGuessFigure4() {
-        if (GlobalVariables.m07MovesCount == 22 || GlobalVariables.m07MovesCount == 26 || GlobalVariables.m07MovesCount == 32 || GlobalVariables.m07MovesCount == 36 || GlobalVariables.m07MovesCount == 40) {
-            GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount] = true;
+        if (GlobalVariables.m07MovesCount == 18 || GlobalVariables.m07MovesCount == 22 || GlobalVariables.m07MovesCount == 25 || GlobalVariables.m07MovesCount == 29) {
+            GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
         }
     }
 
     // Sets score and question end on two consecutive correct responses
     private void onTwoConsecutiveCorrects() {
-        if (GlobalVariables.m07QuestionNo == 1 && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount] && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1]) {
+        if (GlobalVariables.m07QuestionNo == 1 && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 2]) {
             GlobalVariables.m07MovesCount = 10;
             GlobalVariables.m07Score[0] = 1;
-        } else if (GlobalVariables.m07QuestionNo == 2 && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount] && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1]) {
-            GlobalVariables.m07MovesCount = 20;
+        } else if (GlobalVariables.m07QuestionNo == 2 && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 2]) {
+            GlobalVariables.m07MovesCount = 17;
             GlobalVariables.m07Score[1] = 1;
-        } else if (GlobalVariables.m07QuestionNo == 3 && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount] && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1]) {
-            GlobalVariables.m07MovesCount = 30;
+        } else if (GlobalVariables.m07QuestionNo == 3 && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 2]) {
+            GlobalVariables.m07MovesCount = 24;
             GlobalVariables.m07Score[2] = 1;
-        } else if (GlobalVariables.m07QuestionNo == 4 && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount] && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1]) {
-            GlobalVariables.m07MovesCount = 40;
+        } else if (GlobalVariables.m07QuestionNo == 4 && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 2]) {
+            GlobalVariables.m07MovesCount = 31;
             GlobalVariables.m07Score[3] = 1;
         }
         setViewModule();
@@ -206,7 +206,7 @@ public class Module07Activity extends AppCompatActivity {
     // Initiates next move
     private void mainFunctions() {
         GlobalVariables.m07MovesCount++;
-        if (GlobalVariables.m07MovesCount > 40) {
+        if (GlobalVariables.m07MovesCount > 31) {
             nextModule();
         }
         figureNumberSet();
@@ -218,28 +218,31 @@ public class Module07Activity extends AppCompatActivity {
         if (GlobalVariables.m07MovesCount == 1) {
             GlobalVariables.m07CurrentFigure = 1;
             GlobalVariables.m07PreviousFigure = 0;
-        } else if (GlobalVariables.m07MovesCount == 3 || GlobalVariables.m07MovesCount == 5 || GlobalVariables.m07MovesCount == 7 || GlobalVariables.m07MovesCount == 9 || GlobalVariables.m07MovesCount == 11 || GlobalVariables.m07MovesCount == 31 || GlobalVariables.m07MovesCount == 35 || GlobalVariables.m07MovesCount == 39) {
+        } else if (GlobalVariables.m07MovesCount == 3 || GlobalVariables.m07MovesCount == 5 || GlobalVariables.m07MovesCount == 7 || GlobalVariables.m07MovesCount == 9 || GlobalVariables.m07MovesCount == 11 || GlobalVariables.m07MovesCount == 28) {
             GlobalVariables.m07CurrentFigure = 1;
             GlobalVariables.m07PreviousFigure = 2;
-        } else if (GlobalVariables.m07MovesCount == 13 || GlobalVariables.m07MovesCount == 15 || GlobalVariables.m07MovesCount == 17 || GlobalVariables.m07MovesCount == 19 || GlobalVariables.m07MovesCount == 21 || GlobalVariables.m07MovesCount == 25 || GlobalVariables.m07MovesCount == 29) {
+        } else if (GlobalVariables.m07MovesCount == 13 || GlobalVariables.m07MovesCount == 15 || GlobalVariables.m07MovesCount == 17 || GlobalVariables.m07MovesCount == 21) {
             GlobalVariables.m07CurrentFigure = 1;
             GlobalVariables.m07PreviousFigure = 3;
-        } else if (GlobalVariables.m07MovesCount == 2 || GlobalVariables.m07MovesCount == 4 || GlobalVariables.m07MovesCount == 6 || GlobalVariables.m07MovesCount == 8 || GlobalVariables.m07MovesCount == 10 || GlobalVariables.m07MovesCount == 22 || GlobalVariables.m07MovesCount == 26 || GlobalVariables.m07MovesCount == 30) {
+        } else if (GlobalVariables.m07MovesCount == 24) {
+            GlobalVariables.m07CurrentFigure = 1;
+            GlobalVariables.m07PreviousFigure = 4;
+        } else if (GlobalVariables.m07MovesCount == 2 || GlobalVariables.m07MovesCount == 4 || GlobalVariables.m07MovesCount == 6 || GlobalVariables.m07MovesCount == 8 || GlobalVariables.m07MovesCount == 10 || GlobalVariables.m07MovesCount == 18 || GlobalVariables.m07MovesCount == 22) {
             GlobalVariables.m07CurrentFigure = 2;
             GlobalVariables.m07PreviousFigure = 1;
-        } else if (GlobalVariables.m07MovesCount == 34 || GlobalVariables.m07MovesCount == 38) {
+        } else if (GlobalVariables.m07MovesCount == 27 || GlobalVariables.m07MovesCount == 31) {
             GlobalVariables.m07CurrentFigure = 2;
             GlobalVariables.m07PreviousFigure = 4;
-        } else if (GlobalVariables.m07MovesCount == 12 || GlobalVariables.m07MovesCount == 14 || GlobalVariables.m07MovesCount == 16 || GlobalVariables.m07MovesCount == 18 || GlobalVariables.m07MovesCount == 20 || GlobalVariables.m07MovesCount == 32 || GlobalVariables.m07MovesCount == 36 || GlobalVariables.m07MovesCount == 40) {
+        } else if (GlobalVariables.m07MovesCount == 12 || GlobalVariables.m07MovesCount == 14 || GlobalVariables.m07MovesCount == 16 || GlobalVariables.m07MovesCount == 25 || GlobalVariables.m07MovesCount == 29) {
             GlobalVariables.m07CurrentFigure = 3;
             GlobalVariables.m07PreviousFigure = 1;
-        } else if (GlobalVariables.m07MovesCount == 24 || GlobalVariables.m07MovesCount == 28) {
+        } else if (GlobalVariables.m07MovesCount == 20) {
             GlobalVariables.m07CurrentFigure = 3;
             GlobalVariables.m07PreviousFigure = 4;
-        } else if (GlobalVariables.m07MovesCount == 23 || GlobalVariables.m07MovesCount == 27) {
+        } else if (GlobalVariables.m07MovesCount == 19 || GlobalVariables.m07MovesCount == 23) {
             GlobalVariables.m07CurrentFigure = 4;
             GlobalVariables.m07PreviousFigure = 2;
-        } else if (GlobalVariables.m07MovesCount == 33 || GlobalVariables.m07MovesCount == 37) {
+        } else if (GlobalVariables.m07MovesCount == 26 || GlobalVariables.m07MovesCount == 30) {
             GlobalVariables.m07CurrentFigure = 4;
             GlobalVariables.m07PreviousFigure = 3;
         }
@@ -253,11 +256,11 @@ public class Module07Activity extends AppCompatActivity {
             GlobalVariables.m07QuestionNo = 0;
         } else if (GlobalVariables.m07MovesCount >= 4 && GlobalVariables.m07MovesCount <= 10) {
             GlobalVariables.m07QuestionNo = 1;
-        } else if (GlobalVariables.m07MovesCount >= 11 && GlobalVariables.m07MovesCount <= 20) {
+        } else if (GlobalVariables.m07MovesCount >= 11 && GlobalVariables.m07MovesCount <= 17) {
             GlobalVariables.m07QuestionNo = 2;
-        } else if (GlobalVariables.m07MovesCount >= 21 && GlobalVariables.m07MovesCount <= 30) {
+        } else if (GlobalVariables.m07MovesCount >= 18 && GlobalVariables.m07MovesCount <= 24) {
             GlobalVariables.m07QuestionNo = 3;
-        } else if (GlobalVariables.m07MovesCount >= 31 && GlobalVariables.m07MovesCount <= 40) {
+        } else if (GlobalVariables.m07MovesCount >= 25 && GlobalVariables.m07MovesCount <= 31) {
             GlobalVariables.m07QuestionNo = 4;
         }
     }

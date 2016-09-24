@@ -143,12 +143,12 @@ public class Module08Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 vibrator.vibrate(100);
-                if (GlobalVariables.m08Score[0] == 0) {
-                    GlobalVariables.m08Score[0] = 1;
+                if (GlobalVariables.m08ScoreQ1[0] == 0) {
+                    GlobalVariables.m08ScoreQ1[0] = 1;
                     cardTick1.setVisibility(View.VISIBLE);
                     cardView1.setCardBackgroundColor(GlobalVariables.whiteColorValue);
                 } else {
-                    GlobalVariables.m08Score[0] = 0;
+                    GlobalVariables.m08ScoreQ1[0] = 0;
                     cardTick1.setVisibility(View.GONE);
                     cardView1.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
                 }
@@ -159,12 +159,12 @@ public class Module08Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 vibrator.vibrate(100);
-                if (GlobalVariables.m08Score[1] == 0) {
-                    GlobalVariables.m08Score[1] = 1;
+                if (GlobalVariables.m08ScoreQ1[1] == 0) {
+                    GlobalVariables.m08ScoreQ1[1] = 1;
                     cardTick2.setVisibility(View.VISIBLE);
                     cardView2.setCardBackgroundColor(GlobalVariables.whiteColorValue);
                 } else {
-                    GlobalVariables.m08Score[1] = 0;
+                    GlobalVariables.m08ScoreQ1[1] = 0;
                     cardTick2.setVisibility(View.GONE);
                     cardView2.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
                 }
@@ -175,12 +175,12 @@ public class Module08Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 vibrator.vibrate(100);
-                if (GlobalVariables.m08Score[2] == 0) {
-                    GlobalVariables.m08Score[2] = 1;
+                if (GlobalVariables.m08ScoreQ1[2] == 0) {
+                    GlobalVariables.m08ScoreQ1[2] = 1;
                     cardTick3.setVisibility(View.VISIBLE);
                     cardView3.setCardBackgroundColor(GlobalVariables.whiteColorValue);
                 } else {
-                    GlobalVariables.m08Score[2] = 0;
+                    GlobalVariables.m08ScoreQ1[2] = 0;
                     cardTick3.setVisibility(View.GONE);
                     cardView3.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
                 }
@@ -191,12 +191,12 @@ public class Module08Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 vibrator.vibrate(100);
-                if (GlobalVariables.m08Score[3] == 0) {
-                    GlobalVariables.m08Score[3] = 1;
+                if (GlobalVariables.m08ScoreQ1[3] == 0) {
+                    GlobalVariables.m08ScoreQ1[3] = 1;
                     cardTick4.setVisibility(View.VISIBLE);
                     cardView4.setCardBackgroundColor(GlobalVariables.whiteColorValue);
                 } else {
-                    GlobalVariables.m08Score[3] = 0;
+                    GlobalVariables.m08ScoreQ1[3] = 0;
                     cardTick4.setVisibility(View.GONE);
                     cardView4.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
                 }
@@ -207,12 +207,12 @@ public class Module08Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 vibrator.vibrate(100);
-                if (GlobalVariables.m08Score[4] == 0) {
-                    GlobalVariables.m08Score[4] = 1;
+                if (GlobalVariables.m08ScoreQ1[4] == 0) {
+                    GlobalVariables.m08ScoreQ1[4] = 1;
                     cardTick5.setVisibility(View.VISIBLE);
                     cardView5.setCardBackgroundColor(GlobalVariables.whiteColorValue);
                 } else {
-                    GlobalVariables.m08Score[4] = 0;
+                    GlobalVariables.m08ScoreQ1[4] = 0;
                     cardTick5.setVisibility(View.GONE);
                     cardView5.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
                 }
@@ -239,7 +239,7 @@ public class Module08Activity extends AppCompatActivity {
                     cardViewMCQ4.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
 
                     if (GlobalVariables.m08CurrentMCQNo == 3) {
-                        GlobalVariables.m08Score[2] = 1;
+                        GlobalVariables.m08ScoreQ2[2] = 1;
                     }
                 } else {
                     GlobalVariables.m08MCQcardChecked[0] = 0;
@@ -247,7 +247,7 @@ public class Module08Activity extends AppCompatActivity {
                     cardViewMCQ1.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
 
                     if (GlobalVariables.m08CurrentMCQNo == 3) {
-                        GlobalVariables.m08Score[2] = 0;
+                        GlobalVariables.m08ScoreQ2[2] = 0;
                     }
                 }
             }
@@ -273,11 +273,11 @@ public class Module08Activity extends AppCompatActivity {
                     cardViewMCQ4.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
 
                     if (GlobalVariables.m08CurrentMCQNo == 4) {
-                        GlobalVariables.m08Score[3] = 1;
+                        GlobalVariables.m08ScoreQ2[3] = 1;
                     }
 
                     if (GlobalVariables.m08CurrentMCQNo == 5) {
-                        GlobalVariables.m08Score[4] = 1;
+                        GlobalVariables.m08ScoreQ2[4] = 1;
                     }
                 } else {
                     GlobalVariables.m08MCQcardChecked[1] = 0;
@@ -285,11 +285,11 @@ public class Module08Activity extends AppCompatActivity {
                     cardViewMCQ2.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
 
                     if (GlobalVariables.m08CurrentMCQNo == 4) {
-                        GlobalVariables.m08Score[3] = 0;
+                        GlobalVariables.m08ScoreQ2[3] = 0;
                     }
 
                     if (GlobalVariables.m08CurrentMCQNo == 5) {
-                        GlobalVariables.m08Score[4] = 0;
+                        GlobalVariables.m08ScoreQ2[4] = 0;
                     }
                 }
             }
@@ -315,7 +315,7 @@ public class Module08Activity extends AppCompatActivity {
                     cardViewMCQ4.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
 
                     if (GlobalVariables.m08CurrentMCQNo == 1) {
-                        GlobalVariables.m08Score[0] = 1;
+                        GlobalVariables.m08ScoreQ2[0] = 1;
                     }
                 } else {
                     GlobalVariables.m08MCQcardChecked[2] = 0;
@@ -323,7 +323,7 @@ public class Module08Activity extends AppCompatActivity {
                     cardViewMCQ3.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
 
                     if (GlobalVariables.m08CurrentMCQNo == 1) {
-                        GlobalVariables.m08Score[0] = 0;
+                        GlobalVariables.m08ScoreQ2[0] = 0;
                     }
                 }
             }
@@ -349,7 +349,7 @@ public class Module08Activity extends AppCompatActivity {
                     cardViewMCQ1.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
 
                     if (GlobalVariables.m08CurrentMCQNo == 2) {
-                        GlobalVariables.m08Score[1] = 1;
+                        GlobalVariables.m08ScoreQ2[1] = 1;
                     }
                 } else {
                     GlobalVariables.m08MCQcardChecked[3] = 0;
@@ -357,7 +357,7 @@ public class Module08Activity extends AppCompatActivity {
                     cardViewMCQ4.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
 
                     if (GlobalVariables.m08CurrentMCQNo == 2) {
-                        GlobalVariables.m08Score[1] = 0;
+                        GlobalVariables.m08ScoreQ2[1] = 0;
                     }
                 }
             }
@@ -377,11 +377,11 @@ public class Module08Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (GlobalVariables.m08QuestionNo == 1) {
-                    GlobalVariables.m08MCQno[0] = GlobalVariables.m08Score[0];
-                    GlobalVariables.m08MCQno[1] = GlobalVariables.m08Score[1];
-                    GlobalVariables.m08MCQno[2] = GlobalVariables.m08Score[2];
-                    GlobalVariables.m08MCQno[3] = GlobalVariables.m08Score[3];
-                    GlobalVariables.m08MCQno[4] = GlobalVariables.m08Score[4];
+                    GlobalVariables.m08MCQno[0] = GlobalVariables.m08ScoreQ1[0];
+                    GlobalVariables.m08MCQno[1] = GlobalVariables.m08ScoreQ1[1];
+                    GlobalVariables.m08MCQno[2] = GlobalVariables.m08ScoreQ1[2];
+                    GlobalVariables.m08MCQno[3] = GlobalVariables.m08ScoreQ1[3];
+                    GlobalVariables.m08MCQno[4] = GlobalVariables.m08ScoreQ1[4];
                 }
                 View rootView = getWindow().getDecorView().getRootView();
                 GlobalVariables.saveScreenshot(rootView, fileName);
@@ -468,7 +468,7 @@ public class Module08Activity extends AppCompatActivity {
 
     // Sets card views for all questions depending on the score
     private void setCardsView() {
-        if (GlobalVariables.m08Score[0] == 1) {
+        if (GlobalVariables.m08ScoreQ1[0] == 1) {
             cardTick1.setVisibility(View.VISIBLE);
             cardView1.setCardBackgroundColor(GlobalVariables.whiteColorValue);
         } else {
@@ -476,7 +476,7 @@ public class Module08Activity extends AppCompatActivity {
             cardView1.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
         }
 
-        if (GlobalVariables.m08Score[1] == 1) {
+        if (GlobalVariables.m08ScoreQ1[1] == 1) {
             cardTick2.setVisibility(View.VISIBLE);
             cardView2.setCardBackgroundColor(GlobalVariables.whiteColorValue);
         } else {
@@ -484,7 +484,7 @@ public class Module08Activity extends AppCompatActivity {
             cardView2.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
         }
 
-        if (GlobalVariables.m08Score[2] == 1) {
+        if (GlobalVariables.m08ScoreQ1[2] == 1) {
             cardTick3.setVisibility(View.VISIBLE);
             cardView3.setCardBackgroundColor(GlobalVariables.whiteColorValue);
         } else {
@@ -492,7 +492,7 @@ public class Module08Activity extends AppCompatActivity {
             cardView3.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
         }
 
-        if (GlobalVariables.m08Score[3] == 1) {
+        if (GlobalVariables.m08ScoreQ1[3] == 1) {
             cardTick4.setVisibility(View.VISIBLE);
             cardView4.setCardBackgroundColor(GlobalVariables.whiteColorValue);
         } else {
@@ -500,7 +500,7 @@ public class Module08Activity extends AppCompatActivity {
             cardView4.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
         }
 
-        if (GlobalVariables.m08Score[4] == 1) {
+        if (GlobalVariables.m08ScoreQ1[4] == 1) {
             cardTick5.setVisibility(View.VISIBLE);
             cardView5.setCardBackgroundColor(GlobalVariables.whiteColorValue);
         } else {
@@ -560,7 +560,7 @@ public class Module08Activity extends AppCompatActivity {
     // On correct button
     private void onCorrect() {
         if (GlobalVariables.m08QuestionNo == 1) {
-            if (GlobalVariables.m08Score[0] == 1 && GlobalVariables.m08Score[1] == 1 && GlobalVariables.m08Score[2] == 1 && GlobalVariables.m08Score[3] == 1 && GlobalVariables.m08Score[4] == 1) {
+            if (GlobalVariables.m08ScoreQ1[0] == 1 && GlobalVariables.m08ScoreQ1[1] == 1 && GlobalVariables.m08ScoreQ1[2] == 1 && GlobalVariables.m08ScoreQ1[3] == 1 && GlobalVariables.m08ScoreQ1[4] == 1) {
                 nextModule();
             }
         } else if (GlobalVariables.m08QuestionNo == 2) {

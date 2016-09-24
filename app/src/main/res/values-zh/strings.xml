@@ -34,7 +34,7 @@
     <string name="java_task2_question2">呢四幅圖入面，可唔可以指俾我睇邊一個係葡萄/提子？</string>
     <string name="java_task2_question3">呢四幅圖入面，可唔可以指俾我睇邊一隻係雀？</string>
     <string name="java_task2_question4">呢四幅圖入面，可唔可以指俾我睇邊一個係菜？</string>
-    <string name="java_task1_question">我會俾一啲圖畫你睇。\\n你話俾我知佢哋係啲咩嚟。</string>
+    <string name="java_task1_question">幅圖係咩嚟嘅？</string>
     <string name="java_task3_question">我而家會讀一啲詞語俾你聽。請嘗試記住佢哋。</string>
     <string name="java_task6_question1">你可唔可以將啲圓形由細到大連起嚟，好似咁？</string>
     <string name="java_task6_question2">你可唔可以將啲正方形由大到細連起嚟，好似咁？</string>
@@ -44,4 +44,9 @@
     <string name="java_task7_question">預測紅色圓點下一步會走去邊</string>
     <string name="java_task8_question">記唔記得我之前讀過一啲字俾你聽？可唔可以話俾我聽你要記住邊啲字？</string>
     <string name="java_task9_question">你之前見過邊一幅圖？</string>
+    <string name="java_task0_question">㩒落啲圓圈度！</string>
+    <string name="java_task4_question">回答以下問題。</string>
+    <string name="java_task5_question">將幅圖照樣畫喺下面。</string>
+    <string name="java_task10_question1">聽到目標字要㩒藍色制，聽到其他字要㩒黃色制。</string>
+    <string name="java_task10_question2">呢個係唔係目標字？</string>
 </resources>

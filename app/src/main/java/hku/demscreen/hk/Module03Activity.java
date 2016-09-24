@@ -111,14 +111,26 @@ public class Module03Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 vibrator.vibrate(100);
-                if (GlobalVariables.m03Score[0] == 0) {
-                    GlobalVariables.m03Score[0] = 1;
-                    cardTick1.setVisibility(View.VISIBLE);
-                    cardView1.setCardBackgroundColor(GlobalVariables.whiteColorValue);
-                } else {
-                    GlobalVariables.m03Score[0] = 0;
-                    cardTick1.setVisibility(View.GONE);
-                    cardView1.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
+                if (GlobalVariables.m03QuestionNo == 1) {
+                    if (GlobalVariables.m03ScoreQ1[0] == 0) {
+                        GlobalVariables.m03ScoreQ1[0] = 1;
+                        cardTick1.setVisibility(View.VISIBLE);
+                        cardView1.setCardBackgroundColor(GlobalVariables.whiteColorValue);
+                    } else {
+                        GlobalVariables.m03ScoreQ1[0] = 0;
+                        cardTick1.setVisibility(View.GONE);
+                        cardView1.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
+                    }
+                } else if (GlobalVariables.m03QuestionNo == 2) {
+                    if (GlobalVariables.m03ScoreQ2[0] == 0) {
+                        GlobalVariables.m03ScoreQ2[0] = 1;
+                        cardTick1.setVisibility(View.VISIBLE);
+                        cardView1.setCardBackgroundColor(GlobalVariables.whiteColorValue);
+                    } else {
+                        GlobalVariables.m03ScoreQ2[0] = 0;
+                        cardTick1.setVisibility(View.GONE);
+                        cardView1.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
+                    }
                 }
                 if (GlobalVariables.m03QuestionNo == 1) {
                     hideNextIfScore5();
@@ -130,14 +142,26 @@ public class Module03Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 vibrator.vibrate(100);
-                if (GlobalVariables.m03Score[1] == 0) {
-                    GlobalVariables.m03Score[1] = 1;
-                    cardTick2.setVisibility(View.VISIBLE);
-                    cardView2.setCardBackgroundColor(GlobalVariables.whiteColorValue);
-                } else {
-                    GlobalVariables.m03Score[1] = 0;
-                    cardTick2.setVisibility(View.GONE);
-                    cardView2.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
+                if (GlobalVariables.m03QuestionNo == 1) {
+                    if (GlobalVariables.m03ScoreQ1[1] == 0) {
+                        GlobalVariables.m03ScoreQ1[1] = 1;
+                        cardTick2.setVisibility(View.VISIBLE);
+                        cardView2.setCardBackgroundColor(GlobalVariables.whiteColorValue);
+                    } else {
+                        GlobalVariables.m03ScoreQ1[1] = 0;
+                        cardTick2.setVisibility(View.GONE);
+                        cardView2.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
+                    }
+                } else if (GlobalVariables.m03QuestionNo == 2) {
+                    if (GlobalVariables.m03ScoreQ2[1] == 0) {
+                        GlobalVariables.m03ScoreQ2[1] = 1;
+                        cardTick2.setVisibility(View.VISIBLE);
+                        cardView2.setCardBackgroundColor(GlobalVariables.whiteColorValue);
+                    } else {
+                        GlobalVariables.m03ScoreQ2[1] = 0;
+                        cardTick2.setVisibility(View.GONE);
+                        cardView2.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
+                    }
                 }
                 if (GlobalVariables.m03QuestionNo == 1) {
                     hideNextIfScore5();
@@ -149,14 +173,26 @@ public class Module03Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 vibrator.vibrate(100);
-                if (GlobalVariables.m03Score[2] == 0) {
-                    GlobalVariables.m03Score[2] = 1;
-                    cardTick3.setVisibility(View.VISIBLE);
-                    cardView3.setCardBackgroundColor(GlobalVariables.whiteColorValue);
-                } else {
-                    GlobalVariables.m03Score[2] = 0;
-                    cardTick3.setVisibility(View.GONE);
-                    cardView3.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
+                if (GlobalVariables.m03QuestionNo == 1) {
+                    if (GlobalVariables.m03ScoreQ1[2] == 0) {
+                        GlobalVariables.m03ScoreQ1[2] = 1;
+                        cardTick3.setVisibility(View.VISIBLE);
+                        cardView3.setCardBackgroundColor(GlobalVariables.whiteColorValue);
+                    } else {
+                        GlobalVariables.m03ScoreQ1[2] = 0;
+                        cardTick3.setVisibility(View.GONE);
+                        cardView3.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
+                    }
+                } else if (GlobalVariables.m03QuestionNo == 2) {
+                    if (GlobalVariables.m03ScoreQ2[2] == 0) {
+                        GlobalVariables.m03ScoreQ2[2] = 1;
+                        cardTick3.setVisibility(View.VISIBLE);
+                        cardView3.setCardBackgroundColor(GlobalVariables.whiteColorValue);
+                    } else {
+                        GlobalVariables.m03ScoreQ2[2] = 0;
+                        cardTick3.setVisibility(View.GONE);
+                        cardView3.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
+                    }
                 }
                 if (GlobalVariables.m03QuestionNo == 1) {
                     hideNextIfScore5();
@@ -168,14 +204,26 @@ public class Module03Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 vibrator.vibrate(100);
-                if (GlobalVariables.m03Score[3] == 0) {
-                    GlobalVariables.m03Score[3] = 1;
-                    cardTick4.setVisibility(View.VISIBLE);
-                    cardView4.setCardBackgroundColor(GlobalVariables.whiteColorValue);
-                } else {
-                    GlobalVariables.m03Score[3] = 0;
-                    cardTick4.setVisibility(View.GONE);
-                    cardView4.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
+                if (GlobalVariables.m03QuestionNo == 1) {
+                    if (GlobalVariables.m03ScoreQ1[3] == 0) {
+                        GlobalVariables.m03ScoreQ1[3] = 1;
+                        cardTick4.setVisibility(View.VISIBLE);
+                        cardView4.setCardBackgroundColor(GlobalVariables.whiteColorValue);
+                    } else {
+                        GlobalVariables.m03ScoreQ1[3] = 0;
+                        cardTick4.setVisibility(View.GONE);
+                        cardView4.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
+                    }
+                } else if (GlobalVariables.m03QuestionNo == 2) {
+                    if (GlobalVariables.m03ScoreQ2[3] == 0) {
+                        GlobalVariables.m03ScoreQ2[3] = 1;
+                        cardTick4.setVisibility(View.VISIBLE);
+                        cardView4.setCardBackgroundColor(GlobalVariables.whiteColorValue);
+                    } else {
+                        GlobalVariables.m03ScoreQ2[3] = 0;
+                        cardTick4.setVisibility(View.GONE);
+                        cardView4.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
+                    }
                 }
                 if (GlobalVariables.m03QuestionNo == 1) {
                     hideNextIfScore5();
@@ -187,14 +235,26 @@ public class Module03Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 vibrator.vibrate(100);
-                if (GlobalVariables.m03Score[4] == 0) {
-                    GlobalVariables.m03Score[4] = 1;
-                    cardTick5.setVisibility(View.VISIBLE);
-                    cardView5.setCardBackgroundColor(GlobalVariables.whiteColorValue);
-                } else {
-                    GlobalVariables.m03Score[4] = 0;
-                    cardTick5.setVisibility(View.GONE);
-                    cardView5.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
+                if (GlobalVariables.m03QuestionNo == 1) {
+                    if (GlobalVariables.m03ScoreQ1[4] == 0) {
+                        GlobalVariables.m03ScoreQ1[4] = 1;
+                        cardTick5.setVisibility(View.VISIBLE);
+                        cardView5.setCardBackgroundColor(GlobalVariables.whiteColorValue);
+                    } else {
+                        GlobalVariables.m03ScoreQ1[4] = 0;
+                        cardTick5.setVisibility(View.GONE);
+                        cardView5.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
+                    }
+                } else if (GlobalVariables.m03QuestionNo == 2) {
+                    if (GlobalVariables.m03ScoreQ2[4] == 0) {
+                        GlobalVariables.m03ScoreQ2[4] = 1;
+                        cardTick5.setVisibility(View.VISIBLE);
+                        cardView5.setCardBackgroundColor(GlobalVariables.whiteColorValue);
+                    } else {
+                        GlobalVariables.m03ScoreQ2[4] = 0;
+                        cardTick5.setVisibility(View.GONE);
+                        cardView5.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
+                    }
                 }
                 if (GlobalVariables.m03QuestionNo == 1) {
                     hideNextIfScore5();
@@ -240,7 +300,7 @@ public class Module03Activity extends AppCompatActivity {
 
     // Hides next question button if all answers are correct
     private void hideNextIfScore5() {
-        if (GlobalVariables.m03Score[0] == 1 && GlobalVariables.m03Score[1] == 1 && GlobalVariables.m03Score[2] == 1 && GlobalVariables.m03Score[3] == 1 && GlobalVariables.m03Score[4] == 1) {
+        if (GlobalVariables.m03ScoreQ1[0] == 1 && GlobalVariables.m03ScoreQ1[1] == 1 && GlobalVariables.m03ScoreQ1[2] == 1 && GlobalVariables.m03ScoreQ1[3] == 1 && GlobalVariables.m03ScoreQ1[4] == 1) {
             nextQuestion.setVisibility(View.GONE);
             questionNumber.setText("1/1");
         } else {
@@ -251,11 +311,6 @@ public class Module03Activity extends AppCompatActivity {
 
     // Resets card views and scores
     private void resetItems() {
-        GlobalVariables.m03Score[0] = 0;
-        GlobalVariables.m03Score[1] = 0;
-        GlobalVariables.m03Score[2] = 0;
-        GlobalVariables.m03Score[3] = 0;
-        GlobalVariables.m03Score[4] = 0;
         cardTick1.setVisibility(View.GONE);
         cardView1.setCardBackgroundColor(GlobalVariables.lghtGrayColorValue);
         cardTick2.setVisibility(View.GONE);
@@ -270,20 +325,24 @@ public class Module03Activity extends AppCompatActivity {
 
     // Increments question number and animates content view
     private void questionIncrement() {
-        previousQuestion.setVisibility(View.VISIBLE);
-        nextQuestion.setVisibility(View.GONE);
         GlobalVariables.m03QuestionNo = 2;
+        GlobalVariables.m03ScoreQ2[0] = 0;
+        GlobalVariables.m03ScoreQ2[1] = 0;
+        GlobalVariables.m03ScoreQ2[2] = 0;
+        GlobalVariables.m03ScoreQ2[3] = 0;
+        GlobalVariables.m03ScoreQ2[4] = 0;
         resetItems();
-        animateRight();
     }
 
     // Decrements question number and animates content view
     private void questionDecrement() {
-        previousQuestion.setVisibility(View.GONE);
-        nextQuestion.setVisibility(View.VISIBLE);
         GlobalVariables.m03QuestionNo = 1;
+        GlobalVariables.m03ScoreQ1[0] = 0;
+        GlobalVariables.m03ScoreQ1[1] = 0;
+        GlobalVariables.m03ScoreQ1[2] = 0;
+        GlobalVariables.m03ScoreQ1[3] = 0;
+        GlobalVariables.m03ScoreQ1[4] = 0;
         resetItems();
-        animateLeft();
     }
 
     // Sets views for all questions
@@ -291,18 +350,22 @@ public class Module03Activity extends AppCompatActivity {
         if (GlobalVariables.m03QuestionNo == 1) {
             questionNumber.setText("1/2");
             fileName = "05 - Task 03 Question 1";
-            questionDecrement();
+            previousQuestion.setVisibility(View.GONE);
+            nextQuestion.setVisibility(View.VISIBLE);
+            animateLeft();
         } else if (GlobalVariables.m03QuestionNo == 2) {
             questionNumber.setText("2/2");
             fileName = "05 - Task 03 Question 2";
-            questionIncrement();
+            previousQuestion.setVisibility(View.VISIBLE);
+            nextQuestion.setVisibility(View.GONE);
+            animateRight();
         }
     }
 
     // On correct button
     private void onCorrect() {
         if (GlobalVariables.m03QuestionNo == 1) {
-            if (GlobalVariables.m03Score[0] == 1 && GlobalVariables.m03Score[1] == 1 && GlobalVariables.m03Score[2] == 1 && GlobalVariables.m03Score[3] == 1 && GlobalVariables.m03Score[4] == 1) {
+            if (GlobalVariables.m03ScoreQ1[0] == 1 && GlobalVariables.m03ScoreQ1[1] == 1 && GlobalVariables.m03ScoreQ1[2] == 1 && GlobalVariables.m03ScoreQ1[3] == 1 && GlobalVariables.m03ScoreQ1[4] == 1) {
                 nextModule();
             } else {
                 questionIncrement();

@@ -1,12 +1,12 @@
 package hku.demscreen.hk;
 
 import android.Manifest;
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -20,11 +20,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ayz4sci.androidfactory.permissionhelper.PermissionHelper;
@@ -38,29 +36,19 @@ import pl.tajchert.nammu.PermissionCallback;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    static final int DATE_PICKER_DIALOG_ID = 0;
     static final int LANGUAGE_DIALOG_ID = 1;
     final CharSequence[] language_radio = {"English", "Chinese"};
     Locale myLocale;
 
-    int mYear, mMonth, mDay;
     EditText userName;
     EditText userId;
-    TextView userAge;
+    EditText userEdu;
+    EditText userAgeDate;
+    EditText userAgeMonth;
+    EditText userAgeYear;
     RadioButton userMale;
     RadioButton userFemale;
     RadioGroup userSex;
-
-    // Gets and sets date
-    private DatePickerDialog.OnDateSetListener dPickerListner = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-            mYear = i;
-            mMonth = i1 + 1;
-            mDay = i2;
-            userAge.setText(mDay + "/" + mMonth + "/" + mYear);
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +56,11 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         userName = (EditText) findViewById(R.id.user_name);
-        userAge = (TextView) findViewById(R.id.user_age);
+        userAgeDate = (EditText) findViewById(R.id.user_age_DD);
+        userAgeMonth = (EditText) findViewById(R.id.user_age_MM);
+        userAgeYear = (EditText) findViewById(R.id.user_age_YYYY);
         userId = (EditText) findViewById(R.id.user_id);
+        userEdu = (EditText) findViewById(R.id.user_edu);
         userMale = (RadioButton) findViewById(R.id.radioMale);
         userFemale = (RadioButton) findViewById(R.id.radioFemale);
         userSex = (RadioGroup) findViewById(R.id.radioSex);
@@ -78,13 +69,6 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        userAge.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDialog(DATE_PICKER_DIALOG_ID);
-            }
-        });
 
         userMale.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,12 +90,11 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String mUserName = userName.getText().toString();
-                String mUserAge = userAge.getText().toString();
-                String mUserId = userId.getText().toString();
-                Boolean nameEmpty = mUserName.matches("");
-                Boolean ageEmpty = mUserAge.matches("DD/MM/YYYY");
-                Boolean idEmpty = mUserId.matches("");
+                Boolean nameEmpty = userName.getText().toString().matches("");
+                Boolean ageDDEmpty = userAgeDate.getText().toString().matches("");
+                Boolean ageMMEmpty = userAgeMonth.getText().toString().matches("");
+                Boolean ageYYYYEmpty = userAgeYear.getText().toString().matches("");
+                Boolean idEmpty = userId.getText().toString().matches("");
                 Boolean sexEmpty = (userSex.getCheckedRadioButtonId() == -1);
 
                 if (nameEmpty) {
@@ -120,11 +103,23 @@ public class MainActivity extends AppCompatActivity
                             .playOn(findViewById(R.id.name_text_input_layout));
                     userName.setError(getString(R.string.java_input_name));
                 }
-                if (ageEmpty) {
+                if (ageDDEmpty) {
                     YoYo.with(Techniques.Shake)
                             .duration(700)
                             .playOn(findViewById(R.id.age_group_text));
-                    userAge.setError(getString(R.string.java_input_age));
+                    userAgeDate.setError(getString(R.string.java_input_age));
+                }
+                if (ageMMEmpty) {
+                    YoYo.with(Techniques.Shake)
+                            .duration(700)
+                            .playOn(findViewById(R.id.age_group_text));
+                    userAgeMonth.setError(getString(R.string.java_input_age));
+                }
+                if (ageYYYYEmpty) {
+                    YoYo.with(Techniques.Shake)
+                            .duration(700)
+                            .playOn(findViewById(R.id.age_group_text));
+                    userAgeYear.setError(getString(R.string.java_input_age));
                 }
                 if (idEmpty) {
                     YoYo.with(Techniques.Shake)
@@ -138,11 +133,15 @@ public class MainActivity extends AppCompatActivity
                             .playOn(findViewById(R.id.sex_radio_group_text));
                     userFemale.setError(getString(R.string.java_input_sex));
                 }
-                if (!nameEmpty && !ageEmpty && !sexEmpty && !idEmpty) {
+                if (!nameEmpty && !ageDDEmpty && !ageMMEmpty && !ageYYYYEmpty && !sexEmpty && !idEmpty) {
                     GlobalVariables.userName = userName.getText().toString();
+                    GlobalVariables.userAgeDate = userAgeDate.getText().toString();
+                    GlobalVariables.userAgeMonth = userAgeMonth.getText().toString();
+                    GlobalVariables.userAgeYear = userAgeYear.getText().toString();
+                    GlobalVariables.userAge = GlobalVariables.userAgeDate + "/" + GlobalVariables.userAgeMonth + "/" + GlobalVariables.userAgeYear;
                     GlobalVariables.userInitials = getInitials(GlobalVariables.userName);
                     GlobalVariables.userID = userId.getText().toString();
-                    GlobalVariables.userAge = mDay + "/" + mMonth + "/" + mYear;
+                    GlobalVariables.userEdu = userEdu.getText().toString();
                     Intent intentModulesActivity = new Intent(MainActivity.this, ModulesActivity.class);
                     MainActivity.this.startActivity(intentModulesActivity);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -165,9 +164,7 @@ public class MainActivity extends AppCompatActivity
     // Created Dialog for DatePicker and Language selector
     @Override
     protected Dialog onCreateDialog(int id) {
-        if (id == DATE_PICKER_DIALOG_ID) {
-            return new DatePickerDialog(this, dPickerListner, mYear, mMonth, mDay);
-        } else if (id == LANGUAGE_DIALOG_ID) {
+        if (id == LANGUAGE_DIALOG_ID) {
             AlertDialog.Builder builder2 = new AlertDialog.Builder(MainActivity.this)
                     .setTitle("Select the Language")
                     .setSingleChoiceItems(language_radio, -1, new DialogInterface.OnClickListener() {
@@ -176,11 +173,15 @@ public class MainActivity extends AppCompatActivity
                         public void onClick(DialogInterface dialog, int which) {
 
                             if (language_radio[which] == "English") {
+                                GlobalVariables.testLanguage = 1;
+                                GlobalVariables.testLanguageString = (String) language_radio[which];
                                 setLocale("en");
                             } else if (language_radio[which] == "Chinese") {
+                                GlobalVariables.testLanguage = 2;
+                                GlobalVariables.testLanguageString = (String) language_radio[which];
                                 setLocale("zh");
                             }
-                            Toast.makeText(getApplicationContext(),language_radio[which] + " language selected.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), language_radio[which] + " language selected.", Toast.LENGTH_SHORT).show();
                             //dismissing the dialog when the user makes a selection.
                             dialog.dismiss();
                         }
@@ -217,9 +218,17 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_language) {
             showDialog(LANGUAGE_DIALOG_ID);
         } else if (id == R.id.nav_feedback) {
-            // Handle the item action
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{getString(R.string.feedback_email)});
+            intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
         } else if (id == R.id.nav_aboutus) {
-            // Handle the item action
+            Intent intentModulesActivity = new Intent(MainActivity.this, AboutActivity.class);
+            MainActivity.this.startActivity(intentModulesActivity);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

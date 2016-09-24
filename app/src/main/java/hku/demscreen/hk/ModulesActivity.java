@@ -12,7 +12,6 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -59,8 +58,6 @@ public class ModulesActivity extends AppCompatActivity {
                 }
             }
         });
-
-        Toast.makeText(getApplicationContext(), "Name: " + GlobalVariables.userName + ", Age: " + GlobalVariables.userAge + ", ID:" + GlobalVariables.userID + ", Sex:" + GlobalVariables.userSex, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -81,7 +78,7 @@ public class ModulesActivity extends AppCompatActivity {
         if (id == R.id.action_next) {
             View rootView = getWindow().getDecorView().getRootView();
             GlobalVariables.saveScreenshot(rootView, fileName);
-            DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
+            DateFormat df = new SimpleDateFormat("EEE d MMM yyyy HH:mm:ss");
             GlobalVariables.testTimeStart = df.format(Calendar.getInstance().getTime());
             Intent intentModulesActivity = new Intent(ModulesActivity.this, Module00Activity.class);
             ModulesActivity.this.startActivity(intentModulesActivity);

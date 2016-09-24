@@ -34,7 +34,8 @@
                     android:layout_height="25dp"
                     android:layout_centerInParent="true"
                     android:src="@drawable/ic_circle"
-                    android:tint="@color/red" />
+                    android:tint="@color/red"
+                    android:visibility="gone" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -56,7 +57,8 @@
                     android:layout_height="25dp"
                     android:layout_centerInParent="true"
                     android:src="@drawable/ic_circle"
-                    android:tint="@color/red" />
+                    android:tint="@color/red"
+                    android:visibility="gone" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -83,7 +85,8 @@
                     android:layout_height="25dp"
                     android:layout_centerInParent="true"
                     android:src="@drawable/ic_circle"
-                    android:tint="@color/red" />
+                    android:tint="@color/red"
+                    android:visibility="gone" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -104,7 +107,8 @@
                     android:layout_height="25dp"
                     android:layout_centerInParent="true"
                     android:src="@drawable/ic_circle"
-                    android:tint="@color/red" />
+                    android:tint="@color/red"
+                    android:visibility="gone" />
             </RelativeLayout>
         </LinearLayout>
 

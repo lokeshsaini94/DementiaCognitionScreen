@@ -4,8 +4,8 @@
     tools:context=".ResultsActivity">
     <item
         android:id="@+id/action_again"
-        android:orderInCategory="100"
         android:icon="@drawable/ic_replay_white"
+        android:orderInCategory="100"
         android:title="Again"
         app:showAsAction="ifRoom" />
 </menu>

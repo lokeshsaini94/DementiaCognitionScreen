@@ -106,23 +106,23 @@ public class Module10Activity extends AppCompatActivity {
                 vibrator.vibrate(100);
                 if (GlobalVariables.m10TaskNo == 3) {
                     if (GlobalVariables.m10QuestionNo == 1) {
-                        GlobalVariables.m10WrongScore += 1;
+                        GlobalVariables.m10WrongScore[0] = 1;
                     } else if (GlobalVariables.m10QuestionNo == 2) {
                         GlobalVariables.m10Score[0] = 1;
                     } else if (GlobalVariables.m10QuestionNo == 3) {
-                        GlobalVariables.m10WrongScore += 1;
+                        GlobalVariables.m10WrongScore[1] = 1;
                     } else if (GlobalVariables.m10QuestionNo == 4) {
                         GlobalVariables.m10Score[1] = 1;
                     } else if (GlobalVariables.m10QuestionNo == 5) {
-                        GlobalVariables.m10WrongScore += 1;
+                        GlobalVariables.m10WrongScore[2] = 1;
                     } else if (GlobalVariables.m10QuestionNo == 6) {
-                        GlobalVariables.m10WrongScore += 1;
+                        GlobalVariables.m10WrongScore[3] = 1;
                     } else if (GlobalVariables.m10QuestionNo == 7) {
                         GlobalVariables.m10Score[2] = 1;
                     } else if (GlobalVariables.m10QuestionNo == 8) {
-                        GlobalVariables.m10WrongScore += 1;
+                        GlobalVariables.m10WrongScore[4] = 1;
                     } else if (GlobalVariables.m10QuestionNo == 9) {
-                        GlobalVariables.m10WrongScore += 1;
+                        GlobalVariables.m10WrongScore[5] = 1;
                     }
                 }
                 questionIncrement();

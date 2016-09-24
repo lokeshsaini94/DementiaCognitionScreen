@@ -94,12 +94,34 @@
                     android:textColorHint="@color/text_secondary" />
             </android.support.design.widget.TextInputLayout>
 
-            <LinearLayout
-                android:id="@+id/age_group_text"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edu_text_input_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/id_text_input_layout"
                 android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:paddingBottom="16dp">
+
+                <EditText
+                    android:id="@+id/user_edu"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Education"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary" />
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/age_group_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edu_text_input_layout"
+                android:layout_marginLeft="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:paddingBottom="16dp">
 
                 <TextView
@@ -111,13 +133,43 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/user_age"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:text="DD/MM/YYYY"
-                    android:textSize="14sp" />
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/user_age_DD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="DD"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:paddingLeft="4dp"
+                        android:paddingRight="4dp"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_secondary" />
+
+                    <EditText
+                        android:id="@+id/user_age_MM"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="MM"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_secondary" />
+
+                    <EditText
+                        android:id="@+id/user_age_YYYY"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="YYYY"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_secondary" />
+                </LinearLayout>
 
             </LinearLayout>
 

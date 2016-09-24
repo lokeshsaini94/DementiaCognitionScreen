@@ -18,12 +18,13 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
 
+    <string name="feedback_email">weekes@hku.hk</string>
+
     <string name="java_input_name">Enter the patient\'s name</string>
     <string name="java_input_age">Enter the patient\'s age</string>
     <string name="java_input_id">Enter the patient\'s id</string>
     <string name="java_input_sex">Enter the patient\'s Sex</string>
 
-    <string name="module_00">Practice Task</string>
     <string name="practice_task">Practice Task</string>
     <string name="picture_naming">Picture Naming</string>
     <string name="picture_pointing">Picture Pointing</string>
@@ -36,6 +37,7 @@
     <string name="episodic_memory">Episodic Memory</string>
     <string name="attention">Attention</string>
 
+    <string name="module_00">@string/practice_task</string>
     <string-array name="module_names">
         <item>@string/picture_naming</item>
         <item>@string/picture_pointing</item>
@@ -86,7 +88,7 @@
     <string name="module_08_mcq5_word4">Square</string>
 
     <string name="java_task0_question">Tap on the circles!</string>
-    <string name="java_task1_question">We will start with a series of pictures shown on this screen.\nYour task is to tell me what each one is.</string>
+    <string name="java_task1_question">What\'s in the picture?</string>
     <string name="java_task2_question1">Tap the duck</string>
     <string name="java_task2_question2">Tap the grapes</string>
     <string name="java_task2_question3">Tap the bird</string>

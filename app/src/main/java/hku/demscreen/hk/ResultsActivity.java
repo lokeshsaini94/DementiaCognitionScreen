@@ -21,7 +21,24 @@ import java.util.Calendar;
 public class ResultsActivity extends AppCompatActivity {
 
     File file;
-    String data;
+    String data = "";
+    File fileCSV;
+    String dataCSV1 = "";
+    String dataCSV2 = "";
+
+    int csvSexMale;
+    int m01Total;
+    int m02Total;
+    int m03Total;
+    int m04Total;
+    double m05Total;
+    int m06Total;
+    int m07Total;
+    int m08Total;
+    int m09Total;
+    int m10Total;
+
+    double totalScore = 0;
 
     TextView userName;
 
@@ -49,6 +66,11 @@ public class ResultsActivity extends AppCompatActivity {
     TextView m03Score3;
     TextView m03Score4;
     TextView m03Score5;
+    TextView m03Q2Score1;
+    TextView m03Q2Score2;
+    TextView m03Q2Score3;
+    TextView m03Q2Score4;
+    TextView m03Q2Score5;
     TextView m04Score1;
     TextView m04Score2;
     TextView m04Score3;
@@ -70,33 +92,10 @@ public class ResultsActivity extends AppCompatActivity {
     TextView m09Score3;
     TextView m10Score;
 
-    int m10FinalScore = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
-
-
-        DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
-        GlobalVariables.testTimeEnd = df.format(Calendar.getInstance().getTime());
-        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Dementia Cognition Screen/" + GlobalVariables.userID + "_" + GlobalVariables.userInitials + "/";
-        file = new File(path + "00 - Results" + ".txt");
-        file.getParentFile().mkdirs(); //if the folder doesn't exists it's created
-
-        data = "Patient's Name: " + GlobalVariables.userName + (System.getProperty("line.separator"));
-        data += "Patient's ID: " + GlobalVariables.userID + (System.getProperty("line.separator"));
-        data += "Patient's DOB: " + GlobalVariables.userAge + (System.getProperty("line.separator"));
-        data += "Patient's Sex: " + GlobalVariables.userSex + (System.getProperty("line.separator"));
-        data += "Test Start Time: " + GlobalVariables.testTimeStart + (System.getProperty("line.separator"));
-        data += "Test End Time: " + GlobalVariables.testTimeEnd + (System.getProperty("line.separator"));
-        data += "" + (System.getProperty("line.separator"));
-        data += "" + (System.getProperty("line.separator"));
-        SaveTextData(file, data);
-
-        userName = (TextView) findViewById(R.id.activity_results_username);
-
-        userName.setText(GlobalVariables.userName);
 
         results01 = (CardView) findViewById(R.id.m01_result);
         results02 = (CardView) findViewById(R.id.m02_result);
@@ -122,6 +121,11 @@ public class ResultsActivity extends AppCompatActivity {
         m03Score3 = (TextView) findViewById(R.id.m03_score3);
         m03Score4 = (TextView) findViewById(R.id.m03_score4);
         m03Score5 = (TextView) findViewById(R.id.m03_score5);
+        m03Q2Score1 = (TextView) findViewById(R.id.m03_q2score1);
+        m03Q2Score2 = (TextView) findViewById(R.id.m03_q2score2);
+        m03Q2Score3 = (TextView) findViewById(R.id.m03_q2score3);
+        m03Q2Score4 = (TextView) findViewById(R.id.m03_q2score4);
+        m03Q2Score5 = (TextView) findViewById(R.id.m03_q2score5);
         m04Score1 = (TextView) findViewById(R.id.m04_score1);
         m04Score2 = (TextView) findViewById(R.id.m04_score2);
         m04Score3 = (TextView) findViewById(R.id.m04_score3);
@@ -143,6 +147,41 @@ public class ResultsActivity extends AppCompatActivity {
         m09Score3 = (TextView) findViewById(R.id.m09_score3);
         m10Score = (TextView) findViewById(R.id.m10_score);
 
+        DateFormat df = new SimpleDateFormat("EEE d MMM yyyy HH:mm:ss");
+        GlobalVariables.testTimeEnd = df.format(Calendar.getInstance().getTime());
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Dementia Cognition Screen/" + GlobalVariables.userID + "_" + GlobalVariables.userInitials + "/";
+        file = new File(path + "00 - Results" + ".txt");
+        file.getParentFile().mkdirs(); //if the folder doesn't exists it's created
+        fileCSV = new File(path + "00 - Results" + ".csv");
+        fileCSV.getParentFile().mkdirs(); //if the folder doesn't exists it's created
+
+        setValuesCSV();
+
+        data += "Patient's Name: " + GlobalVariables.userName + (System.getProperty("line.separator"));
+        data += "Patient's ID: " + GlobalVariables.userID + (System.getProperty("line.separator"));
+        data += "Patient's Education: " + GlobalVariables.userEdu + (System.getProperty("line.separator"));
+        data += "Patient's DOB: " + GlobalVariables.userAge + (System.getProperty("line.separator"));
+        data += "Patient's Sex: " + GlobalVariables.userSex + (System.getProperty("line.separator"));
+        data += "Test Language: " + GlobalVariables.testLanguage + " (" + GlobalVariables.testLanguageString + ")" + (System.getProperty("line.separator"));
+        data += "Test Start Time: " + GlobalVariables.testTimeStart + (System.getProperty("line.separator"));
+        data += "Test End Time: " + GlobalVariables.testTimeEnd + (System.getProperty("line.separator"));
+        data += "" + (System.getProperty("line.separator"));
+        data += "" + (System.getProperty("line.separator"));
+        SaveTextData(file, data);
+
+        dataCSV1 += "Initials,Gender,Education,DOB,Language,Start time,End time";
+        dataCSV2 += "" + GlobalVariables.userInitials;
+        dataCSV2 += "," + csvSexMale;
+        dataCSV2 += "," + GlobalVariables.userEdu;
+        dataCSV2 += "," + GlobalVariables.userAge;
+        dataCSV2 += "," + GlobalVariables.testLanguage;
+        dataCSV2 += "," + "(" + GlobalVariables.testTimeStart + ")";
+        dataCSV2 += "," + "(" + GlobalVariables.testTimeEnd + ")";
+
+        userName = (TextView) findViewById(R.id.activity_results_username);
+
+        userName.setText(GlobalVariables.userName);
+
         if (GlobalVariables.modulesSelected[0]) {
             results01.setVisibility(View.VISIBLE);
             m01Score1.setText(String.valueOf(GlobalVariables.m01Score[0]));
@@ -157,6 +196,13 @@ public class ResultsActivity extends AppCompatActivity {
             data += "Question 4: " + intToResult(GlobalVariables.m01Score[3]) + (System.getProperty("line.separator"));
             data += "" + (System.getProperty("line.separator"));
             SaveTextData(file, data);
+
+            dataCSV1 += ",PNT.cherry,PNT.dolphin,PNT.rabbit,PNT.corn,PNT.totalscore";
+            dataCSV2 += "," + GlobalVariables.m01Score[0];
+            dataCSV2 += "," + GlobalVariables.m01Score[1];
+            dataCSV2 += "," + GlobalVariables.m01Score[2];
+            dataCSV2 += "," + GlobalVariables.m01Score[3];
+            dataCSV2 += "," + m01Total;
         }
 
         if (GlobalVariables.modulesSelected[1]) {
@@ -173,24 +219,54 @@ public class ResultsActivity extends AppCompatActivity {
             data += "Question 4: " + intToResult(GlobalVariables.m02Score[3]) + (System.getProperty("line.separator"));
             data += "" + (System.getProperty("line.separator"));
             SaveTextData(file, data);
+
+            dataCSV1 += ",PP.duck,PP.grapes,PP.bird,PP.veg,PP.totalscore";
+            dataCSV2 += "," + GlobalVariables.m02Score[0];
+            dataCSV2 += "," + GlobalVariables.m02Score[1];
+            dataCSV2 += "," + GlobalVariables.m02Score[2];
+            dataCSV2 += "," + GlobalVariables.m02Score[3];
+            dataCSV2 += "," + m02Total;
         }
 
         if (GlobalVariables.modulesSelected[2]) {
             results03.setVisibility(View.VISIBLE);
-            m03Score1.setText(String.valueOf(GlobalVariables.m03Score[0]));
-            m03Score2.setText(String.valueOf(GlobalVariables.m03Score[1]));
-            m03Score3.setText(String.valueOf(GlobalVariables.m03Score[2]));
-            m03Score4.setText(String.valueOf(GlobalVariables.m03Score[3]));
-            m03Score5.setText(String.valueOf(GlobalVariables.m03Score[4]));
+            m03Score1.setText(String.valueOf(GlobalVariables.m03ScoreQ1[0]));
+            m03Score2.setText(String.valueOf(GlobalVariables.m03ScoreQ1[1]));
+            m03Score3.setText(String.valueOf(GlobalVariables.m03ScoreQ1[2]));
+            m03Score4.setText(String.valueOf(GlobalVariables.m03ScoreQ1[3]));
+            m03Score5.setText(String.valueOf(GlobalVariables.m03ScoreQ1[4]));
+            m03Q2Score1.setText(String.valueOf(GlobalVariables.m03ScoreQ2[0]));
+            m03Q2Score2.setText(String.valueOf(GlobalVariables.m03ScoreQ2[1]));
+            m03Q2Score3.setText(String.valueOf(GlobalVariables.m03ScoreQ2[2]));
+            m03Q2Score4.setText(String.valueOf(GlobalVariables.m03ScoreQ2[3]));
+            m03Q2Score5.setText(String.valueOf(GlobalVariables.m03ScoreQ2[4]));
 
             data = "Task 03 " + getString(R.string.word_learning) + (System.getProperty("line.separator"));
-            data += "Question 1: " + intToResult(GlobalVariables.m03Score[0]) + (System.getProperty("line.separator"));
-            data += "Question 2: " + intToResult(GlobalVariables.m03Score[1]) + (System.getProperty("line.separator"));
-            data += "Question 3: " + intToResult(GlobalVariables.m03Score[2]) + (System.getProperty("line.separator"));
-            data += "Question 4: " + intToResult(GlobalVariables.m03Score[3]) + (System.getProperty("line.separator"));
-            data += "Question 5: " + intToResult(GlobalVariables.m03Score[4]) + (System.getProperty("line.separator"));
+            data += "Question 1.1: " + intToResult(GlobalVariables.m03ScoreQ1[0]) + (System.getProperty("line.separator"));
+            data += "Question 1.2: " + intToResult(GlobalVariables.m03ScoreQ1[1]) + (System.getProperty("line.separator"));
+            data += "Question 1.3: " + intToResult(GlobalVariables.m03ScoreQ1[2]) + (System.getProperty("line.separator"));
+            data += "Question 1.4: " + intToResult(GlobalVariables.m03ScoreQ1[3]) + (System.getProperty("line.separator"));
+            data += "Question 1.5: " + intToResult(GlobalVariables.m03ScoreQ1[4]) + (System.getProperty("line.separator"));
+            data += "Question 2.1: " + intToResult(GlobalVariables.m03ScoreQ2[0]) + (System.getProperty("line.separator"));
+            data += "Question 2.2: " + intToResult(GlobalVariables.m03ScoreQ2[1]) + (System.getProperty("line.separator"));
+            data += "Question 2.3: " + intToResult(GlobalVariables.m03ScoreQ2[2]) + (System.getProperty("line.separator"));
+            data += "Question 2.4: " + intToResult(GlobalVariables.m03ScoreQ2[3]) + (System.getProperty("line.separator"));
+            data += "Question 2.5: " + intToResult(GlobalVariables.m03ScoreQ2[4]) + (System.getProperty("line.separator"));
             data += "" + (System.getProperty("line.separator"));
             SaveTextData(file, data);
+
+            dataCSV1 += ",WL1.bicycle,WL1.mist,WL1.wardrobe,WL1.teacher,WL1.rectangle,WL2.bicycle,WL2.mist,WL2.wardrobe,WL2.teacher,WL2.rectangle,WL.totalscore";
+            dataCSV2 += "," + GlobalVariables.m03ScoreQ1[0];
+            dataCSV2 += "," + GlobalVariables.m03ScoreQ1[1];
+            dataCSV2 += "," + GlobalVariables.m03ScoreQ1[2];
+            dataCSV2 += "," + GlobalVariables.m03ScoreQ1[3];
+            dataCSV2 += "," + GlobalVariables.m03ScoreQ1[4];
+            dataCSV2 += "," + GlobalVariables.m03ScoreQ2[0];
+            dataCSV2 += "," + GlobalVariables.m03ScoreQ2[1];
+            dataCSV2 += "," + GlobalVariables.m03ScoreQ2[2];
+            dataCSV2 += "," + GlobalVariables.m03ScoreQ2[3];
+            dataCSV2 += "," + GlobalVariables.m03ScoreQ2[4];
+            dataCSV2 += "," + m03Total;
         }
 
         if (GlobalVariables.modulesSelected[3]) {
@@ -207,6 +283,13 @@ public class ResultsActivity extends AppCompatActivity {
             data += "Question 4: " + intToResult(GlobalVariables.m04Score[3]) + (System.getProperty("line.separator"));
             data += "" + (System.getProperty("line.separator"));
             SaveTextData(file, data);
+
+            dataCSV1 += ",O.year,O.month,O.date,O.CE,O.totalscore";
+            dataCSV2 += "," + GlobalVariables.m04Score[0];
+            dataCSV2 += "," + GlobalVariables.m04Score[1];
+            dataCSV2 += "," + GlobalVariables.m04Score[2];
+            dataCSV2 += "," + GlobalVariables.m04Score[3];
+            dataCSV2 += "," + m04Total;
         }
 
         if (GlobalVariables.modulesSelected[4]) {
@@ -219,6 +302,12 @@ public class ResultsActivity extends AppCompatActivity {
             data += "Question 2: " + Task5ToResult2(GlobalVariables.m05Score[1]) + " - Time: " + GlobalVariables.m05TimeTaken[1] + (System.getProperty("line.separator"));
             data += "" + (System.getProperty("line.separator"));
             SaveTextData(file, data);
+            dataCSV1 += ",FC,FC.RT,FR,FR.RT,FC.totalscore";
+            dataCSV2 += "," + GlobalVariables.m05Score[0];
+            dataCSV2 += "," + GlobalVariables.m05TimeTaken[0];
+            dataCSV2 += "," + GlobalVariables.m05Score[1];
+            dataCSV2 += "," + GlobalVariables.m05TimeTaken[1];
+            dataCSV2 += "," + m05Total;
         }
 
         if (GlobalVariables.modulesSelected[5]) {
@@ -232,6 +321,15 @@ public class ResultsActivity extends AppCompatActivity {
             data += "Task Result: " + ((GlobalVariables.m06Score[0] + GlobalVariables.m06Score[1]) - GlobalVariables.m06Score[2]) + (System.getProperty("line.separator"));
             data += "" + (System.getProperty("line.separator"));
             SaveTextData(file, data);
+
+            dataCSV1 += ",TM1.circles,TM1.RT,TM2.squares,TM2.RT,TM3.mixed,TM3.RT,TM4.exec";
+            dataCSV2 += "," + GlobalVariables.m06Score[0];
+            dataCSV2 += "," + GlobalVariables.m06TimeTaken[0];
+            dataCSV2 += "," + GlobalVariables.m06Score[1];
+            dataCSV2 += "," + GlobalVariables.m06TimeTaken[1];
+            dataCSV2 += "," + GlobalVariables.m06Score[2];
+            dataCSV2 += "," + GlobalVariables.m06TimeTaken[2];
+            dataCSV2 += "," + m06Total;
         }
 
         if (GlobalVariables.modulesSelected[6]) {
@@ -248,24 +346,81 @@ public class ResultsActivity extends AppCompatActivity {
             data += "Question 4: " + intToResult(GlobalVariables.m07Score[3]) + (System.getProperty("line.separator"));
             data += "" + (System.getProperty("line.separator"));
             SaveTextData(file, data);
+
+            for (int i = 0; i < 31; i++) {
+                GlobalVariables.m07TappedFigureInt[i] = (GlobalVariables.m07TappedFigure[i]) ? 1 : 0;
+            }
+
+            dataCSV1 += ",RF1.1,RF1.2,RF1.3,RF1.4,RF1.5,RF1.6,RF1.7,RF1.score,RF2.1,RF2.2,RF2.3,RF2.4,RF2.5,RF2.6,RF2.7,RF2.score,RF3.1,RF3.2,RF3.3,RF3.4,RF3.5,RF3.6,RF3.7,RF3.score,RF4.1,RF4.2,RF4.3,RF4.4,RF4.5,RF4.6,RF4.7,RF4.score,RF.totalscore";
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[3];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[4];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[5];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[6];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[7];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[8];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[9];
+            dataCSV2 += "," + GlobalVariables.m07Score[0];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[10];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[11];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[12];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[13];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[14];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[15];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[16];
+            dataCSV2 += "," + GlobalVariables.m07Score[1];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[17];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[18];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[19];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[20];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[21];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[22];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[23];
+            dataCSV2 += "," + GlobalVariables.m07Score[2];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[24];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[25];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[26];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[27];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[28];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[29];
+            dataCSV2 += "," + GlobalVariables.m07TappedFigureInt[30];
+            dataCSV2 += "," + GlobalVariables.m07Score[3];
+            dataCSV2 += "," + m07Total;
         }
 
         if (GlobalVariables.modulesSelected[7]) {
             results08.setVisibility(View.VISIBLE);
-            m08Score1.setText(String.valueOf(GlobalVariables.m08Score[0]));
-            m08Score2.setText(String.valueOf(GlobalVariables.m08Score[1]));
-            m08Score3.setText(String.valueOf(GlobalVariables.m08Score[2]));
-            m08Score4.setText(String.valueOf(GlobalVariables.m08Score[3]));
-            m08Score5.setText(String.valueOf(GlobalVariables.m08Score[4]));
+            m08Score1.setText(String.valueOf(GlobalVariables.m08ScoreQ1[0]));
+            m08Score2.setText(String.valueOf(GlobalVariables.m08ScoreQ1[1]));
+            m08Score3.setText(String.valueOf(GlobalVariables.m08ScoreQ1[2]));
+            m08Score4.setText(String.valueOf(GlobalVariables.m08ScoreQ1[3]));
+            m08Score5.setText(String.valueOf(GlobalVariables.m08ScoreQ1[4]));
 
             data = "Task 08 " + getString(R.string.verbal_memory) + (System.getProperty("line.separator"));
-            data += "Question 1: " + intToResult(GlobalVariables.m08Score[0]) + (System.getProperty("line.separator"));
-            data += "Question 2: " + intToResult(GlobalVariables.m08Score[1]) + (System.getProperty("line.separator"));
-            data += "Question 3: " + intToResult(GlobalVariables.m08Score[2]) + (System.getProperty("line.separator"));
-            data += "Question 4: " + intToResult(GlobalVariables.m08Score[3]) + (System.getProperty("line.separator"));
-            data += "Question 5: " + intToResult(GlobalVariables.m08Score[4]) + (System.getProperty("line.separator"));
+            data += "Question 1.1: " + intToResult(GlobalVariables.m08ScoreQ1[0]) + (System.getProperty("line.separator"));
+            data += "Question 1.2: " + intToResult(GlobalVariables.m08ScoreQ1[1]) + (System.getProperty("line.separator"));
+            data += "Question 1.3: " + intToResult(GlobalVariables.m08ScoreQ1[2]) + (System.getProperty("line.separator"));
+            data += "Question 1.4: " + intToResult(GlobalVariables.m08ScoreQ1[3]) + (System.getProperty("line.separator"));
+            data += "Question 1.5: " + intToResult(GlobalVariables.m08ScoreQ1[4]) + (System.getProperty("line.separator"));
+            data += "Question 2.1: " + intToResult(GlobalVariables.m08ScoreQ2[0]) + (System.getProperty("line.separator"));
+            data += "Question 2.2: " + intToResult(GlobalVariables.m08ScoreQ2[1]) + (System.getProperty("line.separator"));
+            data += "Question 2.3: " + intToResult(GlobalVariables.m08ScoreQ2[2]) + (System.getProperty("line.separator"));
+            data += "Question 2.4: " + intToResult(GlobalVariables.m08ScoreQ2[3]) + (System.getProperty("line.separator"));
+            data += "Question 2.5: " + intToResult(GlobalVariables.m08ScoreQ2[4]) + (System.getProperty("line.separator"));
             data += "" + (System.getProperty("line.separator"));
             SaveTextData(file, data);
+
+            dataCSV1 += ",WM.bicycle,WM.mist,WM.wardrobe,WM.teacher,WM.rectangle,WR.bicycle,WR.mist,WR.wardrobe,WR.teacher,WR.rectangle,WM.totalscore";
+            dataCSV2 += "," + GlobalVariables.m08ScoreQ1[0];
+            dataCSV2 += "," + GlobalVariables.m08ScoreQ1[1];
+            dataCSV2 += "," + GlobalVariables.m08ScoreQ1[2];
+            dataCSV2 += "," + GlobalVariables.m08ScoreQ1[3];
+            dataCSV2 += "," + GlobalVariables.m08ScoreQ1[4];
+            dataCSV2 += "," + GlobalVariables.m08ScoreQ2[0];
+            dataCSV2 += "," + GlobalVariables.m08ScoreQ2[1];
+            dataCSV2 += "," + GlobalVariables.m08ScoreQ2[2];
+            dataCSV2 += "," + GlobalVariables.m08ScoreQ2[3];
+            dataCSV2 += "," + GlobalVariables.m08ScoreQ2[4];
+            dataCSV2 += "," + m08Total;
         }
 
         if (GlobalVariables.modulesSelected[8]) {
@@ -280,15 +435,23 @@ public class ResultsActivity extends AppCompatActivity {
             data += "Question 3: " + intToResult(GlobalVariables.m09Score[2]) + (System.getProperty("line.separator"));
             data += "" + (System.getProperty("line.separator"));
             SaveTextData(file, data);
+
+            dataCSV1 += ",EM.bread,EM.corn,EM.parrot,EM.totalscore";
+            dataCSV2 += "," + GlobalVariables.m09Score[0];
+            dataCSV2 += "," + GlobalVariables.m09Score[1];
+            dataCSV2 += "," + GlobalVariables.m09Score[2];
+            dataCSV2 += "," + m09Total;
         }
 
         if (GlobalVariables.modulesSelected[9]) {
+            int m10FinalScore = 0;
             results10.setVisibility(View.VISIBLE);
             for (int i : GlobalVariables.m10Score) {
                 m10FinalScore += i;
             }
-            if (GlobalVariables.m10WrongScore > 0) {
-                m10FinalScore -= GlobalVariables.m10WrongScore;
+            int m10WrongScoreTotal = GlobalVariables.m10WrongScore[0] + GlobalVariables.m10WrongScore[1] + GlobalVariables.m10WrongScore[2] + GlobalVariables.m10WrongScore[3] + GlobalVariables.m10WrongScore[4] + GlobalVariables.m10WrongScore[5];
+            if (m10WrongScoreTotal > 0) {
+                m10FinalScore -= m10WrongScoreTotal;
             }
             m10Score.setText(String.valueOf(m10FinalScore));
 
@@ -299,7 +462,24 @@ public class ResultsActivity extends AppCompatActivity {
             data += "Questions wrong: " + GlobalVariables.m10WrongScore + (System.getProperty("line.separator"));
             data += "" + (System.getProperty("line.separator"));
             SaveTextData(file, data);
+
+            dataCSV1 += ",AA.today,AA.down,AA.hello,AA.goodbye,AA.and,AA.drink,AA.no,AA.up,AA.yes,AA.totalscore";
+            dataCSV2 += "," + GlobalVariables.m10WrongScore[0];
+            dataCSV2 += "," + GlobalVariables.m10Score[0];
+            dataCSV2 += "," + GlobalVariables.m10WrongScore[1];
+            dataCSV2 += "," + GlobalVariables.m10Score[1];
+            dataCSV2 += "," + GlobalVariables.m10WrongScore[2];
+            dataCSV2 += "," + GlobalVariables.m10WrongScore[3];
+            dataCSV2 += "," + GlobalVariables.m10Score[2];
+            dataCSV2 += "," + GlobalVariables.m10WrongScore[4];
+            dataCSV2 += "," + GlobalVariables.m10WrongScore[5];
+            dataCSV2 += "," + m10Total;
         }
+
+        dataCSV1 += ",Totalscore" + (System.getProperty("line.separator"));
+        SaveTextData(fileCSV, dataCSV1);
+        dataCSV2 += "," + totalScore + (System.getProperty("line.separator"));
+        SaveTextData(fileCSV, dataCSV2);
     }
 
     @Override
@@ -388,5 +568,30 @@ public class ResultsActivity extends AppCompatActivity {
             return "4 Correct";
         }
         return "Error";
+    }
+
+    private void setValuesCSV() {
+        if (GlobalVariables.userSex.equalsIgnoreCase("male")) {
+            csvSexMale = 1;
+        } else if (GlobalVariables.userSex.equalsIgnoreCase("female")) {
+            csvSexMale = 2;
+        }
+
+        m01Total = GlobalVariables.m01Score[0] + GlobalVariables.m01Score[1] + GlobalVariables.m01Score[2] + GlobalVariables.m01Score[3];
+        m02Total = GlobalVariables.m02Score[0] + GlobalVariables.m02Score[1] + GlobalVariables.m02Score[2] + GlobalVariables.m02Score[3];
+        if (GlobalVariables.m03QuestionNo == 1) {
+            m03Total = GlobalVariables.m03ScoreQ1[0] + GlobalVariables.m03ScoreQ1[1] + GlobalVariables.m03ScoreQ1[2] + GlobalVariables.m03ScoreQ1[3] + GlobalVariables.m03ScoreQ1[4];
+        } else if (GlobalVariables.m03QuestionNo == 2) {
+            m03Total = GlobalVariables.m03ScoreQ2[0] + GlobalVariables.m03ScoreQ2[1] + GlobalVariables.m03ScoreQ2[2] + GlobalVariables.m03ScoreQ2[3] + GlobalVariables.m03ScoreQ2[4];
+        }
+        m04Total = GlobalVariables.m04Score[0] + GlobalVariables.m04Score[1] + GlobalVariables.m04Score[2] + GlobalVariables.m04Score[3];
+        m05Total = GlobalVariables.m05Score[0] + GlobalVariables.m05Score[1];
+        m06Total = GlobalVariables.m06Score[0] + GlobalVariables.m06Score[1] - GlobalVariables.m06Score[2];
+        m07Total = GlobalVariables.m07Score[0] + GlobalVariables.m07Score[1] + GlobalVariables.m07Score[2] + GlobalVariables.m07Score[3];
+        m08Total = GlobalVariables.m08ScoreQ1[0] + GlobalVariables.m08ScoreQ1[1] + GlobalVariables.m08ScoreQ1[2] + GlobalVariables.m08ScoreQ1[3] + GlobalVariables.m08ScoreQ1[4] + GlobalVariables.m08ScoreQ2[0] + GlobalVariables.m08ScoreQ2[1] + GlobalVariables.m08ScoreQ2[2] + GlobalVariables.m08ScoreQ2[3] + GlobalVariables.m08ScoreQ2[4];
+        m09Total = GlobalVariables.m09Score[0] + GlobalVariables.m09Score[1] + GlobalVariables.m09Score[2];
+        m10Total = GlobalVariables.m10Score[0] + GlobalVariables.m10Score[1] + GlobalVariables.m10Score[2];
+
+        totalScore = m01Total + m02Total + m03Total + m04Total + m05Total + m06Total + m07Total + m08Total + m09Total + m10Total;
     }
 }
