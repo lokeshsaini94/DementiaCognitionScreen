@@ -1,9 +1,11 @@
 package hku.demscreen.hk;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.Menu;
@@ -26,6 +28,7 @@ public class Module06Activity extends AppCompatActivity {
     long timeSwapBuff = 0L;
     long updatedTime = 0L;
     String fileName = "08 - Task 06 Question 1";
+    Vibrator vibrator;
 
     // Main screen
     TextView questionNumber;
@@ -35,6 +38,7 @@ public class Module06Activity extends AppCompatActivity {
     SeekBar score;
     TextView scoreText;
     boolean[] questionDoneOnce = {false, false, false};
+
     // Question
     ImageView previousQuestion;
     ImageView nextQuestion;
@@ -77,6 +81,7 @@ public class Module06Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_module06);
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         //Main screen
         info = (ImageView) findViewById(R.id.info_m06);
@@ -172,6 +177,7 @@ public class Module06Activity extends AppCompatActivity {
         scoreCorrect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 View rootView = getWindow().getDecorView().getRootView();
                 GlobalVariables.saveScreenshot(rootView, fileName);
                 UpdateTimerValue();
@@ -208,18 +214,25 @@ public class Module06Activity extends AppCompatActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 if (GlobalVariables.m06QuestionNo == 2) {
                     canvas1.clearCanvas();
                 } else if (GlobalVariables.m06QuestionNo == 3) {
                     canvas2.clearCanvas();
+                    StopTimer();
+                    StartTimer();
                 } else if (GlobalVariables.m06QuestionNo == 5) {
                     canvas3.clearCanvas();
                 } else if (GlobalVariables.m06QuestionNo == 6) {
                     canvas4.clearCanvas();
+                    StopTimer();
+                    StartTimer();
                 } else if (GlobalVariables.m06QuestionNo == 8) {
                     canvas5.clearCanvas();
                 } else if (GlobalVariables.m06QuestionNo == 9) {
                     canvas6.clearCanvas();
+                    StopTimer();
+                    StartTimer();
                 }
             }
         });
@@ -333,6 +346,7 @@ public class Module06Activity extends AppCompatActivity {
                 questionDoneOnce[0] = true;
             }
             reset.setVisibility(View.VISIBLE);
+            score.setMax(6);
             questionNumber.setText("1/1");
             fileName = "08 - Task 06 Question 1 C Patient";
             StopTimer();
@@ -383,6 +397,7 @@ public class Module06Activity extends AppCompatActivity {
                 questionDoneOnce[1] = true;
             }
             reset.setVisibility(View.VISIBLE);
+            score.setMax(6);
             questionNumber.setText("2/2");
             fileName = "08 - Task 06 Question 2 C Patient";
             StopTimer();
@@ -433,6 +448,7 @@ public class Module06Activity extends AppCompatActivity {
                 questionDoneOnce[2] = true;
             }
             reset.setVisibility(View.VISIBLE);
+            score.setMax(12);
             questionNumber.setText("3/3");
             fileName = "08 - Task 06 Question 3 C Patient";
             StopTimer();

@@ -36,6 +36,7 @@ public class Module07Activity extends AppCompatActivity {
     ImageView figure3Dot;
     ImageView figure4Dot;
 
+    Boolean[] ruleSet = {false, false, false};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,6 +143,7 @@ public class Module07Activity extends AppCompatActivity {
         scoreCorrect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 mainFunctions();
             }
         });
@@ -159,29 +161,153 @@ public class Module07Activity extends AppCompatActivity {
 
     // Sets current move's boolean answer to true for figure 1
     private void trueIfCorrectGuessFigure1() {
-        if (GlobalVariables.m07MovesCount == 4 || GlobalVariables.m07MovesCount == 6 || GlobalVariables.m07MovesCount == 8 || GlobalVariables.m07MovesCount == 10 || GlobalVariables.m07MovesCount == 12 || GlobalVariables.m07MovesCount == 14 || GlobalVariables.m07MovesCount == 16 || GlobalVariables.m07MovesCount == 20 || GlobalVariables.m07MovesCount == 23 || GlobalVariables.m07MovesCount == 27 || GlobalVariables.m07MovesCount == 31) {
+        if (GlobalVariables.m07MovesCount == 4 || GlobalVariables.m07MovesCount == 6 || GlobalVariables.m07MovesCount == 8 || GlobalVariables.m07MovesCount == 10) {
             GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+        }
+
+        if (GlobalVariables.m07Question2Rule == 1) {
+            if (GlobalVariables.m07MovesCount == 11 || GlobalVariables.m07MovesCount == 13 || GlobalVariables.m07MovesCount == 15 || GlobalVariables.m07MovesCount == 17) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question2Rule == 2) {
+            if (GlobalVariables.m07MovesCount == 12 || GlobalVariables.m07MovesCount == 14 || GlobalVariables.m07MovesCount == 16 || GlobalVariables.m07MovesCount == 18) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        }
+
+        if (GlobalVariables.m07Question3Rule == 3) {
+            if (GlobalVariables.m07MovesCount == 22 || GlobalVariables.m07MovesCount == 26) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question3Rule == 1) {
+            if (GlobalVariables.m07MovesCount == 19 || GlobalVariables.m07MovesCount == 23) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        }
+
+        if (GlobalVariables.m07Question4Rule == 1) {
+            if (GlobalVariables.m07MovesCount == 27 || GlobalVariables.m07MovesCount == 31) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question4Rule == 2) {
+            if (GlobalVariables.m07MovesCount == 28 || GlobalVariables.m07MovesCount == 32) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question4Rule == 4) {
+            if (GlobalVariables.m07MovesCount == 29 || GlobalVariables.m07MovesCount == 33) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question4Rule == 3) {
+            if (GlobalVariables.m07MovesCount == 30 || GlobalVariables.m07MovesCount == 34) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
         }
     }
 
     // Sets current move's boolean answer to true for figure 2
     private void trueIfCorrectGuessFigure2() {
-        if (GlobalVariables.m07MovesCount == 5 || GlobalVariables.m07MovesCount == 7 || GlobalVariables.m07MovesCount == 9 || GlobalVariables.m07MovesCount == 17 || GlobalVariables.m07MovesCount == 21 || GlobalVariables.m07MovesCount == 26 || GlobalVariables.m07MovesCount == 30) {
+        if (GlobalVariables.m07MovesCount == 5 || GlobalVariables.m07MovesCount == 7 || GlobalVariables.m07MovesCount == 9) {
             GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+        }
+
+        if (GlobalVariables.m07Question3Rule == 3) {
+            if (GlobalVariables.m07MovesCount == 19 || GlobalVariables.m07MovesCount == 23) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question3Rule == 1) {
+            if (GlobalVariables.m07MovesCount == 20 || GlobalVariables.m07MovesCount == 24) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        }
+
+        if (GlobalVariables.m07Question4Rule == 1) {
+            if (GlobalVariables.m07MovesCount == 30 || GlobalVariables.m07MovesCount == 34) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question4Rule == 2) {
+            if (GlobalVariables.m07MovesCount == 27 || GlobalVariables.m07MovesCount == 31) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question4Rule == 4) {
+            if (GlobalVariables.m07MovesCount == 28 || GlobalVariables.m07MovesCount == 32) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question4Rule == 3) {
+            if (GlobalVariables.m07MovesCount == 29 || GlobalVariables.m07MovesCount == 33) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
         }
     }
 
     // Sets current move's boolean answer to true for figure 3
     private void trueIfCorrectGuessFigure3() {
-        if (GlobalVariables.m07MovesCount == 11 || GlobalVariables.m07MovesCount == 13 || GlobalVariables.m07MovesCount == 15 || GlobalVariables.m07MovesCount == 19 || GlobalVariables.m07MovesCount == 24 || GlobalVariables.m07MovesCount == 28) {
-            GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+        if (GlobalVariables.m07Question2Rule == 1) {
+            if (GlobalVariables.m07MovesCount == 12 || GlobalVariables.m07MovesCount == 14 || GlobalVariables.m07MovesCount == 16 || GlobalVariables.m07MovesCount == 18) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question2Rule == 2) {
+            if (GlobalVariables.m07MovesCount == 11 || GlobalVariables.m07MovesCount == 13 || GlobalVariables.m07MovesCount == 15 || GlobalVariables.m07MovesCount == 17) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        }
+
+        if (GlobalVariables.m07Question3Rule == 3) {
+            if (GlobalVariables.m07MovesCount == 21 || GlobalVariables.m07MovesCount == 25) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question3Rule == 1) {
+            if (GlobalVariables.m07MovesCount == 22 || GlobalVariables.m07MovesCount == 26) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        }
+
+        if (GlobalVariables.m07Question4Rule == 1) {
+            if (GlobalVariables.m07MovesCount == 28 || GlobalVariables.m07MovesCount == 32) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question4Rule == 2) {
+            if (GlobalVariables.m07MovesCount == 29 || GlobalVariables.m07MovesCount == 33) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question4Rule == 4) {
+            if (GlobalVariables.m07MovesCount == 30 || GlobalVariables.m07MovesCount == 34) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question4Rule == 3) {
+            if (GlobalVariables.m07MovesCount == 27 || GlobalVariables.m07MovesCount == 31) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
         }
     }
 
     // Sets current move's boolean answer to true for figure 4
     private void trueIfCorrectGuessFigure4() {
-        if (GlobalVariables.m07MovesCount == 18 || GlobalVariables.m07MovesCount == 22 || GlobalVariables.m07MovesCount == 25 || GlobalVariables.m07MovesCount == 29) {
-            GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+        if (GlobalVariables.m07Question3Rule == 3) {
+            if (GlobalVariables.m07MovesCount == 20 || GlobalVariables.m07MovesCount == 24) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question3Rule == 1) {
+            if (GlobalVariables.m07MovesCount == 21 || GlobalVariables.m07MovesCount == 25) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        }
+
+        if (GlobalVariables.m07Question4Rule == 1) {
+            if (GlobalVariables.m07MovesCount == 29 || GlobalVariables.m07MovesCount == 33) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question4Rule == 2) {
+            if (GlobalVariables.m07MovesCount == 30 || GlobalVariables.m07MovesCount == 34) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question4Rule == 4) {
+            if (GlobalVariables.m07MovesCount == 27 || GlobalVariables.m07MovesCount == 31) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
+        } else if (GlobalVariables.m07Question4Rule == 3) {
+            if (GlobalVariables.m07MovesCount == 28 || GlobalVariables.m07MovesCount == 32) {
+                GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] = true;
+            }
         }
     }
 
@@ -191,13 +317,13 @@ public class Module07Activity extends AppCompatActivity {
             GlobalVariables.m07MovesCount = 10;
             GlobalVariables.m07Score[0] = 1;
         } else if (GlobalVariables.m07QuestionNo == 2 && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 2]) {
-            GlobalVariables.m07MovesCount = 17;
+            GlobalVariables.m07MovesCount = 18;
             GlobalVariables.m07Score[1] = 1;
         } else if (GlobalVariables.m07QuestionNo == 3 && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 2]) {
-            GlobalVariables.m07MovesCount = 24;
+            GlobalVariables.m07MovesCount = 26;
             GlobalVariables.m07Score[2] = 1;
         } else if (GlobalVariables.m07QuestionNo == 4 && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 1] && GlobalVariables.m07TappedFigure[GlobalVariables.m07MovesCount - 2]) {
-            GlobalVariables.m07MovesCount = 31;
+            GlobalVariables.m07MovesCount = 34;
             GlobalVariables.m07Score[3] = 1;
         }
         setViewModule();
@@ -206,11 +332,58 @@ public class Module07Activity extends AppCompatActivity {
     // Initiates next move
     private void mainFunctions() {
         GlobalVariables.m07MovesCount++;
-        if (GlobalVariables.m07MovesCount > 31) {
+        if (GlobalVariables.m07MovesCount > 34) {
             nextModule();
         }
+        questionNumberSet();
         figureNumberSet();
         setViewModule();
+    }
+
+    // Sets Question number depending on the current move
+    private void questionNumberSet() {
+        if (GlobalVariables.m07MovesCount <= 3) {
+            GlobalVariables.m07QuestionNo = 0;
+        } else if (GlobalVariables.m07MovesCount > 3 && GlobalVariables.m07MovesCount <= 10) {
+            GlobalVariables.m07QuestionNo = 1;
+        } else if (GlobalVariables.m07MovesCount > 10 && GlobalVariables.m07MovesCount <= 18) {
+            GlobalVariables.m07QuestionNo = 2;
+
+            if (!ruleSet[0]) {
+                if (GlobalVariables.m07CurrentFigure == 1) {
+                    GlobalVariables.m07Question2Rule = 1;
+                } else if (GlobalVariables.m07CurrentFigure == 2) {
+                    GlobalVariables.m07Question2Rule = 2;
+                }
+                ruleSet[0] = true;
+            }
+        } else if (GlobalVariables.m07MovesCount > 18 && GlobalVariables.m07MovesCount <= 26) {
+            GlobalVariables.m07QuestionNo = 3;
+
+            if (!ruleSet[1]) {
+                if (GlobalVariables.m07CurrentFigure == 3) {
+                    GlobalVariables.m07Question3Rule = 3;
+                } else if (GlobalVariables.m07CurrentFigure == 1) {
+                    GlobalVariables.m07Question3Rule = 1;
+                }
+                ruleSet[1] = true;
+            }
+        } else if (GlobalVariables.m07MovesCount > 26) {
+            GlobalVariables.m07QuestionNo = 4;
+
+            if (!ruleSet[2]) {
+                if (GlobalVariables.m07CurrentFigure == 1) {
+                    GlobalVariables.m07Question4Rule = 1;
+                } else if (GlobalVariables.m07CurrentFigure == 2) {
+                    GlobalVariables.m07Question4Rule = 2;
+                } else if (GlobalVariables.m07CurrentFigure == 4) {
+                    GlobalVariables.m07Question4Rule = 4;
+                } else if (GlobalVariables.m07CurrentFigure == 3) {
+                    GlobalVariables.m07Question4Rule = 3;
+                }
+                ruleSet[2] = true;
+            }
+        }
     }
 
     // Sets Current and Previous figure depending on the current move
@@ -218,56 +391,148 @@ public class Module07Activity extends AppCompatActivity {
         if (GlobalVariables.m07MovesCount == 1) {
             GlobalVariables.m07CurrentFigure = 1;
             GlobalVariables.m07PreviousFigure = 0;
-        } else if (GlobalVariables.m07MovesCount == 3 || GlobalVariables.m07MovesCount == 5 || GlobalVariables.m07MovesCount == 7 || GlobalVariables.m07MovesCount == 9 || GlobalVariables.m07MovesCount == 11 || GlobalVariables.m07MovesCount == 28) {
+        } else if (GlobalVariables.m07MovesCount == 3 || GlobalVariables.m07MovesCount == 5 || GlobalVariables.m07MovesCount == 7 || GlobalVariables.m07MovesCount == 9) {
             GlobalVariables.m07CurrentFigure = 1;
             GlobalVariables.m07PreviousFigure = 2;
-        } else if (GlobalVariables.m07MovesCount == 13 || GlobalVariables.m07MovesCount == 15 || GlobalVariables.m07MovesCount == 17 || GlobalVariables.m07MovesCount == 21) {
-            GlobalVariables.m07CurrentFigure = 1;
-            GlobalVariables.m07PreviousFigure = 3;
-        } else if (GlobalVariables.m07MovesCount == 24) {
-            GlobalVariables.m07CurrentFigure = 1;
-            GlobalVariables.m07PreviousFigure = 4;
-        } else if (GlobalVariables.m07MovesCount == 2 || GlobalVariables.m07MovesCount == 4 || GlobalVariables.m07MovesCount == 6 || GlobalVariables.m07MovesCount == 8 || GlobalVariables.m07MovesCount == 10 || GlobalVariables.m07MovesCount == 18 || GlobalVariables.m07MovesCount == 22) {
+        } else if (GlobalVariables.m07MovesCount == 2 || GlobalVariables.m07MovesCount == 4 || GlobalVariables.m07MovesCount == 6 || GlobalVariables.m07MovesCount == 8 || GlobalVariables.m07MovesCount == 10) {
             GlobalVariables.m07CurrentFigure = 2;
             GlobalVariables.m07PreviousFigure = 1;
-        } else if (GlobalVariables.m07MovesCount == 27 || GlobalVariables.m07MovesCount == 31) {
-            GlobalVariables.m07CurrentFigure = 2;
-            GlobalVariables.m07PreviousFigure = 4;
-        } else if (GlobalVariables.m07MovesCount == 12 || GlobalVariables.m07MovesCount == 14 || GlobalVariables.m07MovesCount == 16 || GlobalVariables.m07MovesCount == 25 || GlobalVariables.m07MovesCount == 29) {
-            GlobalVariables.m07CurrentFigure = 3;
-            GlobalVariables.m07PreviousFigure = 1;
-        } else if (GlobalVariables.m07MovesCount == 20) {
-            GlobalVariables.m07CurrentFigure = 3;
-            GlobalVariables.m07PreviousFigure = 4;
-        } else if (GlobalVariables.m07MovesCount == 19 || GlobalVariables.m07MovesCount == 23) {
-            GlobalVariables.m07CurrentFigure = 4;
-            GlobalVariables.m07PreviousFigure = 2;
-        } else if (GlobalVariables.m07MovesCount == 26 || GlobalVariables.m07MovesCount == 30) {
-            GlobalVariables.m07CurrentFigure = 4;
-            GlobalVariables.m07PreviousFigure = 3;
         }
 
-        questionNumberSet();
-    }
+        if (GlobalVariables.m07Question2Rule == 1) {
+            if (GlobalVariables.m07MovesCount == 12) {
+                GlobalVariables.m07CurrentFigure = 1;
+                GlobalVariables.m07PreviousFigure = 2;
+            } else if (GlobalVariables.m07MovesCount == 11) {
+                GlobalVariables.m07CurrentFigure = 2;
+                GlobalVariables.m07PreviousFigure = 1;
+            } else if (GlobalVariables.m07MovesCount == 14 || GlobalVariables.m07MovesCount == 16 || GlobalVariables.m07MovesCount == 18) {
+                GlobalVariables.m07CurrentFigure = 1;
+                GlobalVariables.m07PreviousFigure = 3;
+            } else if (GlobalVariables.m07MovesCount == 13 || GlobalVariables.m07MovesCount == 15 || GlobalVariables.m07MovesCount == 17) {
+                GlobalVariables.m07CurrentFigure = 3;
+                GlobalVariables.m07PreviousFigure = 1;
+            }
+        } else if (GlobalVariables.m07Question2Rule == 2) {
+            if (GlobalVariables.m07MovesCount == 11) {
+                GlobalVariables.m07CurrentFigure = 1;
+                GlobalVariables.m07PreviousFigure = 2;
+            } else if (GlobalVariables.m07MovesCount == 13 || GlobalVariables.m07MovesCount == 15 || GlobalVariables.m07MovesCount == 17) {
+                GlobalVariables.m07CurrentFigure = 1;
+                GlobalVariables.m07PreviousFigure = 3;
+            } else if (GlobalVariables.m07MovesCount == 12 || GlobalVariables.m07MovesCount == 14 || GlobalVariables.m07MovesCount == 16 || GlobalVariables.m07MovesCount == 18) {
+                GlobalVariables.m07CurrentFigure = 3;
+                GlobalVariables.m07PreviousFigure = 1;
+            }
+        }
 
-    // Sets Question number depending on the current move
-    private void questionNumberSet() {
-        if (GlobalVariables.m07MovesCount >= 1 && GlobalVariables.m07MovesCount <= 3) {
-            GlobalVariables.m07QuestionNo = 0;
-        } else if (GlobalVariables.m07MovesCount >= 4 && GlobalVariables.m07MovesCount <= 10) {
-            GlobalVariables.m07QuestionNo = 1;
-        } else if (GlobalVariables.m07MovesCount >= 11 && GlobalVariables.m07MovesCount <= 17) {
-            GlobalVariables.m07QuestionNo = 2;
-        } else if (GlobalVariables.m07MovesCount >= 18 && GlobalVariables.m07MovesCount <= 24) {
-            GlobalVariables.m07QuestionNo = 3;
-        } else if (GlobalVariables.m07MovesCount >= 25 && GlobalVariables.m07MovesCount <= 31) {
-            GlobalVariables.m07QuestionNo = 4;
+        if (GlobalVariables.m07Question3Rule == 3) {
+            if (GlobalVariables.m07MovesCount == 19 || GlobalVariables.m07MovesCount == 23) {
+                GlobalVariables.m07CurrentFigure = 1;
+                GlobalVariables.m07PreviousFigure = 3;
+            } else if (GlobalVariables.m07MovesCount == 20 || GlobalVariables.m07MovesCount == 24) {
+                GlobalVariables.m07CurrentFigure = 2;
+                GlobalVariables.m07PreviousFigure = 1;
+            } else if (GlobalVariables.m07MovesCount == 22 || GlobalVariables.m07MovesCount == 26) {
+                GlobalVariables.m07CurrentFigure = 3;
+                GlobalVariables.m07PreviousFigure = 4;
+            } else if (GlobalVariables.m07MovesCount == 21 || GlobalVariables.m07MovesCount == 25) {
+                GlobalVariables.m07CurrentFigure = 4;
+                GlobalVariables.m07PreviousFigure = 2;
+            }
+        } else if (GlobalVariables.m07Question3Rule == 1) {
+            if (GlobalVariables.m07MovesCount == 20 || GlobalVariables.m07MovesCount == 24) {
+                GlobalVariables.m07CurrentFigure = 1;
+                GlobalVariables.m07PreviousFigure = 3;
+            } else if (GlobalVariables.m07MovesCount == 21 || GlobalVariables.m07MovesCount == 25) {
+                GlobalVariables.m07CurrentFigure = 2;
+                GlobalVariables.m07PreviousFigure = 1;
+            } else if (GlobalVariables.m07MovesCount == 19) {
+                GlobalVariables.m07CurrentFigure = 3;
+                GlobalVariables.m07PreviousFigure = 1;
+            } else if (GlobalVariables.m07MovesCount == 23) {
+                GlobalVariables.m07CurrentFigure = 3;
+                GlobalVariables.m07PreviousFigure = 4;
+            } else if (GlobalVariables.m07MovesCount == 22 || GlobalVariables.m07MovesCount == 26) {
+                GlobalVariables.m07CurrentFigure = 4;
+                GlobalVariables.m07PreviousFigure = 2;
+            }
+        }
+
+        if (GlobalVariables.m07Question4Rule == 1) {
+            if (GlobalVariables.m07MovesCount == 28 || GlobalVariables.m07MovesCount == 32) {
+                GlobalVariables.m07CurrentFigure = 1;
+                GlobalVariables.m07PreviousFigure = 2;
+            } else if (GlobalVariables.m07MovesCount == 27) {
+                GlobalVariables.m07CurrentFigure = 2;
+                GlobalVariables.m07PreviousFigure = 1;
+            } else if (GlobalVariables.m07MovesCount == 31) {
+                GlobalVariables.m07CurrentFigure = 2;
+                GlobalVariables.m07PreviousFigure = 4;
+            } else if (GlobalVariables.m07MovesCount == 29 || GlobalVariables.m07MovesCount == 33) {
+                GlobalVariables.m07CurrentFigure = 3;
+                GlobalVariables.m07PreviousFigure = 1;
+            } else if (GlobalVariables.m07MovesCount == 30 || GlobalVariables.m07MovesCount == 34) {
+                GlobalVariables.m07CurrentFigure = 4;
+                GlobalVariables.m07PreviousFigure = 3;
+            }
+        } else if (GlobalVariables.m07Question4Rule == 2) {
+            if (GlobalVariables.m07MovesCount == 29 || GlobalVariables.m07MovesCount == 33) {
+                GlobalVariables.m07CurrentFigure = 1;
+                GlobalVariables.m07PreviousFigure = 2;
+            } else if (GlobalVariables.m07MovesCount == 28 || GlobalVariables.m07MovesCount == 32) {
+                GlobalVariables.m07CurrentFigure = 2;
+                GlobalVariables.m07PreviousFigure = 4;
+            } else if (GlobalVariables.m07MovesCount == 30 || GlobalVariables.m07MovesCount == 34) {
+                GlobalVariables.m07CurrentFigure = 3;
+                GlobalVariables.m07PreviousFigure = 1;
+            } else if (GlobalVariables.m07MovesCount == 27) {
+                GlobalVariables.m07CurrentFigure = 4;
+                GlobalVariables.m07PreviousFigure = 2;
+            } else if (GlobalVariables.m07MovesCount == 31) {
+                GlobalVariables.m07CurrentFigure = 4;
+                GlobalVariables.m07PreviousFigure = 3;
+            }
+        } else if (GlobalVariables.m07Question4Rule == 4) {
+            if (GlobalVariables.m07MovesCount == 30 || GlobalVariables.m07MovesCount == 34) {
+                GlobalVariables.m07CurrentFigure = 1;
+                GlobalVariables.m07PreviousFigure = 2;
+            } else if (GlobalVariables.m07MovesCount == 29 || GlobalVariables.m07MovesCount == 33) {
+                GlobalVariables.m07CurrentFigure = 2;
+                GlobalVariables.m07PreviousFigure = 4;
+            } else if (GlobalVariables.m07MovesCount == 31) {
+                GlobalVariables.m07CurrentFigure = 3;
+                GlobalVariables.m07PreviousFigure = 1;
+            } else if (GlobalVariables.m07MovesCount == 27) {
+                GlobalVariables.m07CurrentFigure = 3;
+                GlobalVariables.m07PreviousFigure = 4;
+            } else if (GlobalVariables.m07MovesCount == 28 || GlobalVariables.m07MovesCount == 32) {
+                GlobalVariables.m07CurrentFigure = 4;
+                GlobalVariables.m07PreviousFigure = 3;
+            }
+        } else if (GlobalVariables.m07Question4Rule == 3) {
+            if (GlobalVariables.m07MovesCount == 31) {
+                GlobalVariables.m07CurrentFigure = 1;
+                GlobalVariables.m07PreviousFigure = 2;
+            } else if (GlobalVariables.m07MovesCount == 27) {
+                GlobalVariables.m07CurrentFigure = 1;
+                GlobalVariables.m07PreviousFigure = 3;
+            } else if (GlobalVariables.m07MovesCount == 30 || GlobalVariables.m07MovesCount == 34) {
+                GlobalVariables.m07CurrentFigure = 2;
+                GlobalVariables.m07PreviousFigure = 4;
+            } else if (GlobalVariables.m07MovesCount == 28 || GlobalVariables.m07MovesCount == 32) {
+                GlobalVariables.m07CurrentFigure = 3;
+                GlobalVariables.m07PreviousFigure = 1;
+            } else if (GlobalVariables.m07MovesCount == 29 || GlobalVariables.m07MovesCount == 33) {
+                GlobalVariables.m07CurrentFigure = 4;
+                GlobalVariables.m07PreviousFigure = 3;
+            }
         }
     }
 
     // Sets views for all questions
     private void setViewModule() {
-        if (GlobalVariables.m07QuestionNo == 0) {
+        if (GlobalVariables.m07MovesCount < 4) {
             scoreCorrect.setVisibility(View.VISIBLE);
             figure1.setClickable(false);
             figure2.setClickable(false);

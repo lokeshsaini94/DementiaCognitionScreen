@@ -50,15 +50,9 @@ public class Module05Activity extends AppCompatActivity {
             timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
             updatedTime = timeSwapBuff + timeInMilliseconds;
             int secs = (int) (timeInMilliseconds / 1000);
-            if (GlobalVariables.m05QuestionNo == 2) {
-                secs = secs - 30;
-            }
             int mins = secs / 60;
             secs = secs % 60;
             mins = mins % 60;
-            if (secs < 0) {
-                secs = 0;
-            }
             //int milliseconds = (int) (updatedTime % 1000);
             //+ ":" + String.format("%03d", milliseconds)
             timeTaken = String.format("%02d", mins) + ":" + String.format("%02d", secs);
@@ -157,6 +151,7 @@ public class Module05Activity extends AppCompatActivity {
         score0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 if (GlobalVariables.m05QuestionNo == 1) {
                     GlobalVariables.m05Score[0] = 0;
                 } else if (GlobalVariables.m05QuestionNo == 2) {
@@ -171,6 +166,7 @@ public class Module05Activity extends AppCompatActivity {
         score1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 if (GlobalVariables.m05QuestionNo == 1) {
                     GlobalVariables.m05Score[0] = 0.5;
                 } else if (GlobalVariables.m05QuestionNo == 2) {
@@ -184,6 +180,7 @@ public class Module05Activity extends AppCompatActivity {
         score2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 if (GlobalVariables.m05QuestionNo == 1) {
                     GlobalVariables.m05Score[0] = 1;
                 } else if (GlobalVariables.m05QuestionNo == 2) {
@@ -197,6 +194,7 @@ public class Module05Activity extends AppCompatActivity {
         score3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 if (GlobalVariables.m05QuestionNo == 1) {
                     GlobalVariables.m05Score[0] = 1.5;
                 } else if (GlobalVariables.m05QuestionNo == 2) {
@@ -210,6 +208,7 @@ public class Module05Activity extends AppCompatActivity {
         score4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 if (GlobalVariables.m05QuestionNo == 1) {
                     GlobalVariables.m05Score[0] = 2;
                 } else if (GlobalVariables.m05QuestionNo == 2) {
@@ -234,11 +233,14 @@ public class Module05Activity extends AppCompatActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 if (GlobalVariables.m05QuestionNo == 1) {
                     canvas1.clearCanvas();
                 } else if (GlobalVariables.m05QuestionNo == 2) {
                     canvas2.clearCanvas();
                 }
+                StopTimer();
+                StartTimer();
             }
         });
     }
@@ -289,6 +291,8 @@ public class Module05Activity extends AppCompatActivity {
                 figure.setVisibility(View.INVISIBLE);
                 canvas2.setWillNotDraw(false);
                 canvas2.clearCanvas();
+                StopTimer();
+                StartTimer();
             }
         }, 30000);
     }

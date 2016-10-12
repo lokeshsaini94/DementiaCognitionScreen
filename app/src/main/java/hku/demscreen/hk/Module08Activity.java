@@ -2,7 +2,9 @@ package hku.demscreen.hk;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -14,6 +16,8 @@ import android.widget.TextView;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+
+import java.io.IOException;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -57,6 +61,7 @@ public class Module08Activity extends AppCompatActivity {
 
     View mainLayout;
     View mcqLayout;
+    private MediaRecorder myAudioRecorder;
 
 
     @Override
@@ -108,6 +113,8 @@ public class Module08Activity extends AppCompatActivity {
         setViewModule();
 
         mainQuestion();
+
+        startAudioRecorder();
     }
 
     // Action bar next button
@@ -376,6 +383,7 @@ public class Module08Activity extends AppCompatActivity {
         scoreCorrect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 if (GlobalVariables.m08QuestionNo == 1) {
                     GlobalVariables.m08MCQno[0] = GlobalVariables.m08ScoreQ1[0];
                     GlobalVariables.m08MCQno[1] = GlobalVariables.m08ScoreQ1[1];
@@ -583,6 +591,32 @@ public class Module08Activity extends AppCompatActivity {
         setViewModule();
     }
 
+    // Start recording Audio
+    private void startAudioRecorder() {
+        String outputFile = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Dementia Cognition Screen/" + GlobalVariables.userID + "_" + GlobalVariables.userInitials + "/09 - Task 08 Recording.mp3";
+        myAudioRecorder = new MediaRecorder();
+        myAudioRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        myAudioRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        myAudioRecorder.setAudioEncoder(MediaRecorder.OutputFormat.AMR_NB);
+        myAudioRecorder.setOutputFile(outputFile);
+
+        try {
+            myAudioRecorder.prepare();
+            myAudioRecorder.start();
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Stop recording Audio
+    private void stopAudioRecorder() {
+        myAudioRecorder.stop();
+        myAudioRecorder.release();
+        myAudioRecorder = null;
+    }
+
     // Content left animation
     private void animateLeft() {
         YoYo.with(Techniques.SlideInLeft)
@@ -599,6 +633,7 @@ public class Module08Activity extends AppCompatActivity {
 
     // Starts next selected Task
     private void nextModule() {
+        stopAudioRecorder();
         if (GlobalVariables.modulesSelected[8]) {
             Intent intentModulesActivity = new Intent(Module08Activity.this, Module09Activity.class);
             Module08Activity.this.startActivity(intentModulesActivity);

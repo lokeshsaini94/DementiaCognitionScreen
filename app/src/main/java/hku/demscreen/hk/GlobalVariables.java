@@ -15,6 +15,7 @@ public class GlobalVariables extends Application {
     public static int whiteColorValue = Color.parseColor("#ffffff");
     public static int testLanguage = 1;
     public static String testLanguageString = "English";
+    public static String testDate = "";
     public static String testTimeStart = "";
     public static String testTimeEnd = "";
     public static String userName = "";
@@ -56,8 +57,11 @@ public class GlobalVariables extends Application {
     public static int m07MovesCount = 0;
     public static int m07CurrentFigure = 0;
     public static int m07PreviousFigure = 0;
-    public static boolean[] m07TappedFigure = new boolean[32];
-    public static int[] m07TappedFigureInt = new int[31];
+    public static boolean[] m07TappedFigure = new boolean[35];
+    public static int[] m07TappedFigureInt = new int[34];
+    public static int m07Question2Rule = 0;
+    public static int m07Question3Rule = 0;
+    public static int m07Question4Rule = 0;
     public static int m08CurrentMCQNo = 1;
     public static int[] m08MCQno = {0, 0, 0, 0, 0};
     public static int[] m08MCQcardChecked = {0, 0, 0, 0};

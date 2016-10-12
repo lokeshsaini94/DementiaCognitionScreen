@@ -147,6 +147,7 @@ public class Module00Activity extends AppCompatActivity {
         scoreCorrect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 View rootView = getWindow().getDecorView().getRootView();
                 GlobalVariables.saveScreenshot(rootView, fileName);
                 nextModule();

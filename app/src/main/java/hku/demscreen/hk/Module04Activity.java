@@ -1,9 +1,11 @@
 package hku.demscreen.hk;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,17 +29,18 @@ public class Module04Activity extends AppCompatActivity {
     ImageView scoreCorrect;
     ImageView scoreWrong;
     ImageView info;
+    Vibrator vibrator;
     // Question
     ImageView previousQuestion;
     ImageView nextQuestion;
     TextView question;
     private MediaRecorder myAudioRecorder;
-    private String outputFile = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_module04);
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         //Main screen
         info = (ImageView) findViewById(R.id.info_m04);
@@ -116,6 +119,7 @@ public class Module04Activity extends AppCompatActivity {
         scoreCorrect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 onCorrect();
             }
         });
@@ -123,6 +127,7 @@ public class Module04Activity extends AppCompatActivity {
         scoreWrong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 onWrong();
             }
         });
@@ -227,7 +232,7 @@ public class Module04Activity extends AppCompatActivity {
 
     // Start recording Audio
     private void startAudioRecorder() {
-        outputFile = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Dementia Cognition Screen/" + GlobalVariables.userID + "_" + GlobalVariables.userInitials + "/06 - Task 04 Recording.mp3";
+        String outputFile = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Dementia Cognition Screen/" + GlobalVariables.userID + "_" + GlobalVariables.userInitials + "/06 - Task 04 Recording.mp3";
         myAudioRecorder = new MediaRecorder();
         myAudioRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         myAudioRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);

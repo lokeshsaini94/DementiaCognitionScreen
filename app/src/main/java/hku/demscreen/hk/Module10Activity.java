@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -143,6 +144,7 @@ public class Module10Activity extends AppCompatActivity {
         scoreCorrect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 onCorrect();
             }
         });
@@ -257,7 +259,13 @@ public class Module10Activity extends AppCompatActivity {
             }
         } else if (GlobalVariables.m10TaskNo == 2) {
             if (GlobalVariables.m10PracticeQuestionNo == 1) {
-                audio_go.start();
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        audio_go.start();
+                    }
+                }, 2000);
             } else if (GlobalVariables.m10PracticeQuestionNo == 2) {
                 audio_but.start();
             } else if (GlobalVariables.m10PracticeQuestionNo == 3) {
@@ -265,7 +273,13 @@ public class Module10Activity extends AppCompatActivity {
             }
         } else if (GlobalVariables.m10TaskNo == 3) {
             if (GlobalVariables.m10QuestionNo == 1) {
-                audio_today.start();
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        audio_today.start();
+                    }
+                }, 2000);
             } else if (GlobalVariables.m10QuestionNo == 2) {
                 audio_down.start();
             } else if (GlobalVariables.m10QuestionNo == 3) {

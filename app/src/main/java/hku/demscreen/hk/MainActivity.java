@@ -2,12 +2,14 @@ package hku.demscreen.hk;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity
     static final int LANGUAGE_DIALOG_ID = 1;
     final CharSequence[] language_radio = {"English", "Chinese"};
     Locale myLocale;
+    Vibrator vibrator;
 
     EditText userName;
     EditText userId;
@@ -54,6 +57,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         userName = (EditText) findViewById(R.id.user_name);
         userAgeDate = (EditText) findViewById(R.id.user_age_DD);
@@ -90,6 +95,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vibrator.vibrate(100);
                 Boolean nameEmpty = userName.getText().toString().matches("");
                 Boolean ageDDEmpty = userAgeDate.getText().toString().matches("");
                 Boolean ageMMEmpty = userAgeMonth.getText().toString().matches("");
