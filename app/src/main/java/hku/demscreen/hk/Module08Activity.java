@@ -23,46 +23,26 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Module08Activity extends AppCompatActivity {
 
-    String Tag = "Module08Activity";
-    Vibrator vibrator;
+    private final String Tag = Module08Activity.class.getSimpleName();
+    private Vibrator vibrator;
 
-    String fileName = "09 - Task 08 Question 1";
+    private String fileName = "09 - Task 08 Question 1";
 
     // Main screen
-    TextView questionNumber;
-    ImageView scoreCorrect;
-    ImageView info;
+    private TextView questionNumber;
+    private ImageView scoreCorrect, info;
 
     // Question
-    ImageView previousQuestion;
-    CardView cardView1;
-    CardView cardView2;
-    CardView cardView3;
-    CardView cardView4;
-    CardView cardView5;
-    ImageView cardTick1;
-    ImageView cardTick2;
-    ImageView cardTick3;
-    ImageView cardTick4;
-    ImageView cardTick5;
+    private ImageView previousQuestion;
+    private CardView cardView1, cardView2, cardView3, cardView4, cardView5;
+    private ImageView cardTick1, cardTick2, cardTick3, cardTick4, cardTick5;
 
-    CardView cardViewMCQ1;
-    CardView cardViewMCQ2;
-    CardView cardViewMCQ3;
-    CardView cardViewMCQ4;
-    ImageView cardTickMCQ1;
-    ImageView cardTickMCQ2;
-    ImageView cardTickMCQ3;
-    ImageView cardTickMCQ4;
-    TextView textViewMCQ1;
-    TextView textViewMCQ2;
-    TextView textViewMCQ3;
-    TextView textViewMCQ4;
+    private CardView cardViewMCQ1, cardViewMCQ2, cardViewMCQ3, cardViewMCQ4;
+    private ImageView cardTickMCQ1, cardTickMCQ2, cardTickMCQ3, cardTickMCQ4;
+    private TextView textViewMCQ1, textViewMCQ2, textViewMCQ3, textViewMCQ4;
 
-    View mainLayout;
-    View mcqLayout;
+    private View mainLayout, mcqLayout;
     private MediaRecorder myAudioRecorder;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

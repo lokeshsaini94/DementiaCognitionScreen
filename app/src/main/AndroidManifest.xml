@@ -27,7 +27,8 @@
         <activity
             android:name=".ResultsActivity"
             android:label="Results" />
-        <activity android:name=".AboutActivity"
+        <activity
+            android:name=".AboutActivity"
             android:label="About Us"
             android:parentActivityName=".MainActivity" />
         <activity

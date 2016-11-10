@@ -17,29 +17,17 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Module10Activity extends AppCompatActivity {
 
-    String Tag = "Module10Activity";
-    Vibrator vibrator;
+    private final String Tag = Module10Activity.class.getSimpleName();
+    private Vibrator vibrator;
 
     // Main screen
-    TextView questionNumber;
-    ImageView scoreCorrect;
-    ImageView info;
-    ImageView sound;
+    private TextView questionNumber;
+    private ImageView scoreCorrect, info, sound;
 
     // Question
-    ImageView circle01;
-    ImageView circle02;
-    MediaPlayer audio_and;
-    MediaPlayer audio_but;
-    MediaPlayer audio_down;
-    MediaPlayer audio_drink;
-    MediaPlayer audio_go;
-    MediaPlayer audio_goodbye;
-    MediaPlayer audio_hello;
-    MediaPlayer audio_no;
-    MediaPlayer audio_today;
-    MediaPlayer audio_up;
-    MediaPlayer audio_yes;
+    private ImageView circle01, circle02;
+    private MediaPlayer audio_and, audio_but, audio_down, audio_drink, audio_go, audio_goodbye;
+    private MediaPlayer audio_hello, audio_no, audio_today, audio_up, audio_yes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

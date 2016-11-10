@@ -11,10 +11,13 @@ import android.view.View;
 
 // Custom view for drawing on a canvas
 public class SimpleDrawingView extends View {
+
     // setup initial color
     private final int paintColor = Color.BLACK;
+
     // defines paint and canvas
     private Paint drawPaint;
+
     // stores next circle
     private Path path = new Path();
 
@@ -25,8 +28,8 @@ public class SimpleDrawingView extends View {
         setupPaint();
     }
 
+    // Setup paint with color and stroke styles
     private void setupPaint() {
-        // Setup paint with color and stroke styles
         drawPaint = new Paint();
         drawPaint.setColor(paintColor);
         drawPaint.setAntiAlias(true);

@@ -23,29 +23,19 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Module03Activity extends AppCompatActivity {
 
-    String Tag = "Module03Activity";
-    Vibrator vibrator;
+    private final String Tag = Module03Activity.class.getSimpleName();
+    private Vibrator vibrator;
 
-    String fileName = "05 - Task 03 Question 1";
+    private String fileName = "05 - Task 03 Question 1";
 
     // Main screen
-    TextView questionNumber;
-    ImageView scoreCorrect;
-    ImageView info;
+    private TextView questionNumber;
+    private ImageView scoreCorrect, info;
 
     // Question
-    ImageView previousQuestion;
-    ImageView nextQuestion;
-    CardView cardView1;
-    CardView cardView2;
-    CardView cardView3;
-    CardView cardView4;
-    CardView cardView5;
-    ImageView cardTick1;
-    ImageView cardTick2;
-    ImageView cardTick3;
-    ImageView cardTick4;
-    ImageView cardTick5;
+    private ImageView previousQuestion, nextQuestion;
+    private CardView cardView1, cardView2, cardView3, cardView4, cardView5;
+    private ImageView cardTick1, cardTick2, cardTick3, cardTick4, cardTick5;
 
     private MediaRecorder myAudioRecorder;
 

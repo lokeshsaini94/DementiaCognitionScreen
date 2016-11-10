@@ -22,47 +22,32 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Module06Activity extends AppCompatActivity {
 
-    public String timeTaken;
-    String Tag = "Module06Activity";
-    long timeInMilliseconds = 0L;
-    long timeSwapBuff = 0L;
-    long updatedTime = 0L;
-    String fileName = "08 - Task 06 Question 1";
-    Vibrator vibrator;
+    private final String Tag = Module06Activity.class.getSimpleName();
+    private String timeTaken;
+    private long timeInMilliseconds = 0L, timeSwapBuff = 0L, updatedTime = 0L;
+    private String fileName = "08 - Task 06 Question 1";
+    private Vibrator vibrator;
 
     // Main screen
-    TextView questionNumber;
-    ImageView info;
-    ImageView reset;
-    ImageView scoreCorrect;
-    SeekBar score;
-    TextView scoreText;
-    boolean[] questionDoneOnce = {false, false, false};
+    private TextView questionNumber;
+    private ImageView info, reset, scoreCorrect;
+    private SeekBar score;
+    private TextView scoreText;
+    private boolean[] questionDoneOnce = {false, false, false};
 
     // Question
-    ImageView previousQuestion;
-    ImageView nextQuestion;
-    CardView cardView1;
-    CardView cardView2;
-    ImageView trailsDemo;
-    View canvas1ViewHolder;
-    View canvas2ViewHolder;
-    View canvas3ViewHolder;
-    View canvas4ViewHolder;
-    View canvas5ViewHolder;
-    View canvas6ViewHolder;
+    private ImageView previousQuestion, nextQuestion;
+    private CardView cardView1, cardView2;
+    private ImageView trailsDemo;
+    private View canvas1ViewHolder, canvas2ViewHolder, canvas3ViewHolder, canvas4ViewHolder, canvas5ViewHolder, canvas6ViewHolder;
 
-    SimpleDrawingView canvas1;
-    SimpleDrawingView canvas2;
-    SimpleDrawingView canvas3;
-    SimpleDrawingView canvas4;
-    SimpleDrawingView canvas5;
-    SimpleDrawingView canvas6;
+    private SimpleDrawingView canvas1, canvas2, canvas3, canvas4, canvas5, canvas6;
 
     private long startTime = 0L;
     private Handler customHandler = new Handler();
+
     // Updates Timer continuously
-    public Runnable updateTimerThread = new Runnable() {
+    private Runnable updateTimerThread = new Runnable() {
         public void run() {
             timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
             updatedTime = timeSwapBuff + timeInMilliseconds;

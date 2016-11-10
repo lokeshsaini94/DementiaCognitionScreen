@@ -22,74 +22,15 @@ import java.util.Calendar;
 
 public class ResultsActivity extends AppCompatActivity {
 
-    Vibrator vibrator;
+    private Vibrator vibrator;
 
-    File file;
-    String data = "";
-    File fileCSV;
-    String dataCSV1 = "";
-    String dataCSV2 = "";
+    private String data = "", dataCSV1 = "", dataCSV2 = "";
 
-    int csvSexMale;
-    int m01Total;
-    int m02Total;
-    int m03Total;
-    int m04Total;
-    double m05Total;
-    int m06Total;
-    int m07Total;
-    int m08Total;
-    int m09Total;
-    int m10Total;
-
-    double totalScore = 0;
-
-    TextView userName;
-
-    CardView results01;
-    CardView results02;
-    CardView results03;
-    CardView results04;
-    CardView results05;
-    CardView results06;
-    CardView results07;
-    CardView results08;
-    CardView results09;
-    CardView results10;
-
-    TextView m01Score1;
-    TextView m01Score2;
-    TextView m01Score3;
-    TextView m01Score4;
-    TextView m02Score1;
-    TextView m02Score2;
-    TextView m02Score3;
-    TextView m02Score4;
-    TextView m03Score1;
-    TextView m03Score2;
-    TextView m03Score3;
-    TextView m03Score4;
-    TextView m03Score5;
-    TextView m04Score1;
-    TextView m04Score2;
-    TextView m04Score3;
-    TextView m04Score4;
-    TextView m05Score1;
-    TextView m05Score2;
-    TextView m06Score1;
-    TextView m07Score1;
-    TextView m07Score2;
-    TextView m07Score3;
-    TextView m07Score4;
-    TextView m08Score1;
-    TextView m08Score2;
-    TextView m08Score3;
-    TextView m08Score4;
-    TextView m08Score5;
-    TextView m09Score1;
-    TextView m09Score2;
-    TextView m09Score3;
-    TextView m10Score;
+    private int csvSexMale;
+    private int m01Total, m02Total, m03Total, m04Total;
+    private double m05Total;
+    private int m06Total, m07Total, m08Total, m09Total, m10Total;
+    private double totalScore = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,57 +38,12 @@ public class ResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_results);
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
-        results01 = (CardView) findViewById(R.id.m01_result);
-        results02 = (CardView) findViewById(R.id.m02_result);
-        results03 = (CardView) findViewById(R.id.m03_result);
-        results04 = (CardView) findViewById(R.id.m04_result);
-        results05 = (CardView) findViewById(R.id.m05_result);
-        results06 = (CardView) findViewById(R.id.m06_result);
-        results07 = (CardView) findViewById(R.id.m07_result);
-        results08 = (CardView) findViewById(R.id.m08_result);
-        results09 = (CardView) findViewById(R.id.m09_result);
-        results10 = (CardView) findViewById(R.id.m10_result);
-
-        m01Score1 = (TextView) findViewById(R.id.m01_score1);
-        m01Score2 = (TextView) findViewById(R.id.m01_score2);
-        m01Score3 = (TextView) findViewById(R.id.m01_score3);
-        m01Score4 = (TextView) findViewById(R.id.m01_score4);
-        m02Score1 = (TextView) findViewById(R.id.m02_score1);
-        m02Score2 = (TextView) findViewById(R.id.m02_score2);
-        m02Score3 = (TextView) findViewById(R.id.m02_score3);
-        m02Score4 = (TextView) findViewById(R.id.m02_score4);
-        m03Score1 = (TextView) findViewById(R.id.m03_score1);
-        m03Score2 = (TextView) findViewById(R.id.m03_score2);
-        m03Score3 = (TextView) findViewById(R.id.m03_score3);
-        m03Score4 = (TextView) findViewById(R.id.m03_score4);
-        m03Score5 = (TextView) findViewById(R.id.m03_score5);
-        m04Score1 = (TextView) findViewById(R.id.m04_score1);
-        m04Score2 = (TextView) findViewById(R.id.m04_score2);
-        m04Score3 = (TextView) findViewById(R.id.m04_score3);
-        m04Score4 = (TextView) findViewById(R.id.m04_score4);
-        m05Score1 = (TextView) findViewById(R.id.m05_score1);
-        m05Score2 = (TextView) findViewById(R.id.m05_score2);
-        m06Score1 = (TextView) findViewById(R.id.m06_score1);
-        m07Score1 = (TextView) findViewById(R.id.m07_score1);
-        m07Score2 = (TextView) findViewById(R.id.m07_score2);
-        m07Score3 = (TextView) findViewById(R.id.m07_score3);
-        m07Score4 = (TextView) findViewById(R.id.m07_score4);
-        m08Score1 = (TextView) findViewById(R.id.m08_score1);
-        m08Score2 = (TextView) findViewById(R.id.m08_score2);
-        m08Score3 = (TextView) findViewById(R.id.m08_score3);
-        m08Score4 = (TextView) findViewById(R.id.m08_score4);
-        m08Score5 = (TextView) findViewById(R.id.m08_score5);
-        m09Score1 = (TextView) findViewById(R.id.m09_score1);
-        m09Score2 = (TextView) findViewById(R.id.m09_score2);
-        m09Score3 = (TextView) findViewById(R.id.m09_score3);
-        m10Score = (TextView) findViewById(R.id.m10_score);
-
         DateFormat df = new SimpleDateFormat("HH:mm:ss");
         GlobalVariables.testTimeEnd = df.format(Calendar.getInstance().getTime());
         String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Dementia Cognition Screen/" + GlobalVariables.userID + "_" + GlobalVariables.userInitials + "/";
-        file = new File(path + "00 - Results" + ".txt");
+        File file = new File(path + "00 - Results" + ".txt");
         file.getParentFile().mkdirs(); //if the folder doesn't exists it's created
-        fileCSV = new File(path + "00 - Results" + ".csv");
+        File fileCSV = new File(path + "00 - Results" + ".csv");
         fileCSV.getParentFile().mkdirs(); //if the folder doesn't exists it's created
 
         setValuesCSV();
@@ -175,12 +71,17 @@ public class ResultsActivity extends AppCompatActivity {
         dataCSV2 += "," + "(" + GlobalVariables.testTimeStart + ")";
         dataCSV2 += "," + "(" + GlobalVariables.testTimeEnd + ")";
 
-        userName = (TextView) findViewById(R.id.activity_results_username);
+        TextView userName = (TextView) findViewById(R.id.activity_results_username);
 
         userName.setText(GlobalVariables.userName);
 
         if (GlobalVariables.modulesSelected[0]) {
+            CardView results01 = (CardView) findViewById(R.id.m01_result);
             results01.setVisibility(View.VISIBLE);
+            TextView m01Score1 = (TextView) findViewById(R.id.m01_score1);
+            TextView m01Score2 = (TextView) findViewById(R.id.m01_score2);
+            TextView m01Score3 = (TextView) findViewById(R.id.m01_score3);
+            TextView m01Score4 = (TextView) findViewById(R.id.m01_score4);
             m01Score1.setText(String.valueOf(GlobalVariables.m01Score[0]));
             m01Score2.setText(String.valueOf(GlobalVariables.m01Score[1]));
             m01Score3.setText(String.valueOf(GlobalVariables.m01Score[2]));
@@ -203,7 +104,12 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
         if (GlobalVariables.modulesSelected[1]) {
+            CardView results02 = (CardView) findViewById(R.id.m02_result);
             results02.setVisibility(View.VISIBLE);
+            TextView m02Score1 = (TextView) findViewById(R.id.m02_score1);
+            TextView m02Score2 = (TextView) findViewById(R.id.m02_score2);
+            TextView m02Score3 = (TextView) findViewById(R.id.m02_score3);
+            TextView m02Score4 = (TextView) findViewById(R.id.m02_score4);
             m02Score1.setText(String.valueOf(GlobalVariables.m02Score[0]));
             m02Score2.setText(String.valueOf(GlobalVariables.m02Score[1]));
             m02Score3.setText(String.valueOf(GlobalVariables.m02Score[2]));
@@ -226,7 +132,13 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
         if (GlobalVariables.modulesSelected[2]) {
+            CardView results03 = (CardView) findViewById(R.id.m03_result);
             results03.setVisibility(View.VISIBLE);
+            TextView m03Score1 = (TextView) findViewById(R.id.m03_score1);
+            TextView m03Score2 = (TextView) findViewById(R.id.m03_score2);
+            TextView m03Score3 = (TextView) findViewById(R.id.m03_score3);
+            TextView m03Score4 = (TextView) findViewById(R.id.m03_score4);
+            TextView m03Score5 = (TextView) findViewById(R.id.m03_score5);
             m03Score1.setText(String.valueOf(GlobalVariables.m03ScoreQ1[0]));
             m03Score2.setText(String.valueOf(GlobalVariables.m03ScoreQ1[1]));
             m03Score3.setText(String.valueOf(GlobalVariables.m03ScoreQ1[2]));
@@ -265,7 +177,12 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
         if (GlobalVariables.modulesSelected[3]) {
+            CardView results04 = (CardView) findViewById(R.id.m04_result);
             results04.setVisibility(View.VISIBLE);
+            TextView m04Score1 = (TextView) findViewById(R.id.m04_score1);
+            TextView m04Score2 = (TextView) findViewById(R.id.m04_score2);
+            TextView m04Score3 = (TextView) findViewById(R.id.m04_score3);
+            TextView m04Score4 = (TextView) findViewById(R.id.m04_score4);
             m04Score1.setText(String.valueOf(GlobalVariables.m04Score[0]));
             m04Score2.setText(String.valueOf(GlobalVariables.m04Score[1]));
             m04Score3.setText(String.valueOf(GlobalVariables.m04Score[2]));
@@ -288,7 +205,10 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
         if (GlobalVariables.modulesSelected[4]) {
+            CardView results05 = (CardView) findViewById(R.id.m05_result);
             results05.setVisibility(View.VISIBLE);
+            TextView m05Score1 = (TextView) findViewById(R.id.m05_score1);
+            TextView m05Score2 = (TextView) findViewById(R.id.m05_score2);
             m05Score1.setText(String.valueOf(GlobalVariables.m05Score[0]));
             m05Score2.setText(String.valueOf((int) (Math.round(GlobalVariables.m05Score[1]))));
 
@@ -306,7 +226,9 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
         if (GlobalVariables.modulesSelected[5]) {
+            CardView results06 = (CardView) findViewById(R.id.m06_result);
             results06.setVisibility(View.VISIBLE);
+            TextView m06Score1 = (TextView) findViewById(R.id.m06_score1);
             m06Score1.setText(String.valueOf((GlobalVariables.m06Score[0] + GlobalVariables.m06Score[1]) - GlobalVariables.m06Score[2]));
 
             data = "Task 06 " + getString(R.string.trails) + (System.getProperty("line.separator"));
@@ -328,7 +250,12 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
         if (GlobalVariables.modulesSelected[6]) {
+            CardView results07 = (CardView) findViewById(R.id.m07_result);
             results07.setVisibility(View.VISIBLE);
+            TextView m07Score1 = (TextView) findViewById(R.id.m07_score1);
+            TextView m07Score2 = (TextView) findViewById(R.id.m07_score2);
+            TextView m07Score3 = (TextView) findViewById(R.id.m07_score3);
+            TextView m07Score4 = (TextView) findViewById(R.id.m07_score4);
             m07Score1.setText(String.valueOf(GlobalVariables.m07Score[0]));
             m07Score2.setText(String.valueOf(GlobalVariables.m07Score[1]));
             m07Score3.setText(String.valueOf(GlobalVariables.m07Score[2]));
@@ -386,7 +313,13 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
         if (GlobalVariables.modulesSelected[7]) {
+            CardView results08 = (CardView) findViewById(R.id.m08_result);
             results08.setVisibility(View.VISIBLE);
+            TextView m08Score1 = (TextView) findViewById(R.id.m08_score1);
+            TextView m08Score2 = (TextView) findViewById(R.id.m08_score2);
+            TextView m08Score3 = (TextView) findViewById(R.id.m08_score3);
+            TextView m08Score4 = (TextView) findViewById(R.id.m08_score4);
+            TextView m08Score5 = (TextView) findViewById(R.id.m08_score5);
             m08Score1.setText(String.valueOf(GlobalVariables.m08ScoreQ1[0]));
             m08Score2.setText(String.valueOf(GlobalVariables.m08ScoreQ1[1]));
             m08Score3.setText(String.valueOf(GlobalVariables.m08ScoreQ1[2]));
@@ -422,7 +355,11 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
         if (GlobalVariables.modulesSelected[8]) {
+            CardView results09 = (CardView) findViewById(R.id.m09_result);
             results09.setVisibility(View.VISIBLE);
+            TextView m09Score1 = (TextView) findViewById(R.id.m09_score1);
+            TextView m09Score2 = (TextView) findViewById(R.id.m09_score2);
+            TextView m09Score3 = (TextView) findViewById(R.id.m09_score3);
             m09Score1.setText(String.valueOf(GlobalVariables.m09Score[0]));
             m09Score2.setText(String.valueOf(GlobalVariables.m09Score[1]));
             m09Score3.setText(String.valueOf(GlobalVariables.m09Score[2]));
@@ -443,6 +380,7 @@ public class ResultsActivity extends AppCompatActivity {
 
         if (GlobalVariables.modulesSelected[9]) {
             int m10FinalScore = 0;
+            CardView results10 = (CardView) findViewById(R.id.m10_result);
             results10.setVisibility(View.VISIBLE);
             for (int i : GlobalVariables.m10Score) {
                 m10FinalScore += i;
@@ -451,7 +389,8 @@ public class ResultsActivity extends AppCompatActivity {
             if (m10WrongScoreTotal > 0) {
                 m10FinalScore -= m10WrongScoreTotal;
             }
-            m10Score.setText(String.valueOf(m10FinalScore));
+            TextView m10ScoreTV = (TextView) findViewById(R.id.m10_score);
+            m10ScoreTV.setText(String.valueOf(m10FinalScore));
 
             data = "Task 10 " + getString(R.string.attention) + (System.getProperty("line.separator"));
             data += "Question 1: " + intToResult(GlobalVariables.m10Score[0]) + (System.getProperty("line.separator"));
@@ -497,14 +436,20 @@ public class ResultsActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_again) {
             vibrator.vibrate(100);
-            Intent intentModulesActivity = new Intent(ResultsActivity.this, MainActivity.class);
-            ResultsActivity.this.startActivity(intentModulesActivity);
-            finish();
-            System.exit(0);
+            restartApp();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void restartApp() {
+        Intent i = getBaseContext().getPackageManager()
+                .getLaunchIntentForPackage(getBaseContext().getPackageName());
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(i);
+        finish();
+        System.exit(0);
     }
 
     private void SaveTextData(File file, String data) {
@@ -592,5 +537,11 @@ public class ResultsActivity extends AppCompatActivity {
         m10Total = GlobalVariables.m10Score[0] + GlobalVariables.m10Score[1] + GlobalVariables.m10Score[2];
 
         totalScore = m01Total + m02Total + m03Total + m04Total + m05Total + m06Total + m07Total + m08Total + m09Total + m10Total;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        restartApp();
     }
 }

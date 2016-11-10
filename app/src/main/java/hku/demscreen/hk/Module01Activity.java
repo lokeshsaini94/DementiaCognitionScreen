@@ -22,18 +22,15 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Module01Activity extends AppCompatActivity {
 
-    String Tag = "Module01Activity";
+    private final String Tag = Module01Activity.class.getSimpleName();
 
     // Main screen
-    TextView questionNumber;
-    ImageView scoreCorrect;
-    ImageView scoreWrong;
-    ImageView info;
-    Vibrator vibrator;
+    private TextView questionNumber;
+    private ImageView scoreCorrect, scoreWrong, info;
+    private Vibrator vibrator;
+
     // Question
-    ImageView previousQuestion;
-    ImageView nextQuestion;
-    ImageView image;
+    private ImageView previousQuestion, nextQuestion, image;
     private MediaRecorder myAudioRecorder;
 
     @Override

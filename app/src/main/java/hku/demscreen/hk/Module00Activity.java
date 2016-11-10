@@ -14,20 +14,16 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Module00Activity extends AppCompatActivity {
 
-    String Tag = "Module00Activity";
+    private final String Tag = Module00Activity.class.getSimpleName();
 
-    String fileName = "02 - Practice Task";
+    private String fileName = "02 - Practice Task";
 
     // Main screen
-    ImageView info;
-    Vibrator vibrator;
-    ImageView scoreCorrect;
+    private Vibrator vibrator;
+    private ImageView info, scoreCorrect;
 
     // Question
-    ImageView circle01;
-    ImageView circle02;
-    ImageView circle03;
-    ImageView circle04;
+    private ImageView circle01, circle02, circle03, circle04;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

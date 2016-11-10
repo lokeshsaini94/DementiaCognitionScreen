@@ -18,25 +18,18 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Module07Activity extends AppCompatActivity {
 
-    String Tag = "Module07Activity";
-    Vibrator vibrator;
+    private final String Tag = Module07Activity.class.getSimpleName();
+    private Vibrator vibrator;
 
     // Main screen
-    TextView questionNumber;
-    ImageView scoreCorrect;
-    ImageView info;
+    private TextView questionNumber;
+    private ImageView scoreCorrect, info;
 
     // Question
-    ImageView figure1;
-    ImageView figure2;
-    ImageView figure3;
-    ImageView figure4;
-    ImageView figure1Dot;
-    ImageView figure2Dot;
-    ImageView figure3Dot;
-    ImageView figure4Dot;
+    private ImageView figure1, figure2, figure3, figure4;
+    private ImageView figure1Dot, figure2Dot, figure3Dot, figure4Dot;
 
-    Boolean[] ruleSet = {false, false, false};
+    private Boolean[] ruleSet = {false, false, false};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

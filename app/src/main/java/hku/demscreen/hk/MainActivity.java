@@ -5,10 +5,12 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -38,20 +40,14 @@ import pl.tajchert.nammu.PermissionCallback;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    static final int LANGUAGE_DIALOG_ID = 1;
-    final CharSequence[] language_radio = {"English", "Chinese"};
-    Locale myLocale;
-    Vibrator vibrator;
-
-    EditText userName;
-    EditText userId;
-    EditText userEdu;
-    EditText userAgeDate;
-    EditText userAgeMonth;
-    EditText userAgeYear;
-    RadioButton userMale;
-    RadioButton userFemale;
-    RadioGroup userSex;
+    private static final int LANGUAGE_DIALOG_ID = 1;
+    private final CharSequence[] language_radio = {"English", "Chinese", "Russian"};
+    boolean doubleBackToExitPressedOnce = false;
+    private Vibrator vibrator;
+    private EditText userName, userId, userEdu;
+    private EditText userAgeDate, userAgeMonth, userAgeYear;
+    private RadioButton userMale, userFemale;
+    private RadioGroup userSex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,7 +143,10 @@ public class MainActivity extends AppCompatActivity
                     GlobalVariables.userAge = GlobalVariables.userAgeDate + "/" + GlobalVariables.userAgeMonth + "/" + GlobalVariables.userAgeYear;
                     GlobalVariables.userInitials = getInitials(GlobalVariables.userName);
                     GlobalVariables.userID = userId.getText().toString();
-                    GlobalVariables.userEdu = userEdu.getText().toString();
+                    String xyz = userEdu.getText().toString();
+                    if (!(xyz == "")) {
+                        GlobalVariables.userEdu = xyz;
+                    }
                     Intent intentModulesActivity = new Intent(MainActivity.this, ModulesActivity.class);
                     MainActivity.this.startActivity(intentModulesActivity);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -164,6 +163,10 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        SharedPreferences sharedPref = getSharedPreferences("mypref", 0);
+        int langIndex = sharedPref.getInt("language", 0);
+        setLanguage(langIndex);
+
         requestPermission();
     }
 
@@ -171,38 +174,83 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected Dialog onCreateDialog(int id) {
         if (id == LANGUAGE_DIALOG_ID) {
+            SharedPreferences sharedPref = getSharedPreferences("mypref", 0);
+            int langIndex = sharedPref.getInt("language", 0);
             AlertDialog.Builder builder2 = new AlertDialog.Builder(MainActivity.this)
                     .setTitle("Select the Language")
-                    .setSingleChoiceItems(language_radio, -1, new DialogInterface.OnClickListener() {
+                    .setSingleChoiceItems(language_radio, langIndex, new DialogInterface.OnClickListener() {
 
                         @Override
-                        public void onClick(DialogInterface dialog, int which) {
+                        public void onClick(DialogInterface dialog, int langIndex) {
+                            setLanguage(langIndex);
 
-                            if (language_radio[which] == "English") {
-                                GlobalVariables.testLanguage = 1;
-                                GlobalVariables.testLanguageString = (String) language_radio[which];
-                                setLocale("en");
-                            } else if (language_radio[which] == "Chinese") {
-                                GlobalVariables.testLanguage = 2;
-                                GlobalVariables.testLanguageString = (String) language_radio[which];
-                                setLocale("zh");
-                            }
-                            Toast.makeText(getApplicationContext(), language_radio[which] + " language selected.", Toast.LENGTH_SHORT).show();
+                            // Create object of SharedPreferences.
+                            SharedPreferences sharedPref = getSharedPreferences("mypref", 0);
+                            //now get Editor
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            //put your value
+                            editor.putInt("language", langIndex);
+                            //commits your edits
+                            editor.commit();
+
+                            Toast.makeText(getApplicationContext(), language_radio[langIndex] + " language selected.", Toast.LENGTH_SHORT).show();
                             //dismissing the dialog when the user makes a selection.
                             dialog.dismiss();
                         }
                     });
-            AlertDialog alertdialog2 = builder2.create();
-            return alertdialog2;
+            return builder2.create();
         } else {
             return null;
         }
+    }
+
+    // Sets Language Index and starts setLocale to set the language.
+    private void setLanguage(int langIndex) {
+        if (language_radio[langIndex] == "English") {
+            GlobalVariables.testLanguage = 1;
+            GlobalVariables.testLanguageString = (String) language_radio[langIndex];
+            setLocale("en");
+        } else if (language_radio[langIndex] == "Chinese") {
+            GlobalVariables.testLanguage = 2;
+            GlobalVariables.testLanguageString = (String) language_radio[langIndex];
+            setLocale("zh");
+        } else if (language_radio[langIndex] == "Russian") {
+            GlobalVariables.testLanguage = 3;
+            GlobalVariables.testLanguageString = (String) language_radio[langIndex];
+            setLocale("ru");
+        }
+    }
+
+    // Sets Locale (Language for the app)
+    public void setLocale(String lang) {
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+//        Intent refresh = new Intent(this, MainActivity.class);
+//        startActivity(refresh);
+//        finish();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         userName.setText(GlobalVariables.userName);
+        userId.setText(GlobalVariables.userID);
+        userEdu.setText(GlobalVariables.userEdu);
+        userAgeDate.setText(GlobalVariables.userAgeDate);
+        userAgeMonth.setText(GlobalVariables.userAgeMonth);
+        userAgeYear.setText(GlobalVariables.userAgeYear);
+        userAgeYear.setText(GlobalVariables.userAgeYear);
+        if (GlobalVariables.userSex == getString(R.string.male)) {
+            userMale.setChecked(true);
+            userFemale.setChecked(false);
+        } else if (GlobalVariables.userSex == getString(R.string.female)) {
+            userMale.setChecked(false);
+            userFemale.setChecked(true);
+        }
     }
 
     @Override
@@ -211,7 +259,21 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (doubleBackToExitPressedOnce) {
+                super.onBackPressed();
+                return;
+            }
+
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
         }
     }
 
@@ -240,19 +302,6 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    // Sets Locale (Language for the app)
-    public void setLocale(String lang) {
-        myLocale = new Locale(lang);
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.locale = myLocale;
-        res.updateConfiguration(conf, dm);
-//        Intent refresh = new Intent(this, MainActivity.class);
-//        startActivity(refresh);
-//        finish();
     }
 
     //Requests required Permissions

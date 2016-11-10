@@ -11,19 +11,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 public class GlobalVariables extends Application {
-    public static int lghtGrayColorValue = Color.parseColor("#f5f5f5");
-    public static int whiteColorValue = Color.parseColor("#ffffff");
+    public static int lghtGrayColorValue = Color.parseColor("#f5f5f5"), whiteColorValue = Color.parseColor("#ffffff");
     public static int testLanguage = 1;
     public static String testLanguageString = "English";
-    public static String testDate = "";
-    public static String testTimeStart = "";
-    public static String testTimeEnd = "";
-    public static String userName = "";
-    public static String userInitials = "";
-    public static String userAge = "";
-    public static String userAgeDate = "";
-    public static String userAgeMonth = "";
-    public static String userAgeYear = "";
+    public static String testDate = "", testTimeStart = "", testTimeEnd = "";
+    public static String userName = "", userInitials = "";
+    public static String userAge = "", userAgeDate = "", userAgeMonth = "", userAgeYear = "";
     public static String userID = "";
     public static String userEdu = "";
     public static String userSex = "";
@@ -55,19 +48,14 @@ public class GlobalVariables extends Application {
     public static String[] m05TimeTaken = {"", ""};
     public static String[] m06TimeTaken = {"", "", ""};
     public static int m07MovesCount = 0;
-    public static int m07CurrentFigure = 0;
-    public static int m07PreviousFigure = 0;
+    public static int m07CurrentFigure = 0, m07PreviousFigure = 0;
     public static boolean[] m07TappedFigure = new boolean[35];
     public static int[] m07TappedFigureInt = new int[34];
-    public static int m07Question2Rule = 0;
-    public static int m07Question3Rule = 0;
-    public static int m07Question4Rule = 0;
+    public static int m07Question2Rule = 0, m07Question3Rule = 0, m07Question4Rule = 0;
     public static int m08CurrentMCQNo = 1;
     public static int[] m08MCQno = {0, 0, 0, 0, 0};
     public static int[] m08MCQcardChecked = {0, 0, 0, 0};
-    public static int m10TeachQuestionNo = 0;
-    public static int m10PracticeQuestionNo = 1;
-    public static int m10TaskNo = 1;
+    public static int m10TeachQuestionNo = 0, m10PracticeQuestionNo = 1, m10TaskNo = 1;
     public static int[] m10WrongScore = {0, 0, 0, 0, 0, 0};
     public static boolean m10YesDone = false;
 
@@ -85,9 +73,11 @@ public class GlobalVariables extends Application {
 
         try {
             boolean asd = file.createNewFile();
-            FileOutputStream ostream = new FileOutputStream(file);
-            ostream.write(baos.toByteArray());
-            ostream.close();
+            if (asd) {
+                FileOutputStream fileOutputStream = new FileOutputStream(file);
+                fileOutputStream.write(baos.toByteArray());
+                fileOutputStream.close();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

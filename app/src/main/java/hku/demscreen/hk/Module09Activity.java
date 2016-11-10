@@ -19,27 +19,19 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Module09Activity extends AppCompatActivity {
 
-    String Tag = "Module09Activity";
-    Vibrator vibrator;
+    private final String Tag = Module09Activity.class.getSimpleName();
+    private Vibrator vibrator;
 
-    String fileName = "10 - Task 09 Question 1";
+    private String fileName = "10 - Task 09 Question 1";
 
     // Main screen
-    TextView questionNumber;
-    ImageView scoreCorrect;
-    ImageView info;
+    private TextView questionNumber;
+    private ImageView scoreCorrect, info;
 
     // Question
-    ImageView previousQuestion;
-    ImageView nextQuestion;
-    CardView cardView1;
-    CardView cardView2;
-    CardView cardView3;
-    CardView cardView4;
-    ImageView imageView1;
-    ImageView imageView2;
-    ImageView imageView3;
-    ImageView imageView4;
+    private ImageView previousQuestion, nextQuestion;
+    private CardView cardView1, cardView2, cardView3, cardView4;
+    private ImageView imageView1, imageView2, imageView3, imageView4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

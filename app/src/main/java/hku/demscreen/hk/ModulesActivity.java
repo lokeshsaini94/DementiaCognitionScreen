@@ -21,12 +21,8 @@ import java.util.Calendar;
 
 public class ModulesActivity extends AppCompatActivity {
 
-    String fileName = "01 - Tasks Selection";
-    Vibrator vibrator;
-
-    TextView userName;
-    GridView gridView;
-    String[] moduleNames;
+    private String fileName = "01 - Tasks Selection";
+    private Vibrator vibrator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +30,13 @@ public class ModulesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_modules);
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
-        userName = (TextView) findViewById(R.id.activity_modules_username);
+        TextView userName = (TextView) findViewById(R.id.activity_modules_username);
 
         userName.setText(GlobalVariables.userName);
 
-        gridView = (GridView) findViewById(R.id.gridView);
+        GridView gridView = (GridView) findViewById(R.id.gridView);
 
-        moduleNames = getResources().getStringArray(R.array.module_names);
+        String[] moduleNames = getResources().getStringArray(R.array.module_names);
 
         ListAdapter adapter = new MyGridViewAdapter(this, moduleNames);
         gridView.setAdapter(adapter);

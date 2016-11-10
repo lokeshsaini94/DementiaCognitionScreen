@@ -20,32 +20,26 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Module05Activity extends AppCompatActivity {
 
-    public String timeTaken;
-    String Tag = "Module05Activity";
-    Vibrator vibrator;
-    long timeInMilliseconds = 0L;
-    long timeSwapBuff = 0L;
-    long updatedTime = 0L;
-    String fileName = "07 - Task 05 Question 1";
+    private final String Tag = Module05Activity.class.getSimpleName();
+    private String timeTaken;
+    private Vibrator vibrator;
+    private long timeInMilliseconds = 0L, timeSwapBuff = 0L, updatedTime = 0L;
+    private String fileName = "07 - Task 05 Question 1";
+
     // Main screen
-    TextView questionNumber;
-    ImageView score0;
-    ImageView score1;
-    ImageView score2;
-    ImageView score3;
-    ImageView score4;
-    ImageView info;
-    ImageView reset;
+    private TextView questionNumber;
+    private ImageView score0, score1, score2, score3, score4;
+    private ImageView info, reset;
+
     // Question
-    SimpleDrawingView canvas1;
-    SimpleDrawingView canvas2;
-    ImageView previousQuestion;
-    ImageView nextQuestion;
-    View figure;
+    private SimpleDrawingView canvas1, canvas2;
+    private ImageView previousQuestion, nextQuestion;
+    private View figure;
     private long startTime = 0L;
     private Handler customHandler = new Handler();
+
     // Updates Timer continuously
-    public Runnable updateTimerThread = new Runnable() {
+    private Runnable updateTimerThread = new Runnable() {
         public void run() {
             timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
             updatedTime = timeSwapBuff + timeInMilliseconds;

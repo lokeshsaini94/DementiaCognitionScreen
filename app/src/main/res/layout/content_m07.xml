@@ -34,7 +34,7 @@
                     android:layout_height="25dp"
                     android:layout_centerInParent="true"
                     android:src="@drawable/ic_circle"
-                    android:tint="@color/red"
+                    android:tint="@color/theme_green_primary"
                     android:visibility="gone" />
             </RelativeLayout>
 
@@ -57,7 +57,7 @@
                     android:layout_height="25dp"
                     android:layout_centerInParent="true"
                     android:src="@drawable/ic_circle"
-                    android:tint="@color/red"
+                    android:tint="@color/theme_green_primary"
                     android:visibility="gone" />
             </RelativeLayout>
         </LinearLayout>
@@ -85,7 +85,7 @@
                     android:layout_height="25dp"
                     android:layout_centerInParent="true"
                     android:src="@drawable/ic_circle"
-                    android:tint="@color/red"
+                    android:tint="@color/theme_green_primary"
                     android:visibility="gone" />
             </RelativeLayout>
 
@@ -107,11 +107,9 @@
                     android:layout_height="25dp"
                     android:layout_centerInParent="true"
                     android:src="@drawable/ic_circle"
-                    android:tint="@color/red"
+                    android:tint="@color/theme_green_primary"
                     android:visibility="gone" />
             </RelativeLayout>
         </LinearLayout>
-
     </LinearLayout>
-
 </LinearLayout>
